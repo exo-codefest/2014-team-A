@@ -16,17 +16,24 @@
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: url("images/icon-star-16.png") no-repeat 0 0 transparent;
+  background: url("../images/icon-star-16.png") no-repeat 0 0 transparent;
+  margin-top: 4px;
+}
+.iconStarMedium {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url("../images/icon-star-24.png") no-repeat 0 0 transparent;
 }
 .iconStarMini.gray {
-  background: url("images/icon-star-16-gray.png") no-repeat 0 0 transparent;
+  background: url("../images/icon-star-16-gray.png") no-repeat 0 0 transparent;
 }
 .TitleForm {
   color: #626262;
   text-align: center;
   margin: 24px 0 0;
   text-shadow: 0 1px 0 #FFFFFF;
-  background: url("images/TitleFormBG.png") no-repeat bottom center;
+  background: url("../images/TitleFormBG.png") no-repeat bottom center;
   line-height: 32px;
   padding: 20px 0 25px;
 }
@@ -241,7 +248,7 @@
 }
 .uiActionBoardBar {
   margin-top: 20px;
-  background: url("images/bgCloudTitle.png") repeat 0 0 transparent;
+  background: url("../images/bgCloudTitle.png") repeat 0 0 transparent;
   -webkit-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6);
   -moz-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6);
   box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6);
