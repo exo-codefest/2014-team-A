@@ -37,6 +37,12 @@
   <component>
     <key>exoplatform.codefest.taskmanager.services.project.ProjectService</key>
     <type>exoplatform.codefest.taskmanager.services.project.impl.ProjectServiceImpl</type>
+    <init-params>
+      <value-param>
+        <name>projectRootNodeName</name>
+        <value>projects</value>
+      </value-param>
+    </init-params>
   </component>
   
   <external-component-plugins>

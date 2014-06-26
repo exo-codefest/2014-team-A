@@ -16,10 +16,16 @@
  */
 package exoplatform.codefest.taskmanager.services.project;
 
+import java.security.AccessControlException;
 import java.util.List;
+
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
 
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
+import exoplatform.codefest.taskmanager.exceptions.ProjectExistException;
+import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
 
 /**
  * Created by The eXo Platform SAS
@@ -29,15 +35,15 @@ import exoplatform.codefest.taskmanager.entities.Task;
  */
 public interface ProjectService {
 
-  public Project addProject(String pName, String creator);
+  public Project addProject(String pName, String creator) throws ProjectExistException, TaskManagerException;
 
   public Project rename(Project project, String newName);
   
-  public Project addPermission(Project project, String permission);
+  public Project addPermission(Project project, String identity, String[] perm) throws TaskManagerException;
   
-  public Project removePermission(Project project, String permission);
+  public Project removePermission(Project project, String identity, String[] perm) throws TaskManagerException;
   
-  public Project addMember(Project project, String member);
+  public Project addMember(Project project, String member) throws TaskManagerException;
   
   public Project removeMember(Project project, String member);
   
@@ -48,6 +54,10 @@ public interface ProjectService {
   public Project getProject(String creator, String pName);
   
   public Project getProjectById(int id);
+  
+  public Node getProjectNode(String creator, String pName);
+  
+  public Node getProjectNodeById(int id);
   
   public void storeProject(Project project);
   
