@@ -48,4 +48,8 @@
         <type>jar</type>
       </dependency>
     </dependencies>
+
+  <build>
+    <finalName>tasks-management</finalName>
+  </build>
 </project>
