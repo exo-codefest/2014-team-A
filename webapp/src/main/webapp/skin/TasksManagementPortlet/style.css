@@ -1,0 +1,340 @@
+/* Default color for all title, text, text input, label */
+/* Navigation text color, special purpose in use */
+/* Default gray color for small text, sub title, text field explanation */
+/* Pop up, tab... border, line... */
+/* Hover/press background in table, content background in special cases */
+/* Pop up, table, main header background */
+/* Table row background, content background */
+/* Special title, text, hover, press, hyper-link or selected link */
+.full {
+  width: 100%;
+}
+.btn .icon-image {
+  vertical-align: -3px;
+}
+.iconStarMini {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("images/icon-star-16.png") no-repeat 0 0 transparent;
+}
+.iconStarMini.gray {
+  background: url("images/icon-star-16-gray.png") no-repeat 0 0 transparent;
+}
+.TitleForm {
+  color: #626262;
+  text-align: center;
+  margin: 24px 0 0;
+  text-shadow: 0 1px 0 #FFFFFF;
+  background: url("images/TitleFormBG.png") no-repeat bottom center;
+  line-height: 32px;
+  padding: 20px 0 25px;
+}
+.page-header > h2 {
+  position: relative;
+}
+.page-header > h2 img {
+  vertical-align: -2px;
+  margin-right: 10px;
+}
+.uiListTask .uiBox {
+  position: relative;
+}
+.uiListTask .uiBox:hover {
+  background-color: #5373a9;
+  border-color: #425c87;
+  color: #fff;
+}
+.uiListTask .uiBox:hover a,
+.uiListTask .uiBox:hover h1,
+.uiListTask .uiBox:hover h2,
+.uiListTask .uiBox:hover h3,
+.uiListTask .uiBox:hover h4,
+.uiListTask .uiBox:hover h5,
+.uiListTask .uiBox:hover h6 {
+  color: #fff;
+  text-shadow: none;
+}
+.uiListTask .uiBox:hover .favorite {
+  display: block;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2) inset;
+  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2) inset;
+}
+.uiListTask .uiBox .favorite {
+  display: block;
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  width: 24px;
+  height: 24px;
+  line-height: 20px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  border-radius: 24px;
+  text-align: center;
+  background-color: #fff;
+  display: none;
+}
+.uiListTask .uiBox .title-board {
+  margin-top: 0;
+  max-height: 20px;
+  overflow: hidden;
+}
+.uiListTask .uiBox .desc {
+  height: 40px;
+  overflow: hidden;
+}
+.uiListTask.stared .favorite {
+  display: block;
+}
+.uiWrapBoard {
+  overflow: auto;
+  width: 100%;
+  padding-top: 30px;
+}
+.uiListColBoard > .uiColBoard {
+  width: 240px;
+  background-color: #ececec;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border-bottom: 1px solid #ccc;
+  float: left;
+}
+.uiListColBoard > .uiColBoard + .uiColBoard {
+  margin-left: 20px;
+}
+.uiColBoard .btn-link {
+  background: none;
+  background-position: 0 0;
+  border-color: #224886;
+  color: #fff;
+  text-shadow: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+.uiColBoard .uiHeadColBoard {
+  background-color: #5373a9;
+  color: #fff;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-right-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+  *zoom: 1;
+}
+.uiColBoard .uiHeadColBoard:before,
+.uiColBoard .uiHeadColBoard:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.uiColBoard .uiHeadColBoard:after {
+  clear: both;
+}
+.uiColBoard .uiHeadColBoard .title {
+  font-size: 16px;
+  color: #fff;
+  margin: 0;
+  padding: 5px 10px;
+  float: left;
+}
+.uiColBoard .uiHeadColBoard > .pull-right {
+  margin-right: 5px;
+  margin-top: 6px;
+}
+.uiColBoard .uiHeadColBoard .actionIcon,
+.uiColBoard .uiHeadColBoard .actionIconSmall {
+  background: transparent;
+}
+.uiColBoard .uiHeadColBoard .actionIcon:hover,
+.uiColBoard .uiHeadColBoard .actionIconSmall:hover {
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+}
+.uiColBoard .uiHeadColBoard .actionIcon:hover,
+.uiColBoard .uiHeadColBoard .actionIconSmall:hover,
+.uiColBoard .uiHeadColBoard .actionIcon:active,
+.uiColBoard .uiHeadColBoard .actionIconSmall:active {
+  background-color: #fff!important;
+  border-color: transparent!important;
+}
+.uiColBoard .uiHeadColBoard .actionIcon:focus,
+.uiColBoard .uiHeadColBoard .actionIconSmall:focus {
+  border-color: transparent!important;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+}
+.uiColBoard .uiHeadColBoard .btn-group.open .actionIcon {
+  background-color: #fff;
+}
+.uiColBoard .uiHeadColBoard .btn-group.open .actionIcon [class^="uiIcon"] {
+  background-image: url("/eXoResources/skin/images/Icons/uiIconsBlue.png");
+}
+.uiColBoard .uiContenColBoard {
+  padding: 10px;
+}
+.toggleQuickEdit.edit + .btn-group {
+  display: none;
+}
+.toggleQuickEdit.edit .text,
+.toggleQuickEdit.edit .toggle-edit {
+  display: none!important;
+}
+.toggleQuickEdit.edit .quickEdit {
+  display: block;
+}
+.quickEdit {
+  display: none;
+  padding: 5px 0;
+}
+.quickEdit textarea {
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 48px;
+}
+.quickEdit .actionIcon > i {
+  margin-top: 1px;
+}
+.uiListBoard > li {
+  background-color: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 5px 10px;
+  list-style: none;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+.uiListBoard > li .quickEdit textarea {
+  height: 70px;
+}
+.uiListBoard > li.move {
+  cursor: move;
+}
+.uiListBoard > li + li {
+  margin-top: 10px;
+}
+.uiListBoard > li .toggle-edit {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  display: none;
+  background: #f9f9f9;
+  padding: 2px 5px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.uiListBoard > li:hover {
+  background: #f9f9f9;
+}
+.uiListBoard > li:hover .toggle-edit {
+  display: block;
+}
+.uiActionBoardBar {
+  margin-top: 20px;
+  background: url("images/bgCloudTitle.png") repeat 0 0 transparent;
+  -webkit-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6);
+  -moz-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 10px;
+}
+.uiSidebarBoard {
+  position: fixed;
+  top: 41px;
+  bottom: 0;
+  right: 0;
+  width: 230px;
+  background: #ECECEC;
+  padding: 15px;
+  border-left: 1px solid #ccc;
+  -webkit-transition: all 100ms ease-in;
+  -moz-transition: all 100ms ease-in;
+  -o-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+  -webkit-transform: translate(260px, 0);
+  -moz-transform: translate(260px, 0);
+  -ms-transform: translate(260px, 0);
+  -o-transform: translate(260px, 0);
+  transform: translate(260px, 0);
+}
+.uiSidebarBoard.open {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.uiSidebarBoard .inner {
+  height: 100%;
+  overflow: auto;
+}
+.uiSidebarBoard .toggleShowSidebar {
+  border: 1px solid #ccc;
+  border-right: none;
+  position: absolute;
+  right: 100%;
+  top: 20px;
+  background: #ECECEC;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-bottom-left-radius: 3px;
+  padding: 5px;
+  white-space: nowrap;
+}
+.uiAddmemToBoard .title {
+  margin-top: 0;
+}
+.uiAddmemToBoard .uiAddtedMem {
+  border-bottom: 1px solid #d1d1d1;
+  margin-bottom: 10px;
+}
+.uiAddmemToBoard .uiAddtedMem > .memInBoard {
+  margin-right: 5px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.uiAddmemToBoard .uiAddtedMem > .memInBoard img {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.searchMemBoard {
+  border-bottom: 1px solid #d1d1d1;
+  padding-bottom: 10px;
+}
+.searchMemBoard .inputSearchMem {
+  width: 100%;
+}
+.searchMemBoard .buttonAddMem {
+  margin-bottom: 10px;
+}
+.searchMemBoard .listMem > li {
+  padding: 5px;
+}
+.searchMemBoard .listMem > li img {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+.searchMemBoard .listMem > li .name {
+  color: #333333;
+}
+.searchMemBoard .listMem > li:hover {
+  background-color: #f9f9f9;
+}

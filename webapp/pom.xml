@@ -47,6 +47,12 @@
         <scope>provided</scope>
         <type>jar</type>
       </dependency>
+      <dependency>
+        <groupId>org.gatein.portal</groupId>
+        <artifactId>exo.portal.webui.core</artifactId>
+        <scope>provided</scope>
+        <type>jar</type>
+      </dependency>
     </dependencies>
 
   <build>

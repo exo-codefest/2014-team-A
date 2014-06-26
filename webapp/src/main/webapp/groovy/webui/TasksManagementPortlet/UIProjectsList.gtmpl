@@ -1,0 +1,123 @@
+	<div class="uiExamleBox">
+		<h2 class="TitleForm">Task Manager</h2>
+		<div class="page-header">
+    	<h2><img class="icon" src="assets/images/icon-star-24.png" alt="icon-star">Starred</h2>
+ 		</div>
+	 	<div class="uiListTask stared">
+	 		<div class="row-fluid">
+	 			<div class="span4 uiBox">
+	 				<div class="uiContentBox">
+	 					<a class="favorite" href="#">
+	 						<img class="icon" src="assets/images/icon-star-16.png" alt="icon-star">
+	 					</a>
+	 					<h4 class="title-board">Title Board</h4>
+	 					<div class="desc">
+	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	 					</div>
+						</div>
+	 			</div>
+	 			<div class="span4 uiBox">
+	 				<div class="uiContentBox">
+	 					<a class="favorite" href="#">
+	 						<img class="icon" src="assets/images/icon-star-16.png" alt="icon-star">
+	 					</a>
+	 					<h4 class="title-board">Title Board</h4>
+	 					<div class="desc">
+	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	 					</div>
+						</div>
+	 			</div>
+	 			<div class="span4 uiBox">
+	 				<div class="uiContentBox">
+	 					<a class="favorite" href="#">
+	 						<img class="icon" src="assets/images/icon-star-16.png" alt="icon-star">
+	 					</a>
+	 					<h4 class="title-board">Title Board</h4>
+	 					<div class="desc">
+	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	 					</div>
+						</div>
+	 			</div>
+	 		</div>
+	 	</div>
+	 	<div class="page-header">
+	    	<h2>Team</h2>
+	 	</div>
+	 	<div class="uiListTask">
+	 		<div class="row-fluid">
+	 			<div class="span4 uiBox">
+	 				<div class="uiContentBox">
+	 					<a class="favorite" href="#">
+	 						<img class="icon" src="assets/images/icon-star-16.png" alt="icon-star">
+	 					</a>
+	 					<h4 class="title-board">Title Board</h4>
+	 					<div class="desc">
+	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	 					</div>
+						</div>
+	 			</div>
+	 			<div class="span4 uiBox">
+	 				<div class="uiContentBox">
+	 					<a class="favorite" href="#">
+	 						<img class="icon" src="assets/images/icon-star-16.png" alt="icon-star">
+	 					</a>
+	 					<h4 class="title-board">Title Board</h4>
+	 					<div class="desc">
+	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	 					</div>
+						</div>
+	 			</div>
+	 			<div class="span4 uiBox">
+	 				<div class="uiContentBox">
+	 					<a class="favorite" href="#">
+	 						<img class="icon" src="assets/images/icon-star-16.png" alt="icon-star">
+	 					</a>
+	 					<h4 class="title-board">Title Board</h4>
+	 					<div class="desc">
+	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	 					</div>
+						</div>
+	 			</div>
+	 		</div>
+	 	</div>
+	 	<div class="page-header">
+	    	<h2>Space</h2>
+	 	</div>
+			<div class="uiListTask">
+	 		<div class="row-fluid">
+	 			<div class="span4 uiBox">
+	 				<div class="uiContentBox">
+	 					<a class="favorite" href="#">
+	 						<img class="icon" src="assets/images/icon-star-16.png" alt="icon-star">
+	 					</a>
+	 					<h4 class="title-board">Title Board</h4>
+	 					<div class="desc">
+	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	 					</div>
+						</div>
+	 			</div>
+	 			<div class="span4 uiBox">
+	 				<div class="uiContentBox">
+	 					<a class="favorite" href="#">
+	 						<img class="icon" src="assets/images/icon-star-16.png" alt="icon-star">
+	 					</a>
+	 					<h4 class="title-board">Title Board</h4>
+	 					<div class="desc">
+	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	 					</div>
+						</div>
+	 			</div>
+	 			<div class="span4 uiBox">
+	 				<div class="uiContentBox">
+	 					<a class="favorite" href="#">
+	 						<img class="icon" src="assets/images/icon-star-16.png" alt="icon-star">
+	 					</a>
+	 					<h4 class="title-board">Title Board</h4>
+	 					<div class="desc">
+	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	 					</div>
+						</div>
+	 			</div>
+	 		</div>
+	 	</div>
+	</div>
