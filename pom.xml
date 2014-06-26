@@ -49,6 +49,7 @@
   </scm>
   <properties>
     <exoplatform.version>4.1-M2</exoplatform.version>
+    <gatein.portal.version>3.5.10.Final</gatein.portal.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -59,6 +60,18 @@
         <version>${exoplatform.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.gatein.portal</groupId>
+        <artifactId>exo.portal.webui.portlet</artifactId>
+        <version>${gatein.portal.version}</version>
+        <type>jar</type>
+      </dependency>
+      <dependency>
+        <groupId>org.gatein.portal</groupId>
+        <artifactId>exo.portal.webui.framework</artifactId>
+        <version>${gatein.portal.version}</version>
+        <type>jar</type>
       </dependency>
     </dependencies>
   </dependencyManagement>

@@ -32,4 +32,20 @@
   <packaging>war</packaging>
   <name>Codefest 2014 - Team A Addon - Webapp</name>
   <description>Codefest 2014 - Team A Addon - A portlet or any webapp</description>
+
+    <dependencies>
+      <!-- Import versions from platform project -->
+      <dependency>
+        <groupId>org.gatein.portal</groupId>
+        <artifactId>exo.portal.webui.portlet</artifactId>
+        <scope>provided</scope>
+        <type>jar</type>
+      </dependency>
+      <dependency>
+        <groupId>org.gatein.portal</groupId>
+        <artifactId>exo.portal.webui.framework</artifactId>
+        <scope>provided</scope>
+        <type>jar</type>
+      </dependency>
+    </dependencies>
 </project>
