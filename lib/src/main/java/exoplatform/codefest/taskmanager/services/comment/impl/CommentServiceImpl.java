@@ -14,10 +14,11 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package exoplatform.codefest.services.comment;
+package exoplatform.codefest.taskmanager.services.comment.impl;
 
-import exoplatform.codefest.entities.Comment;
-import exoplatform.codefest.entities.Task;
+import exoplatform.codefest.taskmanager.entities.Comment;
+import exoplatform.codefest.taskmanager.entities.Task;
+import exoplatform.codefest.taskmanager.services.comment.CommentService;
 
 /**
  * Created by The eXo Platform SAS
@@ -25,14 +26,30 @@ import exoplatform.codefest.entities.Task;
  *          exo@exoplatform.com
  * Jun 26, 2014  
  */
-public interface CommentService {
+public class CommentServiceImpl implements CommentService {
 
-  public Comment addComment(Task task, String content, String owner);
-  
-  public Comment setContent(Comment comment, String content);
-  
-  public Comment setOwner(Comment comment, String owner);
-  
-  public void storeComment(Task task, Comment comment);
-  
+  @Override
+  public Comment addComment(Task task, String content, String owner) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Comment setContent(Comment comment, String content) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Comment setOwner(Comment comment, String owner) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public void storeComment(Task task, Comment comment) {
+    // TODO Auto-generated method stub
+    
+  }
+
 }

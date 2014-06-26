@@ -14,12 +14,12 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package exoplatform.codefest.services.project;
+package exoplatform.codefest.taskmanager.services.project;
 
 import java.util.List;
 
-import exoplatform.codefest.entities.Project;
-import exoplatform.codefest.entities.Task;
+import exoplatform.codefest.taskmanager.entities.Project;
+import exoplatform.codefest.taskmanager.entities.Task;
 
 /**
  * Created by The eXo Platform SAS

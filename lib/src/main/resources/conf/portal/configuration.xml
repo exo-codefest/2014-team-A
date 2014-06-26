@@ -24,6 +24,21 @@
    xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
    xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
    
+  <component>
+    <key>exoplatform.codefest.taskmanager.services.comment.CommentService</key>
+    <type>exoplatform.codefest.taskmanager.services.comment.impl.CommentServiceImpl</type>
+  </component>
+  
+  <component>
+    <key>exoplatform.codefest.taskmanager.services.task.TaskService</key>
+    <type>exoplatform.codefest.taskmanager.services.task.impl.TaskServiceImpl</type>
+  </component>
+  
+  <component>
+    <key>exoplatform.codefest.taskmanager.services.project.ProjectService</key>
+    <type>exoplatform.codefest.taskmanager.services.project.impl.ProjectServiceImpl</type>
+  </component>
+  
   <external-component-plugins>
     <target-component>org.exoplatform.services.jcr.RepositoryService</target-component>
     <component-plugin>

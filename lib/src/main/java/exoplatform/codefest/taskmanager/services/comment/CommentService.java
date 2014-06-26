@@ -14,7 +14,10 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package exoplatform.codefest.services.utils;
+package exoplatform.codefest.taskmanager.services.comment;
+
+import exoplatform.codefest.taskmanager.entities.Comment;
+import exoplatform.codefest.taskmanager.entities.Task;
 
 /**
  * Created by The eXo Platform SAS
@@ -22,6 +25,14 @@ package exoplatform.codefest.services.utils;
  *          exo@exoplatform.com
  * Jun 26, 2014  
  */
-public class Utils {
+public interface CommentService {
 
+  public Comment addComment(Task task, String content, String owner);
+  
+  public Comment setContent(Comment comment, String content);
+  
+  public Comment setOwner(Comment comment, String owner);
+  
+  public void storeComment(Task task, Comment comment);
+  
 }
