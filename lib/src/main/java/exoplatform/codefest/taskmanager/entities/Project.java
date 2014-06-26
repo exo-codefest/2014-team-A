@@ -61,5 +61,9 @@ public class Project {
   }
   public void setStageList(List<String> stageList) {
     this.stageList = stageList;
+  }  
+  
+  public String toString(){
+    return "Project: id = "+id+" name = "+name+" creator = "+creator;
   }
 }

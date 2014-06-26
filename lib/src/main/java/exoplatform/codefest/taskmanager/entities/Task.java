@@ -38,7 +38,7 @@ public class Task {
   private List<Integer> requiredTasks;
   private String stage;
   private int stageOrder;
-  
+    
   public int getId() {
     return id;
   }
@@ -106,4 +106,13 @@ public class Task {
     this.stageOrder = stageOrder;
   }
   
+  public void clone(Task t){
+    this.name = t.getName();
+    this.stage = t.getStage();
+    this.dueDate = t.dueDate;    
+  }
+  
+  public String toString(){
+    return "Task: id = "+id+" name = "+name+" stage = "+stage;
+  }
 }

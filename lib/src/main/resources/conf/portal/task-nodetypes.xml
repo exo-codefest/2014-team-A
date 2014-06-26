@@ -39,26 +39,26 @@
         <valueConstraints/>
       </propertyDefinition>
     </propertyDefinitions>
-    <childNodeDefinition>
+    <childNodeDefinitions>
       <childNodeDefinition name="tasks" defaultPrimaryType="" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" sameNameSiblings="false">
         <requiredPrimaryTypes>
           <requiredPrimaryType>codefest:taskFolder</requiredPrimaryType>
         </requiredPrimaryTypes>
       </childNodeDefinition>
-    </childNodeDefinition>
+    </childNodeDefinitions>
   </nodeType>
   
   <nodeType name="codefest:taskFolder" isMixin="false" hasOrderableChildNodes="false">
     <supertypes>
       <supertype>nt:base</supertype>
     </supertypes>
-    <childNodeDefinition>
+    <childNodeDefinitions>
       <childNodeDefinition name="*" defaultPrimaryType="" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" sameNameSiblings="false">
         <requiredPrimaryTypes>
           <requiredPrimaryType>codefest:task</requiredPrimaryType>
         </requiredPrimaryTypes>
       </childNodeDefinition>
-    </childNodeDefinition>
+    </childNodeDefinitions>
   </nodeType>
   
   <nodeType name="codefest:task" isMixin="false" hasOrderableChildNodes="false">
@@ -97,7 +97,7 @@
         <valueConstraints/>
       </propertyDefinition>
     </propertyDefinitions>
-    <childNodeDefinition>
+    <childNodeDefinitions>
       <childNodeDefinition name="attachments" defaultPrimaryType="" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" sameNameSiblings="false">
         <requiredPrimaryTypes>
           <requiredPrimaryType>codefest:attachmentFolder</requiredPrimaryType>
@@ -108,33 +108,33 @@
           <requiredPrimaryType>codefest:commentFolder</requiredPrimaryType>
         </requiredPrimaryTypes>
       </childNodeDefinition>
-    </childNodeDefinition>
+    </childNodeDefinitions>
   </nodeType>
   
   <nodeType name="codefest:attachmentFolder" isMixin="false" hasOrderableChildNodes="false">
     <supertypes>
       <supertype>nt:base</supertype>
     </supertypes>
-    <childNodeDefinition>
+    <childNodeDefinitions>
       <childNodeDefinition name="*" defaultPrimaryType="" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" sameNameSiblings="false">
         <requiredPrimaryTypes>
           <requiredPrimaryType>nt:file</requiredPrimaryType>
         </requiredPrimaryTypes>
       </childNodeDefinition>
-    </childNodeDefinition>
+    </childNodeDefinitions>
   </nodeType>
 
   <nodeType name="codefest:commentFolder" isMixin="false" hasOrderableChildNodes="false">
     <supertypes>
       <supertype>nt:base</supertype>
     </supertypes>
-    <childNodeDefinition>
+    <childNodeDefinitions>
       <childNodeDefinition name="*" defaultPrimaryType="" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" sameNameSiblings="false">
         <requiredPrimaryTypes>
           <requiredPrimaryType>codefest:comment</requiredPrimaryType>
         </requiredPrimaryTypes>
       </childNodeDefinition>
-    </childNodeDefinition>
+    </childNodeDefinitions>
   </nodeType>
   
   <nodeType name="codefest:comment" isMixin="false" hasOrderableChildNodes="false">
@@ -155,7 +155,7 @@
         <valueConstraints/>
       </propertyDefinition>
     </propertyDefinitions>
-    <childNodeDefinition/>
+    <childNodeDefinitions/>
   </nodeType>
   
 </nodeTypes>

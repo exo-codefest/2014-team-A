@@ -23,6 +23,7 @@ import exoplatform.codefest.taskmanager.entities.Comment;
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
 import exoplatform.codefest.taskmanager.services.task.TaskService;
+import org.exoplatform.services.rest.resource.ResourceContainer;
 
 /**
  * Created by The eXo Platform SAS
@@ -49,8 +50,11 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   public Task addTask(Project project, String name, String description) {
-    // TODO Auto-generated method stub
-    return null;
+    Task t = new Task();
+    t.setName(name);
+    t.setDescription(description);
+    t.setProjectId(project.getId());
+    return t;
   }
 
   @Override

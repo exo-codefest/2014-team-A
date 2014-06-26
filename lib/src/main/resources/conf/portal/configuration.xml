@@ -45,6 +45,16 @@
     </init-params>
   </component>
   
+  <!-- REST Service -->
+  <component>
+    <key>exoplatform.codefest.taskmanager.REST.ProjectRESTService</key>
+    <type>exoplatform.codefest.taskmanager.REST.ProjectRESTService</type>
+  </component>
+  <component>
+    <key>exoplatform.codefest.taskmanager.REST.TaskRESTService</key>
+    <type>exoplatform.codefest.taskmanager.REST.TaskRESTService</type>
+  </component>
+  
   <external-component-plugins>
     <target-component>org.exoplatform.services.jcr.RepositoryService</target-component>
     <component-plugin>
