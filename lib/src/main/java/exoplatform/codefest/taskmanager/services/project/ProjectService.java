@@ -16,15 +16,14 @@
  */
 package exoplatform.codefest.taskmanager.services.project;
 
-import java.security.AccessControlException;
 import java.util.List;
 
 import javax.jcr.Node;
-import javax.jcr.RepositoryException;
 
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
 import exoplatform.codefest.taskmanager.exceptions.ProjectExistException;
+import exoplatform.codefest.taskmanager.exceptions.StageExistException;
 import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
 
 /**
@@ -34,10 +33,12 @@ import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
  * Jun 26, 2014  
  */
 public interface ProjectService {
+  
+  public List<Project> getAllProjectByUser(String user) throws TaskManagerException;
 
   public Project addProject(String pName, String creator) throws ProjectExistException, TaskManagerException;
 
-  public Project rename(Project project, String newName);
+  public Project rename(Project project, String newName) throws TaskManagerException;
   
   public Project addPermission(Project project, String identity, String[] perm) throws TaskManagerException;
   
@@ -45,26 +46,26 @@ public interface ProjectService {
   
   public Project addMember(Project project, String member) throws TaskManagerException;
   
-  public Project removeMember(Project project, String member);
+  public Project removeMember(Project project, String member) throws TaskManagerException;
   
-  public Project addStage(Project project, String stage);
+  public Project addStage(Project project, String stage) throws StageExistException, TaskManagerException;
   
-  public Project removeStage(Project project, String stage);
+  public Project removeStage(Project project, String stage) throws TaskManagerException;
   
-  public Project getProject(String creator, String pName);
+  public Project getProject(String creator, String pName) throws TaskManagerException;
   
-  public Project getProjectById(int id);
+  public Project getProjectById(int id) throws TaskManagerException;
   
-  public Node getProjectNode(String creator, String pName);
+  public Node getProjectNode(String creator, String pName) throws TaskManagerException;
   
-  public Node getProjectNodeById(int id);
+  public Node getProjectNodeById(int id) throws TaskManagerException;
   
-  public void storeProject(Project project);
+  public void storeProject(Project project) throws TaskManagerException;
   
-  public List<Task> getTask(Project project);
+  public List<Task> getTasks(Project project) throws TaskManagerException;
   
-  public List<Task> getTaskByStage(Project project, String stage);
+  public List<Task> getTasksByStage(Project project, String stage) throws TaskManagerException;
   
-  public void setTaskOrderInStage(Project project, String stage, List<Task> task);
+  public void setTaskOrderInStage(String stage, List<Task> task) throws TaskManagerException;
   
 }

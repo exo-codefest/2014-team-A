@@ -23,7 +23,6 @@ import exoplatform.codefest.taskmanager.entities.Comment;
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
 import exoplatform.codefest.taskmanager.services.task.TaskService;
-import org.exoplatform.services.rest.resource.ResourceContainer;
 
 /**
  * Created by The eXo Platform SAS
@@ -136,7 +135,7 @@ public class TaskServiceImpl implements TaskService {
   }
 
   @Override
-  public void storeTask(Project project, Task task) {
+  public void storeTask(Task task) {
     // TODO Auto-generated method stub
     
   }
@@ -149,6 +148,12 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   public List<Comment> getCommentsByTask(Task task) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  
+  @Override
+  public Task getTaskByNode(javax.jcr.Node taskNode) {
     // TODO Auto-generated method stub
     return null;
   }

@@ -19,6 +19,8 @@ package exoplatform.codefest.taskmanager.services.task;
 import java.util.Date;
 import java.util.List;
 
+import javax.jcr.Node;
+
 import exoplatform.codefest.taskmanager.entities.Comment;
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
@@ -62,10 +64,12 @@ public interface TaskService {
   
   public Task getTaskById(int tagId);
   
-  public void storeTask(Project project, Task task);
+  public void storeTask(Task task);
   
   public List<Comment> getComments();
   
   public List<Comment> getCommentsByTask(Task task);
+  
+  public Task getTaskByNode(Node taskNode);
 
 }

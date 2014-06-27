@@ -16,16 +16,16 @@
  */
 package exoplatform.codefest.taskmanager.services.project.impl;
 
-import java.security.AccessControlException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.jcr.Node;
+import javax.jcr.NodeIterator;
 import javax.jcr.PathNotFoundException;
-import javax.jcr.RepositoryException;
 import javax.jcr.Value;
-import javax.jcr.ValueFormatException;
+import javax.jcr.query.Query;
 
+import org.apache.commons.lang.StringUtils;
 import org.exoplatform.container.xml.InitParams;
 import org.exoplatform.services.jcr.core.ExtendedNode;
 import org.exoplatform.services.jcr.ext.common.SessionProvider;
@@ -34,8 +34,10 @@ import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
 import exoplatform.codefest.taskmanager.exceptions.ProjectExistException;
+import exoplatform.codefest.taskmanager.exceptions.StageExistException;
 import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
 import exoplatform.codefest.taskmanager.services.project.ProjectService;
+import exoplatform.codefest.taskmanager.services.task.TaskService;
 import exoplatform.codefest.taskmanager.utils.NodeTypes;
 import exoplatform.codefest.taskmanager.utils.Utils;
 
@@ -53,6 +55,25 @@ public class ProjectServiceImpl implements ProjectService {
   public ProjectServiceImpl(NodeHierarchyCreator nodeCreator, InitParams initParams) {
     this.nodeCreator = nodeCreator;
     this.projectRootNodeName = initParams.getValueParam("projectRootNodeName").getValue();
+  }
+  
+  public List<Project> getAllProjectByUser(String user) throws TaskManagerException {
+    List<Project> ret = new ArrayList<Project>();
+    try {
+      Node pRoot = getProjectRootNode();
+      String statement = "SELECT * FROM " + NodeTypes.PROJECT + " WHERE jcr:path LIKE '" + 
+                         pRoot.getPath() + "/%' AND CONTAINS(" + NodeTypes.PROJECT_MEMBERS +
+                         ",'" + user + "')";
+      Query query = pRoot.getSession().getWorkspace().getQueryManager().createQuery(statement, Query.SQL);
+      for (NodeIterator iter = query.execute().getNodes(); iter.hasNext();) {
+        Node p = iter.nextNode();
+        ret.add(convertToEntity(p));
+      }
+      return ret;
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
+    
   }
 
   @Override
@@ -75,7 +96,7 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public Project rename(Project project, String newName) {
+  public Project rename(Project project, String newName) throws TaskManagerException {
     project.setName(newName);
     storeProject(project);
     return project;
@@ -113,7 +134,9 @@ public class ProjectServiceImpl implements ProjectService {
   public Project addMember(Project project, String member) throws TaskManagerException {
     try {
       Node pNode = getProjectNodeById(project.getId());
-      Value[] members = pNode.getProperty(NodeTypes.PROJECT_MEMBERS).getValues();
+      Value[] members = pNode.hasProperty(NodeTypes.PROJECT_MEMBERS) ? 
+                          pNode.getProperty(NodeTypes.PROJECT_MEMBERS).getValues() :
+                          new Value[]{};
       for (Value m : members) {
         if (m.getString().equals(member))
           return project;
@@ -130,57 +153,140 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public Project removeMember(Project project, String member) {
-    // TODO Auto-generated method stub
-    return null;
+  public Project removeMember(Project project, String member) throws TaskManagerException {
+    try {
+      Node pNode = getProjectNodeById(project.getId());
+      if (!pNode.hasProperty(NodeTypes.PROJECT_MEMBERS)) return project;
+      Value[] members = pNode.getProperty(NodeTypes.PROJECT_MEMBERS).getValues();
+      Value[] newMems = new Value[members.length - 1];
+      int count = 0;
+      for (Value m : members) {
+        if (!m.getString().equals(member))
+          newMems[count++] = m;
+      }
+      pNode.setProperty(NodeTypes.PROJECT_MEMBERS, newMems);
+      pNode.save();
+      return getProjectById(project.getId());
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
   }
 
   @Override
-  public Project addStage(Project project, String stage) {
-    // TODO Auto-generated method stub
-    return null;
+  public Project addStage(Project project, String stage) throws StageExistException, TaskManagerException {
+    try {
+      Node pNode = getProjectNodeById(project.getId());
+      Value[] stages = pNode.hasProperty(NodeTypes.PROJECT_STAGELIST) ? 
+                          pNode.getProperty(NodeTypes.PROJECT_STAGELIST).getValues() :
+                          new Value[]{};
+      for (Value s : stages) {
+        if (s.getString().equals(stage))
+          throw new StageExistException();
+      }
+      Value[] newStages = new Value[stages.length + 1];
+      System.arraycopy(stages, 0, newStages, 0, stages.length);
+      newStages[stages.length] = pNode.getSession().getValueFactory().createValue(stage);
+      pNode.setProperty(NodeTypes.PROJECT_STAGELIST, newStages);
+      pNode.save();
+      return getProjectById(project.getId());
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
   }
 
   @Override
-  public Project removeStage(Project project, String stage) {
-    // TODO Auto-generated method stub
-    return null;
+  public Project removeStage(Project project, String stage) throws TaskManagerException {
+    try {
+      Node pNode = getProjectNodeById(project.getId());
+      Value[] stages = pNode.hasProperty(NodeTypes.PROJECT_STAGELIST) ? 
+                          pNode.getProperty(NodeTypes.PROJECT_STAGELIST).getValues() :
+                          new Value[]{};
+      for (Value s : stages) {
+        if (s.getString().equals(stage))
+          throw new StageExistException();
+      }
+      Value[] newStages = new Value[stages.length + 1];
+      System.arraycopy(stages, 0, newStages, 0, stages.length);
+      newStages[stages.length] = pNode.getSession().getValueFactory().createValue(stage);
+      pNode.setProperty(NodeTypes.PROJECT_STAGELIST, newStages);
+      pNode.save();
+      return getProjectById(project.getId());
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
   }
 
   @Override
-  public Project getProject(String creator, String pName) {
-    // TODO Auto-generated method stub
-    return null;
+  public Project getProject(String creator, String pName) throws TaskManagerException {
+    Node pNode = getProjectNode(creator, pName);
+    return convertToEntity(pNode);
   }
 
   @Override
-  public Project getProjectById(int id) {
-    // TODO Auto-generated method stub
-    return null;
+  public Project getProjectById(int id) throws TaskManagerException {
+    Node pNode = getProjectNodeById(id);
+    return convertToEntity(pNode);
   }
 
   @Override
-  public void storeProject(Project project) {
-    // TODO Auto-generated method stub
-    
+  public void storeProject(Project project) throws TaskManagerException {
+    try {
+      Node pNode = getProjectNodeById(project.getId());
+      pNode.setProperty(NodeTypes.PROJECT_CREATOR, project.getCreator());
+      
+      pNode.setProperty(NodeTypes.PROJECT_MEMBERS, Utils.toValues(project.getMembers(), pNode.getSession().getValueFactory()));
+      
+      pNode.setProperty(NodeTypes.PROJECT_NAME, project.getName());
+      
+      pNode.setProperty(NodeTypes.PROJECT_STAGELIST, Utils.toValues(project.getStageList(), pNode.getSession().getValueFactory()));
+      pNode.save();
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
   }
 
   @Override
-  public List<Task> getTask(Project project) {
-    // TODO Auto-generated method stub
-    return null;
+  public List<Task> getTasks(Project project)  throws TaskManagerException {
+    try {
+      TaskService taskService = Utils.getService(TaskService.class);
+      List<Task> ret = new ArrayList<Task>();
+      Node pNode = getProjectNodeById(project.getId());
+      for (NodeIterator iter = pNode.getNode(NodeTypes.PROJECT_TASKS).getNodes(); iter.hasNext();) {
+        ret.add(taskService.getTaskByNode(iter.nextNode()));
+      }
+      return ret;
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
   }
 
   @Override
-  public List<Task> getTaskByStage(Project project, String stage) {
-    // TODO Auto-generated method stub
-    return null;
+  public List<Task> getTasksByStage(Project project, String stage) throws TaskManagerException {
+    try {
+      List<Task> ret = new ArrayList<Task>();
+      for (Task t : getTasks(project)) {
+        if (StringUtils.equals(t.getStage(), stage)) {
+          ret.add(t);
+        }
+      }
+      return ret;
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
   }
 
   @Override
-  public void setTaskOrderInStage(Project project, String stage, List<Task> task) {
-    // TODO Auto-generated method stub
-    
+  public void setTaskOrderInStage(String stage, List<Task> tasks) throws TaskManagerException {
+    try {
+      TaskService taskService = Utils.getService(TaskService.class);
+      int count = 0;
+      for (Task t : tasks) {
+        t.setStageOrder(count++);
+        taskService.storeTask(t);
+      }
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
   }
   
   private Node getProjectRootNode() {
@@ -201,29 +307,25 @@ public class ProjectServiceImpl implements ProjectService {
     }
   }
   
-  private Project convertToEntity(Node pNode) throws ValueFormatException, PathNotFoundException, RepositoryException {
-    Project ret = new Project();
-    ret.setCreator(pNode.hasProperty(NodeTypes.PROJECT_CREATOR) ? 
-                   pNode.getProperty(NodeTypes.PROJECT_CREATOR).getString() : "");
-    ret.setId(pNode.hasProperty(NodeTypes.PROJECT_ID) ? 
-              (int)pNode.getProperty(NodeTypes.PROJECT_ID).getLong() : 0);
-    ret.setMembers(pNode.hasProperty(NodeTypes.PROJECT_MEMBERS) ?
-                   toStringList(pNode.getProperty(NodeTypes.PROJECT_MEMBERS).getValues()) : 
-                   new ArrayList<String>());
-    ret.setName(pNode.hasProperty(NodeTypes.PROJECT_NAME) ? 
-                pNode.getProperty(NodeTypes.PROJECT_NAME).getString() : "");
-    ret.setStageList(pNode.hasProperty(NodeTypes.PROJECT_STAGELIST) ?
-                   toStringList(pNode.getProperty(NodeTypes.PROJECT_STAGELIST).getValues()) : 
-                   new ArrayList<String>());
-    return ret;
-  }
-  
-  private List<String> toStringList(Value[] values) throws ValueFormatException, IllegalStateException, RepositoryException {
-    List<String> ret = new ArrayList<String>();
-    for (Value v : values) {
-      ret.add(v.getString());
+  private Project convertToEntity(Node pNode) throws TaskManagerException {
+    try {
+      Project ret = new Project();
+      ret.setCreator(pNode.hasProperty(NodeTypes.PROJECT_CREATOR) ? 
+                     pNode.getProperty(NodeTypes.PROJECT_CREATOR).getString() : "");
+      ret.setId(pNode.hasProperty(NodeTypes.PROJECT_ID) ? 
+                (int)pNode.getProperty(NodeTypes.PROJECT_ID).getLong() : 0);
+      ret.setMembers(pNode.hasProperty(NodeTypes.PROJECT_MEMBERS) ?
+                     Utils.toStringList(pNode.getProperty(NodeTypes.PROJECT_MEMBERS).getValues()) : 
+                     new ArrayList<String>());
+      ret.setName(pNode.hasProperty(NodeTypes.PROJECT_NAME) ? 
+                  pNode.getProperty(NodeTypes.PROJECT_NAME).getString() : "");
+      ret.setStageList(pNode.hasProperty(NodeTypes.PROJECT_STAGELIST) ?
+                     Utils.toStringList(pNode.getProperty(NodeTypes.PROJECT_STAGELIST).getValues()) : 
+                     new ArrayList<String>());
+      return ret;
+    } catch (Exception e) {
+      throw new TaskManagerException();
     }
-    return ret;
   }
   
   static class ProjectIdGenerator {
@@ -243,15 +345,40 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public Node getProjectNode(String creator, String pName) {
-    // TODO Auto-generated method stub
-    return null;
+  public Node getProjectNode(String creator, String pName) throws TaskManagerException{
+    try {
+      Node pRoot = getProjectRootNode();
+      String statement = "SELECT * FROM " + NodeTypes.PROJECT + " WHERE jcr:path LIKE '" + 
+          pRoot.getPath() + "/%' AND " + NodeTypes.PROJECT_CREATOR + "='" + creator +
+          "' AND " + NodeTypes.PROJECT_NAME + "'" + pName + "'";
+
+      Query query = pRoot.getSession().getWorkspace().getQueryManager().createQuery(statement, Query.SQL);
+      for (NodeIterator iter = query.execute().getNodes(); iter.hasNext();) {
+        Node p = iter.nextNode();
+        return p;
+      }
+      return null;
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
   }
 
   @Override
-  public Node getProjectNodeById(int id) {
-    // TODO Auto-generated method stub
-    return null;
+  public Node getProjectNodeById(int id) throws TaskManagerException {
+    try {
+      Node pRoot = getProjectRootNode();
+      String statement = "SELECT * FROM " + NodeTypes.PROJECT + " WHERE jcr:path LIKE '" + 
+          pRoot.getPath() + "/%' AND " + NodeTypes.PROJECT_ID + "=" + id;
+
+      Query query = pRoot.getSession().getWorkspace().getQueryManager().createQuery(statement, Query.SQL);
+      for (NodeIterator iter = query.execute().getNodes(); iter.hasNext();) {
+        Node p = iter.nextNode();
+        return p;
+      }
+      return null;
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
   }
 
 }

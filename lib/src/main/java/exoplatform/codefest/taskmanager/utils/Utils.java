@@ -16,10 +16,16 @@
  */
 package exoplatform.codefest.taskmanager.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.jcr.LoginException;
 import javax.jcr.NoSuchWorkspaceException;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.Value;
+import javax.jcr.ValueFactory;
+import javax.jcr.ValueFormatException;
 
 import org.exoplatform.container.ExoContainer;
 import org.exoplatform.container.ExoContainerContext;
@@ -89,4 +95,20 @@ public class Utils {
     return getUserSessionProvider().getSession(workspace,
                                                  getRepository());
   }
+  
+  public static List<String> toStringList(Value[] values) throws ValueFormatException, IllegalStateException, RepositoryException {
+    List<String> ret = new ArrayList<String>();
+    for (Value v : values) {
+      ret.add(v.getString());
+    }
+    return ret;
+  }
+  
+  public static Value[] toValues(List<String> src, ValueFactory v) {
+    Value[] ret = new Value[src.size()];
+    for (int i = 0; i < src.size(); i++)
+      ret[i] = v.createValue(src.get(i));
+    return ret;
+  }
+
 }
