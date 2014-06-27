@@ -21,6 +21,6 @@
         <application-name>team-a-addon-webapp</application-name>
         <portlet-name>TasksManagementPortlet</portlet-name>
         <skin-name>Default</skin-name>
-        <css-path>/skin/TasksManagementPortlet/Style.css</css-path>
+        <css-path>/skin/TasksManagementPortlet/style.css</css-path>
     </portlet-skin>
 </gatein-resources>
