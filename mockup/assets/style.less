@@ -292,10 +292,44 @@
 	}
 }
 .quickEditInline {
+	position: relative;
+	.editToggle {
+		position: absolute;
+		right: 0;
+		top: -2px;
+		padding: 2px;
+		background-color: #fff;
+		display: none;
+	}
+	.text {
+		cursor: pointer;
+	}
+	&:hover {
+		.editToggle {
+			//display: block;
+		}
+	}
+	&.edit {
+		.editToggle {
+			display: none;
+		}
+		.quickEditBox {
+			display: block;
+		}
+		.text {
+			display: none;
+		}
+	}
 	.quickEditBox {
-		display: inline-block;
+		display: none;
 		.btn {
-			float: right;
+			margin-left: 5px;
+		}
+		.inputWrap {
+			input, select, textarea {
+				width: 100%;
+				margin-bottom: 5px;
+			}
 		}
 	}
 }
@@ -327,6 +361,7 @@
 		}
 		.text-hide {
 			display: none;
+			color: #999;
 		}
 		&.drop-here {
 			background-color: #e2e2e2!important;
@@ -400,6 +435,7 @@
 	background: #ECECEC;
 	padding: 15px;
 	border-left: 1px solid #ccc;
+	z-index: 1000;
 	.transition(all 100ms ease-in);
 	.translate(@widthSideBar + 30px, 0);
 	&.open {
@@ -526,6 +562,37 @@
 					font-weight: normal;
 				}
 			}
+		}
+	}
+}
+.title-part {
+	line-height: 26px;
+}
+.taskAttached {
+	margin-bottom: 20px;
+	border-bottom: 1px solid #d1d1d1;
+	padding-bottom: 10px;
+	.addAttachment {
+		float: right;
+		margin-right: 6px;
+		margin-top: 2px;
+	}
+}
+.listAttached {
+	> li {
+		padding: 5px;
+		> a {
+			color: @textColor;
+			line-height: 26px;
+			&:hover {
+				color: @linkColorHover;
+			}
+		}
+		+ li {
+
+		}
+		&:hover {
+			background-color: #f9f9f9;
 		}
 	}
 }
