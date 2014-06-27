@@ -472,12 +472,6 @@
 .uiActionBoardBar {
   margin-bottom: 20px;
   *zoom: 1;
-  /*margin-top: 20px;
-	background: url("@{imgPatch}/bgCloudTitle.png") repeat 0 0 transparent;
-	.box-shadow(~"1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6)");
-	.border-radius(3px);
-	padding: 10px;*/
-
 }
 .uiActionBoardBar:before,
 .uiActionBoardBar:after {
@@ -487,6 +481,17 @@
 }
 .uiActionBoardBar:after {
   clear: both;
+}
+.uiActionBoardBar .breadcrumb {
+  float: left;
+  margin-top: 4px;
+}
+.uiActionBoardBar .breadcrumb a {
+  float: none;
+}
+.uiActionBoardBar .breadcrumb .uiIconMiniArrowLeft {
+  float: left;
+  margin-top: 3px;
 }
 .uiSidebarBoard {
   position: fixed;
