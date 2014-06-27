@@ -1,26 +1,21 @@
-$(document).ready(function(){	
-   $("div.addTask").click(function(){	   
-	   this.append($("#taskEditName_fragment").html());
-   })
-
-   function NotificationPortlet() {
-	   this.init = function(userPrefs){
-		   jq("#portletId-btnSave").click(function(){
-		   savePrefs(userPrefs);
-		   });
-		
-		   jq("#portletId-btnCancel").click(function(){
-		   renderPrefs(userPrefs);
-		   });
-		
-		   jq("#portletId-interval,#portletId-isSummaryMail,.portletId-NotifyOption").live("change", function(){
-		   onChangeSummary(jq("#portletId-isSummaryMail").is(':checked'));
-		   });
-		
-		   renderPrefs(userPrefs);
-	   }
-   }
-
-   notificationPortlet = new NotificationPortlet();
-   
+(function($){
+$(document).ready(function(){
+   $("li.add > a:first").click(function(){	   
+	addLink = $(this);
+	addLink.hide();
+	editForm = $(this).siblings("div.toggleQuickEdit");
+	editForm.show();
+	$("div.quickEdit > div.actionIcon",editForm).click(function(){
+		addLink.show();
+		editForm.hide();
+	});
+   });   
 });
+
+function TaskManager() {
+	
+}
+
+taskManager = new TaskManager();
+
+})(jq);

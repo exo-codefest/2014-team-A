@@ -1,7 +1,9 @@
 package org.exoplatform.codefest.TasksManagementPortlet;
 
-import java.util.UUID;
-
+import java.util.List;
+import java.util.ArrayList;
+import javax.portlet.PortletMode;
+ 
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.core.UIPopupContainer;
 import org.exoplatform.webui.core.UIPopupWindow;
@@ -18,7 +20,7 @@ public class UITasksManagementPortlet extends UIPortletApplication {
  
     public UITasksManagementPortlet() throws Exception {
     	  UIProjectsList basicForm = addChild(UIProjectsList.class, null, null);
-        basicForm.setRendered(false);
+        basicForm.setRendered(true);
         UITasksBoard basicConfig = addChild(UITasksBoard.class, null, null);
         basicConfig.setRendered(false);
         addChild(UIPopupContainer.class, null, null);

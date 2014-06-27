@@ -35,13 +35,14 @@ public class UITasksBoard extends UIForm {
 	private Project project;
 	private ProjectService prjService;
 	private TaskService taskService;
+	//FIXME:to remove
+	public static Map<String,List<Task>> mockTasks;
 	
 	public UITasksBoard(){
 	  this.prjService = Utils.getService(ProjectService.class);
 	  this.taskService = Utils.getService(TaskService.class);
-	  this.project = new Project();
-	  this.project.setId(0);
-	  this.project.setName("demo");	  	  	  
+	  //FIXME:to remove
+	  mockData();
 	}
 	
 	public void processRender(WebuiApplication app, WebuiRequestContext context) throws Exception {	  	  
@@ -85,7 +86,19 @@ public class UITasksBoard extends UIForm {
         
       }
 	  }*/
-	  Task t1 = new Task();
+	  //FIXME: to remove
+	  return mockTasks;
+	}
+	
+	/**
+	 * MOCKDATA
+	 */
+	private void mockData(){
+	  this.project = new Project();
+    this.project.setId(0);
+    this.project.setName("demo");           
+    mockTasks = new HashMap<String,List<Task>>();
+    Task t1 = new Task();
     Task t2 = new Task();
     t1.setName("Kill all");
     t2.setName("Kill myself");
@@ -93,19 +106,25 @@ public class UITasksBoard extends UIForm {
     l1.add(t1);
     List l2 = new ArrayList<Task>();
     l2.add(t2);
-    tasks.put("TODO",l1);
-    tasks.put("DONE",l2);        
-	  return tasks;
+    mockTasks.put("TODO",l1);
+    mockTasks.put("DONE",l2); 
 	}
-	
 	/*
 	 *  Listeners 
 	 */
 	public static class CreateTaskActionListener extends EventListener<UITasksBoard> {    
     @Override
     public void execute(Event<UITasksBoard> event) throws Exception {
-        UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);        
-        event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);  
+        UITasksBoard uicomponent = event.getSource();
+        //Need get name and stage
+        String stage = event.getRequestContext().getRequestParameter(OBJECTID);
+        TaskService service = Utils.getService(TaskService.class);            
+        service.addTask(uicomponent.getProject(), "Task"+stage, stage);
+        Task t = new Task();
+        t.setStage(stage);
+        t.setName("Task"+stage);
+        mockTasks.get(stage).add(t);
+        event.getRequestContext().addUIComponentToUpdateByAjax(uicomponent);  
     }
   }
 	

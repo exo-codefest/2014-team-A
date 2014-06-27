@@ -11,9 +11,9 @@ import java.util.Map;
   String projectName = p.getName();  
   Map<String,List<Task>> tasksMap = uicomponent.getTasksMapByStage();  
 %>   
-		<div class="exTaskManagement">
+    <div class="exTaskManagement">
       <h3><%=projectName%></h3>
-			<div class="uiGrayLightBox uiActionBoardBar">
+      <div class="uiGrayLightBox uiActionBoardBar">
             <div class="searchTasks pull-left">
                <label for="Search">Search:&nbsp;</label>
                <input type="text" title="Name" value="Tasks" id="Search" name="Tasks">
@@ -39,10 +39,10 @@ import java.util.Map;
             </div>
          </div>
          
-			<div class="uiWrapBoard clearfix">
-            <ul class="uiListColBoard">
+      <div class="uiWrapBoard clearfix">
+            <div class="uiListColBoard">
              <% for (String stage : tasksMap.keySet()){%>
-               <li class="uiColBoard">
+               <div class="uiColBoard">
                   <div class="uiHeadColBoard">
                      <h3 class="title toggleQuickEdit">
                         <span class="text"><%=stage%></span>
@@ -68,7 +68,7 @@ import java.util.Map;
                      </div>
                   </div>
                   <div class="uiContenColBoard">
-                     <ul class="uiListBoard">
+                     <div class="uiListBoard">
                      <%for (Task task : tasksMap.get(stage)) {%>
                         <li class="move">
                            <div class="toggleQuickEdit">
@@ -81,25 +81,25 @@ import java.util.Map;
                               <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
                            </div>
                         </li>
-                     <%}%><!--end tasklist -->
-                        <li>
-                           <div class="toggleQuickEdit edit">
-                              <span class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>                        
-                        <li class="add addTask"><a href="#">Add new task</a></li>
-                        
-                     </ul>
+                     <%}%><!--end tasklist -->                        
+                        <li class="add">
+      <%String actionLink = uicomponent.event("CreateTask", stage);%>
+                          <a href="#">Add new task</a>
+                          <div class="toggleQuickEdit edit" id="newTask_$stage" style="display:none">
+                            <span class="text">Title...</span>
+                            <div class="quickEdit">
+                               <textarea rows="1" id="" name="">Title...</textarea>                               
+                               <a onlick="<%=actionLink%>" href="javascript:void(0);" class="btn btn-primary save-button">Save</a>
+                               <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                            </div>
+                            <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                          </div>
+                        </li>                                             
+                     </div>
                   </div>
-               </li><!-- .uiColBoard -->
+               </div><!-- .uiColBoard -->
                <%}%><!-- Stage list -->
-               <li class="uiColBoard">
+               <div class="uiColBoard">
                   <div class="uiHeadColBoard toggleQuickEdit edit">
                      <h3 class="title">
                         <span class="text">Doing</span>
@@ -119,16 +119,16 @@ import java.util.Map;
                      </div>
                   </div>
                   <div class="uiContenColBoard">
-                     <ul class="uiListBoard">
+                     <div class="uiListBoard">
                         <li class="drop-here">
                            <span class="text-hide">Drop Here</span>
                         </li>                       
                         <li class="add"><div class="addTask"><a href="#">Add new task</a></div></li>
-                     </ul>
+                     </div>
                   </div>
-               </li><!-- .uiColBoard -->
+               </div><!-- .uiColBoard -->
                
-            </ul>
+            </div>
          </div><!-- .uiWrapBoard -->
 
          <div class="uiSidebarBoard">
@@ -176,22 +176,4 @@ import java.util.Map;
                   </ul>
                </div>
             </div>
-         </div>
-
-<!-- fragments -->
-
-      <div id="taskEditName_fragment" style="dislay:none">   
-         <div class="toggleQuickEdit edit">
-           <span class="text">Title...</span>
-           <div class="quickEdit">
-              <textarea rows="1" id="" name="">Title...</textarea>
-              <button class="btn btn-primary save-button">Save</button>
-              <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-           </div>
-           <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-         </div>
-      </div>   
-      
-<script>
-  
-</script>         
+         </div>       
