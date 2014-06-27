@@ -20,6 +20,7 @@ import javax.jcr.Node;
 
 import exoplatform.codefest.taskmanager.entities.Comment;
 import exoplatform.codefest.taskmanager.entities.Task;
+import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
 
 /**
  * Created by The eXo Platform SAS
@@ -29,14 +30,18 @@ import exoplatform.codefest.taskmanager.entities.Task;
  */
 public interface CommentService {
 
-  public Comment addComment(Task task, String content, String owner);
+  public Comment addComment(Task task, String content, String owner) throws TaskManagerException;
   
-  public Comment setContent(Comment comment, String content);
+  public Comment setContent(Comment comment, String content) throws TaskManagerException;
   
-  public Comment setOwner(Comment comment, String owner);
+  public Comment setOwner(Comment comment, String owner) throws TaskManagerException;
   
-  public void storeComment(Task task, Comment comment);
+  public Comment getCommentById(int id) throws TaskManagerException;
   
-  public Comment getCommentByNode(Node commentNode);
+  public Node getCommentNodeById(int id) throws TaskManagerException;
+  
+  public void storeComment(Comment comment) throws TaskManagerException;
+  
+  public Comment getCommentByNode(Node commentNode) throws TaskManagerException;
   
 }

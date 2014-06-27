@@ -366,7 +366,7 @@ public class ProjectServiceImpl implements ProjectService {
     try {
       Node pRoot = getProjectRootNode();
       String statement = "SELECT * FROM " + NodeTypes.PROJECT + " WHERE jcr:path LIKE '" + 
-          pRoot.getPath() + "/%' AND " + NodeTypes.PROJECT_ID + "=" + id;
+          pRoot.getPath() + "/%' AND " + NodeTypes.PROJECT_ID + "='" + id +"'";
 
       Query query = pRoot.getSession().getWorkspace().getQueryManager().createQuery(statement, Query.SQL);
       for (NodeIterator iter = query.execute().getNodes(); iter.hasNext();) {

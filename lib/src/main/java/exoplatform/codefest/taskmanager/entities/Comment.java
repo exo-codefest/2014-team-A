@@ -16,6 +16,7 @@
  */
 package exoplatform.codefest.taskmanager.entities;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -30,7 +31,7 @@ public class Comment {
   private int taskId;
   private String content;
   private String owner;
-  private Date createdDate;
+  private Calendar createdDate;
   public int getId() {
     return id;
   }
@@ -55,10 +56,10 @@ public class Comment {
   public void setOwner(String owner) {
     this.owner = owner;
   }
-  public Date getCreatedDate() {
+  public Calendar getCreatedDate() {
     return createdDate;
   }
-  public void setCreatedDate(Date createdDate) {
+  public void setCreatedDate(Calendar createdDate) {
     this.createdDate = createdDate;
   }
 

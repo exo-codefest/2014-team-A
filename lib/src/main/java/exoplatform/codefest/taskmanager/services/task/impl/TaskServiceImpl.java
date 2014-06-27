@@ -52,7 +52,7 @@ public class TaskServiceImpl implements TaskService {
       Node tasks = pNode.hasNode(NodeTypes.PROJECT_TASKS) ? 
                           pNode.getNode(NodeTypes.PROJECT_TASKS) :
                           pNode.addNode(NodeTypes.PROJECT_TASKS, NodeTypes.TASK_FOLDER);
-      
+      task.setId(Utils.getService(IdGeneratorService.class).generateId(NodeTypes.TASK));
       if (tasks.hasNode(task.getId() + "")) {
         throw new TaskExistException();
       }
@@ -212,7 +212,7 @@ public class TaskServiceImpl implements TaskService {
     try {
       Node pRoot = Utils.getService(ProjectService.class).getProjectRootNode();
       String statement = "SELECT * FROM " + NodeTypes.TASK + " WHERE jcr:path LIKE '" + 
-          pRoot.getPath() + "/%' AND " + NodeTypes.TASK_ID + "=" + taskId;
+          pRoot.getPath() + "/%' AND " + NodeTypes.TASK_ID + "='" + taskId + "'";
 
       Query query = pRoot.getSession().getWorkspace().getQueryManager().createQuery(statement, Query.SQL);
       for (NodeIterator iter = query.execute().getNodes(); iter.hasNext();) {
@@ -292,7 +292,7 @@ public class TaskServiceImpl implements TaskService {
       //private int id;
       task.setId((int)taskNode.getProperty(NodeTypes.TASK_ID).getLong());
       //private int projectId;
-      task.setId((int)taskNode.getParent().getParent().getProperty(NodeTypes.PROJECT_ID).getLong());
+      task.setProjectId((int)taskNode.getParent().getParent().getProperty(NodeTypes.PROJECT_ID).getLong());
       //private String name;
       task.setName(taskNode.getProperty(NodeTypes.TASK_NAME).getString());
       //private String description;
