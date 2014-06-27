@@ -254,10 +254,4 @@ public class ProjectServiceImpl implements ProjectService {
     return null;
   }
 
-  @Override
-  public Project addPermission(Project project, String permission) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
 }
