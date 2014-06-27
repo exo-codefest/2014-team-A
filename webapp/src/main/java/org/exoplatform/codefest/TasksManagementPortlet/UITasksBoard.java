@@ -101,17 +101,17 @@ public class UITasksBoard extends UIForm {
 	/*
 	 *  Listeners 
 	 */
-	public static class CreateTaskActionListener extends EventListener<UIProjectsList> {    
+	public static class CreateTaskActionListener extends EventListener<UITasksBoard> {    
     @Override
-    public void execute(Event<UIProjectsList> event) throws Exception {
+    public void execute(Event<UITasksBoard> event) throws Exception {
         UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);        
         event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);  
     }
   }
 	
-	public static class UpdateTaskActionListener extends EventListener<UIProjectsList> {    
+	public static class UpdateTaskActionListener extends EventListener<UITasksBoard> {    
     @Override
-    public void execute(Event<UIProjectsList> event) throws Exception {
+    public void execute(Event<UITasksBoard> event) throws Exception {
       UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
       event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);  
     }

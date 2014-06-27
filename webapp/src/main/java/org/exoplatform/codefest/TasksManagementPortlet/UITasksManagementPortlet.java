@@ -1,15 +1,14 @@
 package org.exoplatform.codefest.TasksManagementPortlet;
 
-import java.util.List;
-import java.util.ArrayList;
-import javax.portlet.PortletMode;
- 
+import java.util.UUID;
+
 import org.exoplatform.webui.config.annotation.ComponentConfig;
+import org.exoplatform.webui.core.UIPopupContainer;
+import org.exoplatform.webui.core.UIPopupWindow;
 import org.exoplatform.webui.core.UIPortletApplication;
 import org.exoplatform.webui.core.lifecycle.UIApplicationLifecycle;
 
 import exoplatform.codefest.taskmanager.services.project.ProjectService;
-import exoplatform.codefest.taskmanager.utils.Utils;
  
 @ComponentConfig(
     lifecycle = UIApplicationLifecycle.class
@@ -21,6 +20,9 @@ public class UITasksManagementPortlet extends UIPortletApplication {
     	  UIProjectsList basicForm = addChild(UIProjectsList.class, null, null);
         basicForm.setRendered(false);
         UITasksBoard basicConfig = addChild(UITasksBoard.class, null, null);
-        basicConfig.setRendered(true);
+        basicConfig.setRendered(false);
+        addChild(UIPopupContainer.class, null, null);
+        UIPopupWindow uiPopup = addChild(UIPopupWindow.class, null, null);
+        uiPopup.setId(uiPopup.getId() + "-" + UUID.randomUUID().toString().replaceAll("-", ""));
     } 
 }

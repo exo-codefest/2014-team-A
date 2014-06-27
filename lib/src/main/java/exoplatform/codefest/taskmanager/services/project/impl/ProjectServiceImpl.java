@@ -78,7 +78,7 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
-  public Project addProject(String pName, String creator) throws ProjectExistException, TaskManagerException {
+  public Project addProject(String pName, String creator, String description) throws ProjectExistException, TaskManagerException {
     Node pRoot = getProjectRootNode();
     if (getProject(creator, pName) != null) {
       throw new ProjectExistException();
@@ -89,6 +89,7 @@ public class ProjectServiceImpl implements ProjectService {
       pNode.setProperty(NodeTypes.PROJECT_ID, newId);
       pNode.setProperty(NodeTypes.PROJECT_CREATOR, creator);
       pNode.setProperty(NodeTypes.PROJECT_NAME, pName);
+      pNode.setProperty(NodeTypes.PROJECT_DESCRIPTION, description);
       pRoot.save();
       return convertToEntity(pNode);
     } catch (Exception e) {

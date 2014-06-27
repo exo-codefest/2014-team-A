@@ -1,43 +1,45 @@
 <%
-	import exoplatform.codefest.taskmanager.entities.Project;
+  import exoplatform.codefest.taskmanager.entities.Project;
 %>
 <%
-	public String renderTasksList(List<Project> ps){
-		String html = "";
-		if(ps == null || ps.isEmpty()) {
-	      return html;
-	    }
-	
-	    int count = 0;
-	    for(Project project : ps) {
-	    	count++;
-	    	String id = project.getId();
-	    	String name = project.getName();
-	    	String description = project.getDescription();
-	    	String actionLink = uicomponent.event("ShowTaskDetail", id);
-	    	
-	    	if (count%3 == 1) html += "<div class=\"row-fluid\">";
-	    	html += "<div class=\"span4 uiBox\" onclick=\"" + actionLink + "\">";
-	    	html += "<div class=\"uiContentBox\">";
-	    	html += "<a class=\"favorite\" href=\"#\"><span class=\"iconStarMini\"></span></a>";
-	    	html += "<h4 class=\"title-board\">" + name + "</h4>";
-	    	html += "<div class=\"desc\">" + description + "</div>";
-	    	html += "</div></div>";
-	    	if (count%3 == 0) html += "</div>";
-	    }
-	    return html;
-	}
+  String addProjectLink = uicomponent.event("AddProject");
+
+  public String renderTasksList(List<Project> ps){
+    String html = "";
+    if(ps == null || ps.isEmpty()) {
+        return html;
+      }
+  
+      int count = 0;
+      for(Project project : ps) {
+        count++;
+        String id = project.getId();
+        String name = project.getName();
+        String description = project.getDescription();
+        String actionLink = uicomponent.event("ShowTaskDetail", id);
+        
+        if (count%3 == 1) html += "<div class=\"row-fluid\">";
+        html += "<div class=\"span4 uiBox\" onclick=\"" + actionLink + "\">";
+        html += "<div class=\"uiContentBox\">";
+        html += "<a class=\"favorite\" href=\"#\"><span class=\"iconStarMini\"></span></a>";
+        html += "<h4 class=\"title-board\">" + name + "</h4>";
+        html += "<div class=\"desc\">" + description + "</div>";
+        html += "</div></div>";
+        if (count%3 == 0) html += "</div>";
+      }
+      return html;
+  }
 %>
 
-	<div class="exTaskManagement">
-		<div class="uiGrayLightBox uiActionBoardBar">
-			<div class="searchTasks pull-left">
-				<label for="Search">Search:&nbsp;</label>
-				<input type="text" title="Name" value="Tasks" id="Search" name="Tasks">
-			</div>
+  <div class="exTaskManagement">
+    <div class="uiGrayLightBox uiActionBoardBar">
+      <div class="searchTasks pull-left">
+        <label for="Search">Search:&nbsp;</label>
+        <input type="text" title="Name" value="Tasks" id="Search" name="Tasks">
+      </div>
             <div class="pull-right">
                <div class="btn-group">
-                  <button class="btn"><i class="uiIconPlus uiIconLightGray"></i> Add New Board</button>
+                  <button onclick="$addProjectLink" class="btn"><i class="uiIconPlus uiIconLightGray"></i> Add New Board</button>
                </div>
                <div class="btn-group">
                   <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="uiIconSetting uiIconLightGray"></i></button>
@@ -54,65 +56,65 @@
                   </ul>
                </div>
             </div>
-     	</div>
-     	<div class="overviewTask well">
+      </div>
+      <div class="overviewTask well">
           <button data-dismiss="alert" class="close" type="button">&times;</button>
-          	<div>
-				<!-- <h4 class="mgB10">You have <b class="red">3</b> Task not completed.</h3>
-	            <div class="progress progress-striped mgB0 active">
-				  <div class="bar" style="width: 60%">60%</div>
-				</div> -->
-	            <h4 class="mgT0">You have <b class="red">3</b> Task (<a href="#">UI-3211</a>, <a href="#">UI-3213</a>, <a href="#">UI-32114</a>) not completed that deadline remaining 3 hour.</h4>
-	            <div class="progress progress-striped mgB0 active">
-				  <div class="bar" style="width: 90%">90%</div>
-				  <div class="bar bar-danger" style="width: 10%">10%</div>
-				</div>
-			</div>
+            <div>
+        <!-- <h4 class="mgB10">You have <b class="red">3</b> Task not completed.</h3>
+              <div class="progress progress-striped mgB0 active">
+          <div class="bar" style="width: 60%">60%</div>
+        </div> -->
+              <h4 class="mgT0">You have <b class="red">3</b> Task (<a href="#">UI-3211</a>, <a href="#">UI-3213</a>, <a href="#">UI-32114</a>) not completed that deadline remaining 3 hour.</h4>
+              <div class="progress progress-striped mgB0 active">
+          <div class="bar" style="width: 90%">90%</div>
+          <div class="bar bar-danger" style="width: 10%">10%</div>
         </div>
-		<div class="page-header">
-        	<h2><i class="iconStarMedium"></i>Favorite</h2>
-     	</div>
-	 	<div class="uiListTask">
-	 		<%=renderTasksList(uicomponent.getProjects());%>
-	 	</div>
-	 	<div class="page-header">
-	    	<h2>Space</h2>
-	 	</div>
-			<div class="uiListTask">
-	 		<div class="row-fluid">
-	 			<div class="span4 uiBox">
-	 				<div class="uiContentBox">
-	 					<a class="favorite" href="#">
-	 						<span class="iconStarMini"></span>
-	 					</a>
-	 					<h4 class="title-board">Title Board</h4>
-	 					<div class="desc">
-	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-	 					</div>
-						</div>
-	 			</div>
-	 			<div class="span4 uiBox">
-	 				<div class="uiContentBox">
-	 					<a class="favorite" href="#">
-	 						<span class="iconStarMini"></span>
-	 					</a>
-	 					<h4 class="title-board">Title Board</h4>
-	 					<div class="desc">
-	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-	 					</div>
-						</div>
-	 			</div>
-	 			<div class="span4 uiBox">
-	 				<div class="uiContentBox">
-	 					<a class="favorite" href="#">
-	 						<span class="iconStarMini"></span>
-	 					</a>
-	 					<h4 class="title-board">Title Board</h4>
-	 					<div class="desc">
-	 						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-	 					</div>
-						</div>
-	 			</div>
-	 		</div>
-	 	</div>
-	</div>
+      </div>
+        </div>
+    <div class="page-header">
+          <h2><i class="iconStarMedium"></i>Favorite</h2>
+      </div>
+    <div class="uiListTask">
+      <%=renderTasksList(uicomponent.getProjects());%>
+    </div>
+    <div class="page-header">
+        <h2>Space</h2>
+    </div>
+      <div class="uiListTask">
+      <div class="row-fluid">
+        <div class="span4 uiBox">
+          <div class="uiContentBox">
+            <a class="favorite" href="#">
+              <span class="iconStarMini"></span>
+            </a>
+            <h4 class="title-board">Title Board</h4>
+            <div class="desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            </div>
+        </div>
+        <div class="span4 uiBox">
+          <div class="uiContentBox">
+            <a class="favorite" href="#">
+              <span class="iconStarMini"></span>
+            </a>
+            <h4 class="title-board">Title Board</h4>
+            <div class="desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            </div>
+        </div>
+        <div class="span4 uiBox">
+          <div class="uiContentBox">
+            <a class="favorite" href="#">
+              <span class="iconStarMini"></span>
+            </a>
+            <h4 class="title-board">Title Board</h4>
+            <div class="desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -36,7 +36,7 @@ public interface ProjectService {
   
   public List<Project> getAllProjectByUser(String user) throws TaskManagerException;
 
-  public Project addProject(String pName, String creator) throws ProjectExistException, TaskManagerException;
+  public Project addProject(String pName, String creator, String description) throws ProjectExistException, TaskManagerException;
   
   public boolean removeProject(Project project) throws TaskManagerException;
 
