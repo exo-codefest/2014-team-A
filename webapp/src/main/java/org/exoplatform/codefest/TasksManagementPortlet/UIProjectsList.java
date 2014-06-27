@@ -18,10 +18,10 @@ import exoplatform.codefest.taskmanager.entities.Project;
     lifecycle = Lifecycle.class,
     template = "app:/groovy/webui/TasksManagementPortlet/UIProjectsList.gtmpl",
 	events = {
-    	@EventConfig(listeners = UIBasicForm.ShowTaskDetailActionListener.class)
+    	@EventConfig(listeners = UIProjectsList.ShowTaskDetailActionListener.class)
     }
 )
-public class UIBasicForm extends UIComponent {
+public class UIProjectsList extends UIComponent {
 
 	
     public void processRender(WebuiApplication app, WebuiRequestContext context) throws Exception {
@@ -39,11 +39,11 @@ public class UIBasicForm extends UIComponent {
     	return ps;
     }
  
-	public static class ShowTaskDetailActionListener extends EventListener<UIBasicForm> {		
+	public static class ShowTaskDetailActionListener extends EventListener<UIProjectsList> {		
 		@Override
-		public void execute(Event<UIBasicForm> event) throws Exception {
+		public void execute(Event<UIProjectsList> event) throws Exception {
 			UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
-		    uiParent.getChild(UIBasicForm.class).setRendered(false);
+		    uiParent.getChild(UIProjectsList.class).setRendered(false);
 		    UIBasicConfig config = uiParent.getChild(UIBasicConfig.class);
 		    config.setProjectId(event.getRequestContext().getRequestParameter(OBJECTID));
 		    config.setRendered(true);
