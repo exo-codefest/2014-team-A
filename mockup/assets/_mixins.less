@@ -1,0 +1,428 @@
+// CSS3 PROPERTIES
+// --------------------------------------------------
+
+// Border Radius
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+
+// TODO: Define Style Margin-Padding
+//---------------------------------------
+.marginAndPadding(@iterations, @countDown: 5)
+{
+	.pd0 {padding: 0px;}
+	.pdT0{padding-top: 0px;}
+	.pdR0{padding-right: 0px;}
+	.pdB0{padding-bottom: 0px;}
+	.pdL0{padding-left: 0px;}
+
+	.mg0 {margin: 0px;}
+	.mgT0{margin-top: 0px;}
+	.mgR0{margin-right: 0px;}
+	.mgB0{margin-bottom: 0px;}
+	.mgL0{margin-left: 0px;}
+
+	.pd0-ipt {padding: 0px!important;}
+	.pdT0-ipt{padding-top: 0px!important;}
+	.pdR0-ipt{padding-right: 0px!important;}
+	.pdB0-ipt{padding-bottom: 0px!important;}
+	.pdL0-ipt{padding-left: 0px!important;}
+
+	.mg0-ipt {margin: 0px!important;}
+	.mgT0-ipt{margin-top: 0px!important;}
+	.mgR0-ipt{margin-right: 0px!important;}
+	.mgB0-ipt{margin-bottom: 0px!important;}
+	.mgL0-ipt{margin-left: 0px!important;}
+
+	// LOOP
+	.style_margin_padding (@index) when (@index > 0) {
+
+	// Padding
+	(~".pd@{index}") {padding: ~"@{index}px";}
+	(~".pdT@{index}") {padding-top: ~"@{index}px";}
+	(~".pdR@{index}") {padding-right: ~"@{index}px";}
+	(~".pdB@{index}") {padding-bottom: ~"@{index}px";}
+	(~".pdL@{index}") {padding-left: ~"@{index}px";}
+
+	// Padding Important
+	(~".pd@{index}-ipt") {padding: ~"@{index}px!important";}
+	(~".pdT@{index}-ipt") {padding-top: ~"@{index}px!important";}
+	(~".pdR@{index}-ipt") {padding-right: ~"@{index}px!important";}
+	(~".pdB@{index}-ipt") {padding-bottom: ~"@{index}px!important";}
+	(~".pdL@{index}-ipt") {padding-left: ~"@{index}px!important";}
+
+	// Padding Horizatial
+	(~".pd-0-@{index}") {padding: 0 ~"@{index}px";}
+	(~".pd-0-@{index}-ipt") {padding: 0 ~"@{index}px!important";}
+
+
+	// Padding Vertical
+	(~".pd-@{index}-0") {padding: ~"@{index}px" 0;}
+	(~".pd-@{index}-0-ipt") {padding: ~"@{index}px" 0!important;}
+
+	//-----------------------------------------------------------------
+	// Margin
+	(~".mg@{index}") {margin: ~"@{index}px";}
+	(~".mgT@{index}") {margin-top: ~"@{index}px";}
+	(~".mgR@{index}") {margin-right: ~"@{index}px";}
+	(~".mgB@{index}") {margin-bottom: ~"@{index}px";}
+	(~".mgL@{index}") {margin-left: ~"@{index}px";}
+	// Margin Important
+	(~".mg@{index}-ipt") {margin: ~"@{index}px!important";}
+	(~".mgT@{index}-ipt") {margin-top: ~"@{index}px!important";}
+	(~".mgR@{index}-ipt") {margin-right: ~"@{index}px!important";}
+	(~".mgB@{index}-ipt") {margin-bottom: ~"@{index}px!important";}
+	(~".mgL@{index}-ipt") {margin-left: ~"@{index}px!important";}
+
+	// margin Horizatial
+	(~".mg-0-@{index}") {margin: 0 ~"@{index}px";}
+	(~".mg-0-@{index}-ipt") {margin: 0 ~"@{index}px!important";}
+
+	// margin Vertical
+
+	(~".mg-@{index}-0") {margin: ~"@{index}px" 0;}
+	(~".mg-@{index}-0-ipt") {margin: ~"@{index}px" 0!important;}
+
+	// next iteration
+	.style_margin_padding(@index - @countDown);
+
+	}
+	// end the loop when index is 0
+	.style_margin_padding (0) {}
+	// "call" the loopingClass the first time with highest value
+	.style_margin_padding (@iterations);
+}
+
+// TODO: Utilities Class Font Size
+//---------------------------------------
+.fontSizeLoop(@maxFontSize, @countDown: 1) {
+    .loopSize (@index) when (@index > 0) {
+        (~".f-@{index}") {
+            // your resulting css
+            font-size: ~"@{index}px";
+        }
+        
+        (~".f-@{index}-ipt") {
+            // your resulting css
+            font-size: ~"@{index}px"!important;
+        }
+
+        // next iteration
+        .loopSize(@index - @countDown);
+    }
+
+    // end the loop when index is 0
+    .loopSize (0) {}
+    .loopSize(@maxFontSize);
+}
+
+// TODO: Loop Width Size
+//---------------------------------------
+.widthSizeLoop(@maxFontSize, @countDown: 1) {
+    .loopSize (@index) when (@index > 0) {
+        (~".w@{index}") {
+            // your resulting css
+            width: ~"@{index}px";
+        }
+        
+        (~".w@{index}-ipt") {
+            // your resulting css
+            width: ~"@{index}px"!important;
+        }
+
+        // next iteration
+        .loopSize(@index - @countDown);
+    }
+
+    // end the loop when index is 0
+    .loopSize (0) {}
+    .loopSize(@maxFontSize);
+}
+
+// TODO: Add Font Face
+//---------------------------------------
+@patchFont : "../font/";
+#font-face(@fileFont, @nameFont, @svgFontId){
+    @font-face {
+        @patch : ~"@{patchFont}@{fileFont}";
+        font-family: '@{nameFont}';
+        src: url('@{patch}.eot');
+        src: url('@{patch}.eot?#iefix') format('embedded-opentype'),
+        url('@{patch}.woff') format('woff'),
+        url('@{patch}.ttf') format('truetype'),
+        url('@{patch}.svg#@{svgFontId}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+// TODO: Add Font Family
+#font-family() {
+    .arial()            {font-family: Arial, Helvetica, sans-serif;}
+    .bebas()            {font-family: "UTM Bebas", Arial, Helvetica, sans-serif; font-weight: normal;}
+    .tahoma()           {font-family: Tahoma, Geneva, sans-serif;}
+    .verdana()          {font-family: Verdana, Geneva, sans-serif;}
+    .calibri()          {font-family: calibri, Tahoma, Geneva, sans-serif;}
+    .timeNewRoman()     {font-family: "Times New Roman", Times, serif;}
+    .trebuchet()        {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;}
+    .helveticaNeue()    {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
+    .myriadPro()        {font-family: "Myriad Pro", Arial, Helvetica, sans-serif;}
+}
+
+// TODO: Build Liquid Layout;
+//---------------------------------------
+#liquidLayout() {
+    // TODO: _Layout 2 colum : Fixed - Fluid
+    .fixedFluid(@widthFixed, @mgLeftFluid: 0, @fixedClass: fixed-colum, @fluidClass: fluid-colum, @innerFluidClass: inner){
+        
+        > .@{fluidClass}{
+            float: left;
+            width: 100%;
+            > .@{innerFluidClass}{
+                margin-left: @widthFixed + @mgLeftFluid;
+            }
+            + .@{fixedClass}{
+                float: left;
+                margin-left: -100%; 
+                width: @widthFixed;
+            }
+        }
+    }
+    
+    // TODO: _Layout 2 Colum: Fluid - Fixed
+    .fluidFixed(@widthFixed, @mgLeftFluid: 0, @fluidClass: fluid-colum, @fixedClass: fixed-colum, @innerFluidClass: inner){
+        > .@{fluidClass}{
+            float: left;
+            width: 100%;
+            > .@{innerFluidClass}{
+                margin-right: @widthFixed;
+            }
+            + .@{fixedClass}{
+                    float: left;
+                    margin-left: -@widthFixed;
+                    width: @widthFixed;
+            }
+        }
+    }
+    
+    // TODO: _Layout 3 Colum Fixed - Fluid - Fixed
+    .fixedFluidFixed(@widthFixedLeft, @widthFixedRight,  @mgLeftOfCenterFluid: 0, @mgRightOfCenterFluid: 0, @leftFixedClass: left-fixed-colum, @fluidClass: fluid-colum, @rightFixedClass: right-fixed-colum, @innerFluidClass: inner){
+        .clearfix;
+        > .@{leftFixedClass} {
+            float: left;
+            margin-left: -100%;
+            width: @widthFixedLeft;
+        }
+        > .@{fluidClass}{
+            float: left;
+            width: 100%;
+            > .@{innerFluidClass} {
+                margin-left: @widthFixedLeft + @mgLeftOfCenterFluid;
+                margin-right: @widthFixedRight + @mgRightOfCenterFluid;
+            }
+        }
+        > .@{rightFixedClass}{
+            float: left;
+            margin-left: -@widthFixedRight;
+            width: @widthFixedRight;
+        }
+    }
+    
+    // TODO: _Layout 3 Colum Fluid - Fluid - Fixed
+    .fluidFluidFixed(@widthFluidCenter, @widthFixedRight, @leftFluidClass: left-fluid-colum, @centerFluidClass: center-fluid-colum, @rightFixedClass: fixed-colum, @innerClass: inner){
+        > .@{leftFluidClass}{
+                float: left;
+                margin-left: -@widthFixedRight;
+                width: 100%;
+                > .@{innerClass}{
+                    margin-left: @widthFixedRight;
+                    margin-right: @widthFluidCenter;
+                }
+        }
+        > .@{centerFluidClass}{
+                float: left;
+                margin-left: -@widthFluidCenter;
+                width: @widthFluidCenter;
+        }
+        > .@{rightFixedClass}{
+            float: left;
+            width: @widthFixedRight;
+        }
+    }
+
+    // TODO: _Layout 3 Colum Fluid - Fluid - Fluid
+    .fluid3(@widthLeftFluid, @widthRightFluid, @leftFluidClass: left-fluid-colum, @centerFluidClass: center-fluid-colum, @rightFluidClass: right-fluid-colum, @innerClass: inner){
+        > .@{leftFluidClass}{
+            float: left;
+            margin-left: -100%;
+            width: @widthLeftFluid;
+        }
+        > .@{centerFluidClass} {
+            float: left;
+            width: 100%;
+            > .@{innerClass} {
+                margin-left: @widthLeftFluid;
+                margin-right: @widthRightFluid;
+            }
+        }
+        > .@{rightFluidClass} {
+                float: left;
+                margin-left: -@widthRightFluid;
+                width: @widthRightFluid;
+        }
+    }
+
+    // TODO: _Layout 3 colum Fluid - Fixed - Fixed
+    .fluidFixedFixed(@widthCenterFixed, @widthRightFixed, @mgLeftOfCenterFixed: 0, @mgLeftOfRightFixed: 0, @leftFluidClass: left-fluid-colum, @centerFixedClass: center-fixed-colum, @rightFixedClass: right-fixed-colum, @innerLeftFluidClass: inner){
+        > .@{leftFluidClass}{
+            float: left;
+            width: 100%;
+            > .@{innerLeftFluidClass}{
+                margin-right: (@widthCenterFixed + @widthRightFixed) + (@mgLeftOfCenterFixed + @mgLeftOfRightFixed);
+            }
+        }
+        > .@{centerFixedClass}{
+            float: left;
+            margin-left: -(@widthRightFixed + @widthCenterFixed + @mgLeftOfRightFixed);
+            width: @widthCenterFixed;
+        }
+        > .@{rightFixedClass}{
+            float: left;
+            margin-left: -@widthRightFixed;
+            width: @widthRightFixed;
+        }
+    }
+}
+#unLiquidLayout() {
+    .fixedFluid(@fixedClass: fixed-colum, @fluidClass: fluid-colum) {
+        > .@{fluidClass} {
+            > .inner {
+                margin-left: 0;
+            }
+            > .@{fixedClass} {
+                float: left;
+                width: 100%;
+                clear: both;
+                margin-right: 0;
+            }
+        }
+    }
+    .fluidFixed(@fluidClass: fluid-colum, @fixedClass: fixed-colum) {
+        > .@{fluidClass} {
+            > .inner {
+                margin-right: 0;
+            }
+            + .@{fixedClass} {
+                float: left;
+                width: 100%;
+                clear: both;
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+// TODO: FLOAT LIQUID LAYOUT
+#floatLiquidLayout() {
+    .fixedFluid(@fixedWidth, @space: @gridGutterWidth, @fixedName: fixed-colum, @fluidName: fluid-colum){
+        .clearfix;
+        .@{fixedName}{
+            float: left;
+            width: @fixedWidth;
+            + .@{fluidName} {
+                margin-left: @fixedWidth + @space;
+            }
+        }
+    }
+    .fixedFluidOverflow(@fixedWidth, @space: @gridGutterWidth, @fixedName: fixed-colum, @fluidName: fluid-colum){
+        .@{fixedName}{
+            float: left;
+            width: @fixedWidth;
+            margin-right: @space;
+            + .@{fluidName} {
+               overflow: hidden;
+            }
+        }
+    }
+    
+    .fluidFixed(@fixedWidth, @space: @gridGutterWidth, @fixedName: fixed-colum, @fluidName: fluid-colum){
+        .@{fixedName}{
+            float: right;
+            width: @fixedWidth;
+            + .@{fluidName} {
+                margin-right: @fixedWidth + @space;
+            } 
+        }
+    }
+    .fluidFixedOverflow(@fixedWidth, @space: @gridGutterWidth, @fixedName: fixed-colum, @fluidName: fluid-colum){
+        .@{fixedName}{
+            float: right;
+            width: @fixedWidth;
+            margin-left: @space;
+            + .@{fluidName} {
+                overflow: hidden;
+            } 
+        }
+    }
+}
+#unFloatLiquidLayout() {
+    .fixedFluid(@fixedName: fixed-colum, @fluidName: fluid-colum) {
+        .@{fixedName}{
+            float: none;
+            width: 100%;
+            margin-right: 0;
+            clear: both;
+            margin-bottom: 20px;
+            + .@{fluidName}{
+                margin-left: 0;
+            }
+        }
+    }
+    .fluidFixed(@fixedName: fixed-colum, @fluidName: fluid-colum) {
+        .@{fixedName}{
+            float: none;
+            width: 100%;
+            margin-right: 0;
+            clear: both;
+            margin-bottom: 20px;
+            + .@{fluidName}{
+                margin-left: 0;
+            }
+        }
+    }
+    .fixedFluidOverflow(@fixedName: fixed-colum, @fluidName: fluid-colum) {
+        .@{fixedName}{
+            float: none;
+            width: 100%;
+            margin-right: 0;
+            clear: both;
+            margin-bottom: 20px;
+            + .@{fluidName}{
+                overflow: visible;
+            }
+        }
+    }
+    .fluidFixedOverflow(@fixedName: fixed-colum, @fluidName: fluid-colum) {
+        .@{fixedName}{
+            float: none;
+            width: 100%;
+            margin-left: 0;
+            clear: both;
+            margin-bottom: 20px;
+            + .@{fluidName}{
+                overflow: visible;
+            }
+        }
+    }
+}
+
+// TODO: Link Color
+.linkColor(@color: @textColor, @colorHover: @linkColorHover){
+    color: @color;
+    &:hover {
+        color: @colorHover;
+    }
+}

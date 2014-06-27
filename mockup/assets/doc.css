@@ -1,0 +1,15 @@
+/* Default color for all title, text, text input, label */
+/* Navigation text color, special purpose in use */
+/* Default gray color for small text, sub title, text field explanation */
+/* Pop up, tab... border, line... */
+/* Hover/press background in table, content background in special cases */
+/* Pop up, table, main header background */
+/* Table row background, content background */
+/* Special title, text, hover, press, hyper-link or selected link */
+body {
+  background: url("images/parttern.jpg") repeat 0 0 transparent;
+}
+.exTaskManagement {
+  width: 1058px;
+  margin: 0 auto;
+}

@@ -1,0 +1,531 @@
+@import "variables.less";
+@import "mixins.less";
+@import "_mixins.less";
+//===================================
+@imgPatch: 					"../images";
+@newBlue: 					#5373A9;
+
+//===================================
+// Danger (red)
+.progress-danger .bar, .progress .bar-danger {
+  #gradient > .vertical(#ee5f5b, #c43c35);
+}
+.progress-danger.progress-striped .bar, .progress-striped .bar-danger {
+  #gradient > .striped(#ee5f5b);
+}
+
+// Success (green)
+.progress-success .bar, .progress .bar-success {
+  #gradient > .vertical(#62c462, #57a957);
+}
+.progress-success.progress-striped .bar, .progress-striped .bar-success {
+  #gradient > .striped(#62c462);
+}
+
+// Info (teal)
+.progress-info .bar, .progress .bar-info {
+  #gradient > .vertical(#5bc0de, #339bb9);
+}
+.progress-info.progress-striped .bar, .progress-striped .bar-info {
+  #gradient > .striped(#5bc0de);
+}
+
+// Warning (orange)
+.progress-warning .bar, .progress .bar-warning {
+  #gradient > .vertical(lighten(@orange, 15%), @orange);
+}
+.progress-warning.progress-striped .bar, .progress-striped .bar-warning {
+  #gradient > .striped(lighten(@orange, 15%));
+}
+
+.full {
+	width: 100%;
+}
+.inline-block {
+	display: inline-block;
+}
+.btn {
+	.icon-image {
+		vertical-align: -3px;
+	}
+}
+.hero-unit{
+	position: relative;
+	&.mini {
+		padding: 30px;
+		> h1 {
+			margin-top: 0;
+			font-size: 40px;
+		}
+	}
+}
+.progress .bar {
+	line-height: 18px;
+}
+.overviewTask {
+	position: relative;
+	.close {
+		position: absolute;
+		right: 10px;
+		top: 5px;
+	}
+	h4 {
+		font-weight: normal;
+		> b {
+			color: @linkColor;
+			&.red {
+
+			}
+		}
+		> a {
+			font-size: 14px;
+			font-weight: bold;
+		}
+	}
+}
+.uiGrayLightBox label {
+    display: inline-block;
+    height: 28px;
+    line-height: 27px;
+    margin-top: 0;
+    vertical-align: top;
+}
+.exTaskManagement {
+	padding: 20px;
+}
+.iconStarMedium {
+  display: inline-block;
+  .square(24px);
+  vertical-align: baseline;
+  background: url("@{imgPatch}/icon-star-24.png") no-repeat 0 0 transparent;
+}
+.iconStarMini {
+	display: inline-block;
+	.square(16px);
+	vertical-align: text-top;
+	background: url("@{imgPatch}/icon-star-16.png") no-repeat 0 0 transparent;
+	&.gray {
+		background: url("@{imgPatch}/icon-star-16-gray.png") no-repeat 0 0 transparent;
+		&:hover {
+			background: url("@{imgPatch}/icon-star-16.png") no-repeat 0 0 transparent;
+		}
+	}
+}
+.TitleForm {
+  color: #626262;
+  text-align: center;
+  margin: 24px 0 0;
+  text-shadow: 0 1px 0 #FFFFFF;
+  background: url("@{imgPatch}/TitleFormBG.png") no-repeat bottom center;
+  line-height: 32px;
+  padding: 20px 0 25px;
+}
+
+//= Page Header
+.page-header {
+	> h2 {
+		position: relative;
+		>i {
+		   margin-right: 10px;
+		   vertical-align: -1px;
+		}
+	}
+}
+
+//= List Task
+.uiListTask {
+	.uiBox {
+		position: relative;
+		&:hover {
+			background-color: @newBlue;
+			border-color: darken(@newBlue, 10%);
+			color: #fff;
+			a, h1, h2, h3, h4, h5, h6 {
+				color: #fff;
+				text-shadow: none;
+			}
+			.favorite {
+				display: block;
+				.box-shadow(0 0 5px 0 rgba(0, 0, 0, .2) inset);
+			}
+		}
+		.favorite {
+			display: block;
+			position: absolute;
+			right: 7px;
+			top: 5px;
+			.square(24px);
+			line-height: 22px;
+			.border-radius(24px);
+			text-align: center;
+			background-color: #fff;
+			display: none;
+		}
+		.title-board {
+			margin-top: 0;
+			max-height: 20px;
+			overflow: hidden;
+		}
+		.desc {
+			height: 40px;
+			overflow: hidden;
+		}
+	}
+
+	// Stared
+	&.stared {
+		.favorite {
+			display: block;
+		}
+	}
+}
+
+.uiWrapBoard {
+	overflow: auto;
+	width: 100%;
+}
+.uiListColBoard {
+	> .uiColBoard {
+		width: 240px;
+		background-color: #ececec;
+		.border-radius(5px);
+		border-bottom: 1px solid #ccc;
+		float: left;
+		+ .uiColBoard {
+			margin-left: 20px;
+		}
+	}
+}
+.uiColBoard {
+	.btn-link {
+		background: none;
+		background-position:  0 0;
+		border-color: #224886;
+		color: #fff;
+		text-shadow: none;
+		border-color: transparent;
+		box-shadow: none;
+	}
+	.uiHeadColBoard {
+		background-color: @newBlue;
+		color: #fff;
+		&.toggleQuickEdit.edit {
+			background-color: #ddd;
+			.box-shadow(0 0 10px 0 rgba(0, 0, 0, 0.05) inset);
+			border-bottom: 1px solid #f5f5f5;
+			.btn-group {
+				display: none;
+			}
+		}
+		.border-top-radius(5px);
+		.clearfix;
+		.title{
+			font-size: 16px;
+			color: #fff;
+			margin: 0;
+			padding: 5px 10px;
+			float: left;
+		}
+		> .pull-right {
+			margin-right: 5px;
+    		margin-top: 6px;
+		}
+		.actionIcon, .actionIconSmall {
+			background: transparent;
+			&:hover {
+				.box-shadow(0 2px 4px rgba(0, 0, 0, 0.15) inset);
+			}
+			&:hover, &:active {
+				background-color: #fff!important;
+				border-color: transparent!important;
+			}
+			&:focus {
+				border-color: transparent!important;
+				.box-shadow(0 2px 4px rgba(0, 0, 0, 0.15) inset);
+			}
+		}
+		.btn-group {
+			&.open {
+				.actionIcon {
+					background-color: #fff;
+					[class^="uiIcon"] {
+						background-image: url("plf/eXoResources/skin/images/Icons/uiIconsBlue.png");
+					}
+				}
+			}
+		}
+	}
+	.uiContenColBoard {
+		padding: 10px;
+	}
+}
+.toggleQuickEdit {
+	.text {
+		cursor: pointer!important;
+	}
+	&.edit {
+		+ .btn-group {
+			display: none;
+		}
+		.text, .toggle-edit {
+			display: none!important;
+		}
+		.quickEdit {
+			display: block;
+		}
+	}
+}
+.quickEdit {
+	display: none;
+	padding: 5px 0;
+	textarea{
+		min-width: 100%;
+		max-width: 100%;
+		width: 100%;
+		margin-bottom: 10px;
+		height: 48px;
+	}
+	.actionIcon {
+		> i {
+			margin-top: 1px;
+		}
+	}
+}
+.quickEditInline {
+	.quickEditBox {
+		display: inline-block;
+		.btn {
+			float: right;
+		}
+	}
+}
+.taskAddBoard {
+	margin-bottom: 20px;
+	+ .uiActionBorder {
+		padding: 15px 0 0!important;
+		margin-bottom: 5px;
+	}
+}
+.uiListBoard {
+	>li {
+		background-color: #fff;
+		.border-radius(3px);
+		padding: 5px 10px;
+		list-style: none;
+		cursor: pointer;
+		border-bottom: 1px solid #ccc;
+		position: relative;
+		.quickEdit textarea {
+			height: 70px;
+		}
+		&.move {
+			cursor: move;
+			&.fly {
+				position: fixed;
+				width: 200px;
+			}
+		}
+		.text-hide {
+			display: none;
+		}
+		&.drop-here {
+			background-color: #e2e2e2!important;
+			border: 1px dashed #ccc;
+			min-height: 40px;
+			text-align: center;
+			.text-hide {
+				display: inline-block;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -30px;
+				margin-top: -10px;
+			}
+		}
+		&.add {
+			background: none;
+			border-color: transparent;
+			&.editing {
+				display: none;
+			}
+			&:hover {
+				background-color: #ddd;
+			}
+			&:active {
+				.box-shadow(0 0 10px 0 rgba(0, 0, 0, .1) inset);
+			}
+			> a {
+				display: block;
+				text-align: center;
+			}
+		}
+		+ li {
+			margin-top: 10px;
+		}
+		.toggle-edit {
+			position: absolute;
+			right: 3px;
+			top: 3px;
+			display: none;
+			background: #f9f9f9;
+			padding: 2px 5px;
+			.border-radius(2px);
+		}
+		&:hover {
+			background: #f9f9f9;
+			.toggle-edit{
+				display: block;
+			}
+		}
+	}
+}
+
+.uiActionBoardBar {
+	margin-bottom: 20px;
+	.clearfix;
+	/*margin-top: 20px;
+	background: url("@{imgPatch}/bgCloudTitle.png") repeat 0 0 transparent;
+	.box-shadow(~"1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6)");
+	.border-radius(3px);
+	padding: 10px;*/
+}
+
+.uiSidebarBoard {
+	@widthSideBar:  230px;
+	position: fixed;
+	top: 41px;
+	bottom: 0;
+	right: 0;
+	width: 230px;
+	background: #ECECEC;
+	padding: 15px;
+	border-left: 1px solid #ccc;
+	.transition(all 100ms ease-in);
+	.translate(@widthSideBar + 30px, 0);
+	&.open {
+		.translate(0, 0);
+		.toggleShowSidebar {
+			.close-icon{
+				display: inline-block;
+			}
+			.show-icon {
+				display: none;
+			}
+		}
+	}
+	.inner {
+		height: 100%;
+		overflow: auto;
+	}
+	.toggleShowSidebar {
+		border: 1px solid #ccc;
+		border-right: none;
+		position: absolute;
+		right: 100%;
+		top: 20px;
+		background: #ECECEC;
+		.border-left-radius(3px);
+		padding: 5px;
+		white-space: nowrap;
+		.close-icon{
+			display: none;
+		}
+	}
+}
+
+.uiAddmemToBoard {
+	.title {
+		margin-top: 0;
+	}
+	.uiAddtedMem {
+		border-bottom: 1px solid #d1d1d1;
+		margin-bottom: 10px;
+		> .memInBoard {
+			display: inline-block;
+			margin-right: 5px;
+			margin-bottom: 10px;
+			display: inline-block;
+			img {
+				.border-radius(3px);
+			}
+			+ .memInBoard {
+			}
+		}
+	}
+}
+
+.searchMemBoard {
+	//border-bottom: 1px solid #d1d1d1;
+	padding-bottom: 10px;
+	.inputSearchMem {
+		width: 100%;
+	}
+	.buttonAddMem {
+		margin-bottom: 10px;
+	}
+	.listMem {
+		> li {
+			padding: 5px;
+			img {
+				.border-radius(3px);
+				margin-right: 5px;
+			}
+			.name {
+				color: @textColor;
+			}
+			+ li {
+			}
+			&:hover {
+				background-color: #f9f9f9;
+			}
+		}
+	}
+}
+
+//= Popup
+.uiPopup {
+	z-index: 1200!important;
+	&.popDetailTask {
+		.quickEdit .actionIcon > i {
+			margin: 1px 0 0;
+		}
+		.popupHeader {
+			padding-top: 8px;
+			padding-bottom: 8px;
+			.popupTitle {
+				font-weight: normal;
+				font-size: 20px;
+				line-height: 26px;
+				> b {
+					color: @newBlue;
+				}
+			}
+			.uiIconClose {
+				position: absolute;
+				right: 5px;
+				top: 5px;
+			}
+			.toggleQuickEdit {
+				+ .uiIconClose {
+					display: none;
+				}
+			}
+			.quickEdit textarea {
+				font-size: 16px;
+			}
+		}
+		.popupContent {
+			.desc {
+				border-bottom: 1px solid #d1d1d1;
+				.quickEdit textarea {
+					height: 150px;
+				}
+			}
+			h5 {
+				> span {
+					font-weight: normal;
+				}
+			}
+		}
+	}
+}

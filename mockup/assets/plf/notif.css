@@ -1,0 +1,1027 @@
+.no-user-selection .uiActionWithLabel {
+  border: 1px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+  display: inline-block;
+  line-height: 20px;
+  padding: 2px 4px;
+  vertical-align: middle;
+}
+.no-user-selection .uiActionWithLabel:hover {
+  background-color: #F9F9F9;
+  background-image: linear-gradient(to bottom, #ffffff, #f1f1f1);
+  background-repeat: repeat-x;
+  border: 1px solid #CCCCCC;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 #FFFFFF;
+}
+.no-user-selection .uiActionWithLabel .uiIconMiniArrowDown {
+  margin-left: 5px;
+}
+#chat-notification {
+  position: absolute;
+  right: -8px;
+  top: -10px;
+}
+.notif-total {
+  background-color: #2f5e92;
+  color: #fff;
+  font-size: 10px;
+  height: 13px;
+  line-height: 13px;
+  padding: 0 3px;
+  font-weight: bold;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  box-shadow: 1px 2px 1px 0px rgba(35, 44, 48, 0.8);
+}
+.platform-blue {
+  background-color: #4f72ac;
+}
+.ChatNotificationTDContainer {
+  float: right!important;
+}
+#chat-notifications-details {
+  display: none;
+  max-height: 345px;
+  overflow: auto;
+}
+#chat-notifications-details .chat-notification-detail {
+  padding: 5px 9px;
+  display: block;
+  cursor: pointer;
+  min-height: 59px;
+}
+#chat-notifications-details .chat-notification-detail img {
+  float: left;
+  margin-right: 10px;
+  margin-top: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+#chat-notifications-details .chat-notification-detail .chat-label-status {
+  overflow: hidden;
+  display: inline-block;
+  max-width: 191px;
+}
+#chat-notifications-details .chat-notification-detail .name {
+  font-weight: bold;
+  color: #2f5e92;
+}
+#chat-notifications-details .chat-notification-detail .timestamp,
+#chat-notifications-details .chat-notification-detail .team {
+  font-size: 12px;
+  line-height: 18px;
+  color: #999;
+}
+#chat-notifications-details .chat-notification-detail .team {
+  float: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 45%;
+}
+#chat-notifications-details .chat-notification-detail .text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#chat-notifications-details .chat-notification-detail .text > i {
+  margin-right: 5px;
+}
+#chat-notifications-details .chat-notification-detail:hover {
+  background-color: #517ac0;
+  background-image: -moz-linear-gradient(top, #638acd, #3762ac);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#638acd), to(#3762ac));
+  background-image: -webkit-linear-gradient(top, #638acd, #3762ac);
+  background-image: -o-linear-gradient(top, #638acd, #3762ac);
+  background-image: linear-gradient(to bottom, #638acd, #3762ac);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff638acd', endColorstr='#ff3762ac', GradientType=0);
+  color: #fff;
+}
+#chat-notifications-details .chat-notification-detail:hover a {
+  color: #fff;
+}
+#chat-notifications-details .chat-notification-detail:hover .timestamp,
+#chat-notifications-details .chat-notification-detail:hover .team,
+#chat-notifications-details .chat-notification-detail:hover .name {
+  color: #fff;
+}
+.chat-notification-loading {
+  padding-left: 10px;
+  line-height: 16px;
+  vertical-align: bottom;
+}
+.no-user-selection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+.full-border-radius {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.arrow_box {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid #AAA;
+}
+.arrow_box:after,
+.arrow_box:before {
+  bottom: 100%;
+  left: 33%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.arrow_box:after {
+  border-color: rgba(240, 240, 240, 0);
+  border-bottom-color: #FFFFFF;
+  border-width: 10px;
+  margin-left: -10px;
+}
+.arrow_box:before {
+  border-color: rgba(170, 170, 170, 0);
+  border-bottom-color: #AAA;
+  border-width: 11px;
+  margin-left: -11px;
+}
+.mini-chat {
+  display: none;
+  position: absolute;
+  left: 150px;
+  top: -1px;
+  width: 300px;
+  background-color: #FFFFFF;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0px 2px 6px 0px rgba(35, 44, 48, 0.5);
+  border: 1px solid #AAA;
+}
+.mini-chat .title {
+  height: 20px;
+  padding: 5px;
+  width: 290px;
+}
+.mini-chat .title .fullname {
+  line-height: 24px;
+  font-weight: bold;
+  padding-left: 5px;
+}
+.mini-chat .title .btn-close {
+  float: right;
+  padding: 1px 2px 0px 3px;
+  margin: 0;
+}
+.mini-chat .history {
+  display: block;
+  height: 300px;
+  width: 288px;
+  margin: 5px;
+  background-color: white;
+  overflow-y: scroll;
+  border: 1px solid #E0E0E0;
+}
+.mini-chat .history .msgln {
+  padding: 3px 12px;
+  background-color: #f1f1f1;
+}
+.mini-chat .history .msgln-odd {
+  padding: 3px 12px;
+  background-color: #ffffff;
+}
+.mini-chat .history .user-link {
+  color: #aaaaaa;
+  text-decoration: none;
+}
+.mini-chat .history .msg-time {
+  vertical-align: bottom;
+  font-weight: normal;
+  color: #CCC;
+  padding-left: 10px;
+  line-height: 12px;
+}
+.mini-chat .history .system-event {
+  line-height: 12px;
+  vertical-align: bottom;
+  font-weight: bold;
+  width: 100%;
+  word-wrap: break-word;
+}
+.mini-chat .history .system-event a {
+  line-height: 12px;
+  vertical-align: bottom;
+}
+.mini-chat .history .emoticon-text,
+.mini-chat .history .invisible-text {
+  font-size: 1px;
+  color: white;
+}
+.mini-chat .history .call-off {
+  background: url('chat/img/general.png') no-repeat 0 0;
+  background-size: 96px 162px;
+  width: 32px;
+  height: 32px;
+}
+.mini-chat .history .call-on {
+  background: url('chat/img/general.png') no-repeat -32px 0;
+  background-size: 96px 162px;
+  width: 32px;
+  height: 32px;
+}
+.mini-chat .history .type-link {
+  background: url('chat/img/general.png') no-repeat 0 -66px;
+  background-size: 96px 162px;
+  width: 32px;
+  height: 32px;
+}
+.mini-chat .history .type-file {
+  background: url('chat/img/general.png') no-repeat -32px -66px;
+  background-size: 96px 162px;
+  width: 32px;
+  height: 32px;
+}
+.mini-chat .history .call-join {
+  background: url('chat/img/general.png') no-repeat 0 -130px;
+  background-size: 96px 162px;
+  width: 32px;
+  height: 32px;
+}
+.mini-chat .history .type-hand {
+  background: url('chat/img/general.png') no-repeat -32px -130px;
+  background-size: 96px 162px;
+  width: 32px;
+  height: 32px;
+}
+.mini-chat .history .type-agenda {
+  background: url('chat/img/general.png') no-repeat -64px -66px;
+  background-size: 96px 162px;
+  width: 32px;
+  height: 32px;
+}
+.mini-chat .history .type-task {
+  background: url('chat/img/general.png') no-repeat 0 -98px;
+  background-size: 96px 162px;
+  width: 32px;
+  height: 32px;
+}
+.mini-chat .history .type-event {
+  background: url('chat/img/general.png') no-repeat -32px -98px;
+  background-size: 96px 162px;
+  width: 32px;
+  height: 32px;
+}
+.mini-chat .history .type-question {
+  background: url('chat/img/general.png') no-repeat -64px -98px;
+  background-size: 96px 162px;
+  width: 32px;
+  height: 32px;
+}
+.mini-chat .history .message-changed {
+  background: url('chat/img/general.png') no-repeat -68px -32px;
+  background-size: 96px 162px;
+  width: 12px;
+  height: 10px;
+  margin-right: 4px;
+  margin-top: 4px;
+  float: left;
+}
+.mini-chat .message {
+  height: 33px;
+}
+.mini-chat .message input {
+  width: 290px;
+  margin-left: 5px;
+}
+.weemo-status {
+  position: absolute;
+  left: -8px;
+  top: -3px;
+}
+.weemo-status-not-connected {
+  background: url('chat/img/weemo-status.png') no-repeat 0 0;
+  background-size: 16px 16px;
+  width: 8px;
+  height: 8px;
+}
+.weemo-status-connecting {
+  background: url('chat/img/weemo-status.png') no-repeat -8px 0;
+  background-size: 16px 16px;
+  width: 8px;
+  height: 8px;
+}
+.weemo-status-error {
+  background: url('chat/img/weemo-status.png') no-repeat 0 -8px;
+  background-size: 16px 16px;
+  width: 8px;
+  height: 8px;
+}
+.weemo-status-connected {
+  background: url('chat/img/weemo-status.png') no-repeat -8px -8px;
+  background-size: 16px 16px;
+  width: 8px;
+  height: 8px;
+}
+.weemoCallOverlay,
+.chatPopupOverlay {
+  margin-top: 5px!important;
+}
+.uiNotifChatTitle {
+  display: inline-block;
+}
+/* Chat Status */
+.chat-status-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("chat/img//uiIconChatColor.png");
+  background-repeat: no-repeat;
+  background-color: transparent;
+  vertical-align: middle;
+}
+.chat-status-available {
+  background-position: 0 0;
+}
+.chat-status-donotdisturb {
+  background-position: -20px 0;
+}
+.chat-status-away {
+  background-position: -40px 0;
+}
+.chat-status-invisible {
+  background-position: -60px 0;
+}
+.chat-status-icon.chat-status-open {
+  background-image: url("chat/img//uiIconChatLightGray.png");
+  background-position: -180px 0;
+  background-size: 196px 76px;
+}
+.notif-chat-open-link:hover .chat-status-open {
+  background-image: url("chat/img//uiIconChatWhite.png");
+  background-size: 196px 76px;
+}
+.chatStatusPortlet .uiNotifWeemoIcon {
+  position: absolute;
+  left: -12px;
+  top: -8px;
+}
+.chatStatusPortlet .dropdown-menu {
+  max-width: 255px;
+  min-width: 155px;
+}
+.chatStatusPortlet .dropdown-menu:after {
+  right: 15px!important;
+}
+.chatStatusPortlet .dropdown-menu:before {
+  right: 14px!important;
+}
+.chatStatusPortlet .dropdown-menu > li > a {
+  position: relative;
+}
+.chatStatusPortlet .dropdown-menu .chat-label-status {
+  vertical-align: middle;
+}
+.chatStatusPortlet .dropdown-menu .chat-status-icon {
+  margin-right: 10px;
+}
+.chatStatusPortlet .dropdown-menu .chat-status-selected {
+  position: absolute;
+  right: 6px;
+  top: 5px;
+  display: none;
+}
+.chat-button.actionIcon {
+  color: #333333;
+  padding: 2px 12px;
+  font-size: 11.9px;
+}
+.chat-button.actionIcon:hover {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.chat-button.actionIcon:active,
+.chat-button.actionIcon:focus {
+  -webkit-box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.15) inset;
+  -moz-box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.15) inset;
+  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.15) inset;
+}
+.connectAction .chatPopupOverlay .uiIconForum,
+.connectAction .weemoCallOverlay .icon-facetime-video {
+  background-image: url("chat/img//uiIconChatLightGray.png");
+}
+.connectAction .chatPopupOverlay:hover .uiIconForum,
+.connectAction .chatPopupOverlay:active .uiIconForum,
+.connectAction .weemoCallOverlay:hover .icon-facetime-video,
+.connectAction .weemoCallOverlay:active .icon-facetime-video,
+.connectAction .chatPopupOverlay .uiIconForum:hover,
+.connectAction .weemoCallOverlay .icon-facetime-video:hover {
+  background-image: url("chat/img//uiIconChatBlue.png");
+}
+.connectAction .btn:first-child {
+  padding: 4px 10px;
+}
+.chatPopupOverlay .uiIconForum {
+  background-position: -180px 0;
+}
+.weemoCallOverlay .icon-facetime-video {
+  background-position: 0 -20px;
+}
+.connectAction .weemoCallOverlay,
+.connectAction .chatPopupOverlay {
+  margin-top: 0px!important;
+}
+.connectAction {
+  padding: 10px 5px;
+}
+#tiptip_holder {
+  width: 260px!important;
+  max-width: 260px!important;
+}
+.twice-line .chatPopupOverlay,
+.twice-line .weemoCallOverlay {
+  margin-top: 10px!important;
+}
+.uiNotifChatIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 100%;
+  vertical-align: middle;
+  position: relative;
+  background-image: url('chat/img/uiIconChatColor24x24.png');
+  background-repeat: no-repeat;
+  background-size: 276px 24px;
+}
+.toggle-status-available {
+  background-position: -28px 0;
+}
+.toggle-status-away {
+  background-position: -56px 0;
+}
+.toggle-status-donotdisturb {
+  background-position: -84px 0;
+}
+.toggle-status-invisible {
+  background-position: -112px 0;
+}
+.UIToolbarContainerLight .uiNotifChatIcon {
+  background-position: -140px 0;
+}
+.UIToolbarContainerLight .toggle-status-available {
+  background-position: -168px 0;
+}
+.UIToolbarContainerLight .toggle-status-away {
+  background-position: -196px 0;
+}
+.UIToolbarContainerLight .toggle-status-donotdisturb {
+  background-position: -224px 0;
+}
+.UIToolbarContainerLight .toggle-status-invisible {
+  background-position: -252px 0;
+}
+.uiNotifWeemoIcon {
+  background-image: url("chat/img/uiIconChatColor.png");
+  line-height: 100%;
+  background-repeat: no-repeat;
+  background-size: 196px 16px;
+  width: 16px;
+  height: 16px;
+}
+.uiNotifWeemoRed {
+  background-position: -120px 0;
+}
+.uiNotifWeemoBlue {
+  background-position: -140px 0;
+}
+.uiNotifWeemoWarning {
+  background-position: -160px 0;
+}
+.uiNotifWeemoGreen {
+  background-position: -180px 0;
+}
+[class^="uiIconChat"] {
+  background-image: url('chat/img/uiIconChatDarkGray.png');
+}
+.uiIconChatTeam {
+  background-position: 0 0;
+}
+.uiIconChatSpace {
+  background-position: -20px 0;
+}
+.uiIconChatAction {
+  background-position: -40px 0;
+}
+.uiIconChatSmile {
+  background-position: -60px 0;
+}
+.uiIconChatRaiseHand {
+  background-position: -80px 0;
+}
+.uiIconChatAssign {
+  background-position: -100px 0;
+}
+.uiIconChatCreateEvent {
+  background-position: -120px 0;
+}
+.uiIconChatCreateTask {
+  background-position: -140px 0;
+}
+.uiIconChatEdited {
+  background-position: -160px 0;
+}
+.uiIconChatChat {
+  background-position: -180px 0;
+}
+.uiIconChatVideo {
+  background-position: 0 -20px;
+}
+.uiIconChatMember {
+  background-position: -20px -20px;
+}
+.uiIconChatClock {
+  background-position: -40px -20px;
+}
+.uiIconChatArrowDown {
+  background-position: -60px -20px;
+}
+.uiIconChatArrowRight {
+  background-position: -80px -20px;
+}
+.uiIconChatSimplePlusMini {
+  background-position: -100px -20px;
+}
+.uiIconChatLink {
+  background-position: -120px -20px;
+}
+.uiIconChatCheckin {
+  background-position: -140px -20px;
+}
+.uiIconChatUpload {
+  background-position: -160px -20px;
+}
+.uiIconChatDownload {
+  background-position: -180px -20px;
+}
+.uiIconChatSearch {
+  background-position: 0 -40px;
+}
+.uiIconChatQuestion {
+  background-position: -20px -40px;
+}
+.uiIconChatEdit {
+  background-position: -40px -40px;
+}
+.uiIconChatClose {
+  background-position: -60px -40px;
+}
+.uiIconChatRecordStart {
+  background-position: -80px -40px;
+}
+.uiIconChatRecordStop {
+  background-position: -100px -40px;
+}
+.uiIconChatSendEmail {
+  background-position: -120px -40px;
+}
+.uiIconChatWiki {
+  background-position: -140px -40px;
+}
+.uiIconChatRecording {
+  background-position: -160px -40px;
+}
+.uiIconChatAddPeopleToMeeting {
+  background-position: -180px -40px;
+}
+.uiIconChatStartCall {
+  background-position: 0px -60px;
+}
+.uiIconChatFinishCall {
+  background-position: -20px -60px;
+}
+/* Define Blude Color */
+.nav-pills > .active > a > [class^="uiIconChat"],
+.nav-list > .active > a > [class^="uiIconChat"],
+.navbar-inverse .nav > .active > a > [class^="uiIconChat"],
+.btn:hover [class^="uiIconChat"],
+a:hover [class^="uiIconChat"],
+.actionIcon.active [class^="uiIconChat"],
+.nodeSelected:hover [class^="uiIconChat"],
+[class^="uiIconChat"]:hover,
+.uiActionBar [class^="uiIconChat"]:hover,
+.chat-message > .meeting-actions > .actionIcon:hover > i,
+.uiActionWithLabel:hover [class^="uiIconChat"],
+.uiActionWithLabel.active [class^="uiIconChat"],
+.actionIcon:hover [class^="uiIconChat"],
+.actionIcon.active [class^="uiIconChat"],
+.header-room:hover [class^="uiIconChatArrow"] {
+  background-image: url('chat/img/uiIconChatBlue.png');
+}
+/* Define Light Gray Color */
+.dropdown-menu > li > a > [class^="uiIconChat"],
+.dropdown-menu > .active > a > [class^="uiIconChat"],
+.uiDropdownWithIcon .dropdown-submenu > a > [class^="uiIconChat"],
+.uiActionBar [class^="uiIconChat"],
+.uiIconChatLightGray {
+  background-image: url('chat/img/uiIconChatLightGray.png');
+}
+/* Define White Color */
+.uiDropdownWithIcon .nav-pills > .active > a > [class^="uiIconChat"],
+.uiDropdownWithIcon .nav-list > .active > a > [class^="uiIconChat"],
+.uiDropdownWithIcon .navbar-inverse .nav > .active > a > [class^="uiIconChat"],
+.uiDropdownWithIcon .dropdown-menu > li > a:hover > [class^="uiIconChat"],
+.uiDropdownWithIcon .dropdown-menu > .active > a > [class^="uiIconChat"],
+.uiDropdownWithIcon .dropdown-submenu:hover > a > [class^="uiIconChat"],
+.btn-primary [class^="uiIconChat"],
+.btn-primary:hover [class^="uiIconChat"],
+.uiDropDownCal a:hover [class^="uiIconChat"],
+.uiDropDownCal .active a:hover [class^="uiIconChat"],
+.eventAllDay [class^="uiIconChat"],
+.eventDayContainer [class^="uiIconChat"],
+.uiIconChatWhite,
+.chat-message .dropdown-menu a:hover [class^="uiIconChat"],
+.users-online.info .td-status [class^="uiIconChat"],
+.room-detail-button .btn:hover [class^="uiIconChat"],
+.room-detail-button .btn [class^="uiIconChat"]:hover,
+.chat-notification-detail:hover [class^="uiIconChat"] {
+  background-image: url('chat/img/uiIconChatWhite.png');
+}
+.msg-emoticons-panel {
+  background: #ffffff;
+  width: 108px;
+  height: 118px;
+  padding: 10px 10px 0 10px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  position: absolute;
+  cursor: default;
+  left: 5px;
+  bottom: 65px;
+  z-index: 5;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.msg-emoticons-panel:after,
+.msg-emoticons-panel:before {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 100%;
+}
+.msg-emoticons-panel:after {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 8px solid #fff;
+}
+.msg-emoticons-panel:before {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 8px solid #CCC;
+  top: 101%;
+}
+.msg-emoticons-panel .emoticon {
+  height: 27px;
+}
+.msg-emoticons-panel .emoticon:hover {
+  cursor: pointer;
+}
+.emoticon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: 1px;
+  vertical-align: top;
+  background-image: url('chat/img/uiIconChatEmoticons24x24.png');
+  background-repeat: no-repeat;
+  background-size: 108px 108px;
+}
+.msg-button {
+  padding: 0;
+}
+.emoticon-smile-white,
+.emoticon-smile {
+  background-position: 0px 0px;
+}
+.emoticon-sad-white,
+.emoticon-sad {
+  background-position: -28px 0px;
+}
+.emoticon-big-smile-white,
+.emoticon-big-smile {
+  background-position: -56px 0;
+}
+.emoticon-eye-blink-white,
+.emoticon-eye-blink {
+  background-position: -84px 0px;
+}
+.emoticon-surprise-white,
+.emoticon-surprise {
+  background-position: 0px -28px;
+}
+.emoticon-no-voice-white,
+.emoticon-no-voice {
+  background-position: -28px -28px;
+}
+.emoticon-tongue-white,
+.emoticon-tongue {
+  background-position: -56px -28px;
+}
+.emoticon-bow-white,
+.emoticon-bow {
+  background-position: -84px -28px;
+}
+.emoticon-yes-white,
+.emoticon-yes {
+  background-position: 0px -56px;
+}
+.emoticon-no-white,
+.emoticon-no {
+  background-position: -25px -56px;
+}
+.emoticon-star-white,
+.emoticon-star {
+  background-position: -55px -56px;
+}
+.emoticon-beer-white,
+.emoticon-beer {
+  background-position: -84px -56px;
+}
+.emoticon-bug-white,
+.emoticon-bug {
+  background-position: 0px -84px;
+}
+.emoticon-cake-white,
+.emoticon-cake {
+  background-position: -28px -84px;
+}
+.emoticon-cash-white,
+.emoticon-cash {
+  background-position: -56px -84px;
+}
+.emoticon-coffee-white,
+.emoticon-coffee {
+  background-position: -84px -84px;
+}
+.emoticon-text,
+.invisible-text {
+  font-size: 1px;
+  color: white;
+}
+/* Emoticons Animation */
+[class^=uiIconChatGif] {
+  width: 24px;
+  height: 24px;
+  background-repeat: 0;
+  background-color: transparent;
+  vertical-align: text-bottom;
+}
+.uiIconChatGifbeer,
+.uiIconChatGifbeer:hover {
+  background-image: url("chat/img/emoticons/icon-beer.gif");
+}
+.uiIconChatGifbow,
+.uiIconChatGifbow:hover {
+  background-image: url("chat/img/emoticons/icon-bow.gif");
+}
+.uiIconChatGifbug,
+.uiIconChatGifbug:hover {
+  background-image: url("chat/img/emoticons/icon-bug.gif");
+}
+.uiIconChatGifcake,
+.uiIconChatGifcake:hover {
+  background-image: url("chat/img/emoticons/icon-cake.gif");
+}
+.uiIconChatGifcash,
+.uiIconChatGifcash:hover {
+  background-image: url("chat/img/emoticons/icon-cash.gif");
+}
+.uiIconChatGifcoffee,
+.uiIconChatGifcoffee:hover {
+  background-image: url("chat/img/emoticons/icon-coffee.gif");
+}
+.uiIconChatGiflaugh,
+.uiIconChatGiflaugh:hover {
+  background-image: url("chat/img/emoticons/icon-laugh.gif");
+}
+.uiIconChatGifraise-down,
+.uiIconChatGifraise-down:hover {
+  background-image: url("chat/img/emoticons/icon-raise-down.gif");
+}
+.uiIconChatGifraise-up,
+.uiIconChatGifraise-up:hover {
+  background-image: url("chat/img/emoticons/icon-raise-up.gif");
+}
+.uiIconChatGifsad,
+.uiIconChatGifsad:hover {
+  background-image: url("chat/img/emoticons/icon-sad.gif");
+}
+.uiIconChatGifsmile-with-tongue,
+.uiIconChatGifsmile-with-tongue:hover {
+  background-image: url("chat/img/emoticons/icon-smile-with-tongue.gif");
+}
+.uiIconChatGifsmile,
+.uiIconChatGifsmile:hover {
+  background-image: url("chat/img/emoticons/icon-smile.gif");
+}
+.uiIconChatGifspeechless,
+.uiIconChatGifspeechless:hover {
+  background-image: url("chat/img/emoticons/icon-speechless.gif");
+}
+.uiIconChatGifstar,
+.uiIconChatGifstar:hover {
+  background-image: url("chat/img/emoticons/icon-star.gif");
+}
+.uiIconChatGifsurprise,
+.uiIconChatGifsurprise:hover {
+  background-image: url("chat/img/emoticons/icon-surprise.gif");
+}
+.uiIconChatGifwink,
+.uiIconChatGifwink:hover {
+  background-image: url("chat/img/emoticons/icon-wink.gif");
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  .chat-status-icon {
+    background-image: url("chat/img/x2/uiIconChatColor.png");
+    background-size: 196px 16px;
+  }
+  .chat-status-icon.chat-status-open {
+    background-image: url("chat/img/x2/uiIconChatBlue.png");
+    background-position: -180px 0;
+  }
+  .notif-chat-open-link:hover .chat-status-open {
+    background-image: url("chat/img/x2/uiIconChatWhite.png");
+  }
+  .weemo-status-not-connected {
+    background: url('chat/img/x2/weemo-status.png') no-repeat 0 0;
+    background-size: 16px 16px;
+    width: 8px;
+    height: 8px;
+  }
+  .weemo-status-connecting {
+    background: url('chat/img/x2/weemo-status.png') no-repeat -8px 0;
+    background-size: 16px 16px;
+    width: 8px;
+    height: 8px;
+  }
+  .weemo-status-error {
+    background: url('chat/img/x2/weemo-status.png') no-repeat 0 -8px;
+    background-size: 16px 16px;
+    width: 8px;
+    height: 8px;
+  }
+  .weemo-status-connected {
+    background: url('chat/img/x2/weemo-status.png') no-repeat -8px -8px;
+    background-size: 16px 16px;
+    width: 8px;
+    height: 8px;
+  }
+  /* Emoticons Static */
+  .emoticon {
+    background-image: url('chat/img/x2/uiIconChatEmoticons24x24.png');
+    background-size: 108px 108px;
+  }
+  /* Emoticons Animation */
+  [class^=uiIconChatGif] {
+    background-size: 24px 24px;
+  }
+  .uiIconChatGifbeer,
+  .uiIconChatGifbeer:hover {
+    background-image: url("chat/img/emoticons/x2/icon-beer.gif");
+  }
+  .uiIconChatGifbow,
+  .uiIconChatGifbow:hover {
+    background-image: url("chat/img/emoticons/x2/icon-bow.gif");
+  }
+  .uiIconChatGifbug,
+  .uiIconChatGifbug:hover {
+    background-image: url("chat/img/emoticons/x2/icon-bug.gif");
+  }
+  .uiIconChatGifcake,
+  .uiIconChatGifcake:hover {
+    background-image: url("chat/img/emoticons/x2/icon-cake.gif");
+  }
+  .uiIconChatGifcash,
+  .uiIconChatGifcash:hover {
+    background-image: url("chat/img/emoticons/x2/icon-cash.gif");
+  }
+  .uiIconChatGifcoffee,
+  .uiIconChatGifcoffee:hover {
+    background-image: url("chat/img/emoticons/x2/icon-coffee.gif");
+  }
+  .uiIconChatGiflaugh,
+  .uiIconChatGiflaugh:hover {
+    background-image: url("chat/img/emoticons/x2/icon-laugh.gif");
+  }
+  .uiIconChatGifraise-down,
+  .uiIconChatGifraise-down:hover {
+    background-image: url("chat/img/emoticons/x2/icon-raise-down.gif");
+  }
+  .uiIconChatGifraise-up,
+  .uiIconChatGifraise-up:hover {
+    background-image: url("chat/img/emoticons/x2/icon-raise-up.gif");
+  }
+  .uiIconChatGifsad,
+  .uiIconChatGifsad:hover {
+    background-image: url("chat/img/emoticons/x2/icon-sad.gif");
+  }
+  .uiIconChatGifsmile-with-tongue,
+  .uiIconChatGifsmile-with-tongue:hover {
+    background-image: url("chat/img/emoticons/x2/icon-smile-with-tongue.gif");
+  }
+  .uiIconChatGifsmile,
+  .uiIconChatGifsmile:hover {
+    background-image: url("chat/img/emoticons/x2/icon-smile.gif");
+  }
+  .uiIconChatGifspeechless,
+  .uiIconChatGifspeechless:hover {
+    background-image: url("chat/img/emoticons/x2/icon-speechless.gif");
+  }
+  .uiIconChatGifstar,
+  .uiIconChatGifstar:hover {
+    background-image: url("chat/img/emoticons/x2/icon-star.gif");
+  }
+  .uiIconChatGifsurprise,
+  .uiIconChatGifsurprise:hover {
+    background-image: url("chat/img/emoticons/x2/icon-surprise.gif");
+  }
+  .uiIconChatGifwink,
+  .uiIconChatGifwink:hover {
+    background-image: url("chat/img/emoticons/x2/icon-wink.gif");
+  }
+  .uiNotifChatIcon {
+    background-image: url('chat/img/x2/uiIconChatColor24x24.png');
+  }
+  .uiNotifWeemoIcon {
+    background-image: url('chat/img/x2/uiIconChatColor.png');
+  }
+  /* UI Icons Chat */
+  [class^="uiIconChat"] {
+    background-image: url('chat/img/x2/uiIconChatDarkGray.png');
+    background-size: 196px 76px;
+  }
+  /* Define Blude Color */
+  .nav-pills > .active > a > [class^="uiIconChat"],
+  .nav-list > .active > a > [class^="uiIconChat"],
+  .navbar-inverse .nav > .active > a > [class^="uiIconChat"],
+  .btn:hover [class^="uiIconChat"],
+  a:hover [class^="uiIconChat"],
+  .actionIcon.active [class^="uiIconChat"],
+  .nodeSelected:hover [class^="uiIconChat"],
+  [class^="uiIconChat"]:hover,
+  .uiActionBar [class^="uiIconChat"]:hover,
+  .chat-message > .meeting-actions > .actionIcon:hover > i,
+  .uiActionWithLabel:hover [class^="uiIconChat"],
+  .uiActionWithLabel.active [class^="uiIconChat"],
+  .actionIcon:hover [class^="uiIconChat"],
+  .actionIcon.active [class^="uiIconChat"],
+  .header-room:hover [class^="uiIconChatArrow"] {
+    background-image: url('chat/img/x2/uiIconChatBlue.png');
+  }
+  /* Define Light Gray Color */
+  .dropdown-menu > li > a > [class^="uiIconChat"],
+  .dropdown-menu > .active > a > [class^="uiIconChat"],
+  .uiDropdownWithIcon .dropdown-submenu > a > [class^="uiIconChat"],
+  .uiActionBar [class^="uiIconChat"],
+  .uiIconChatLightGray {
+    background-image: url('chat/img/x2/uiIconChatLightGray.png');
+  }
+  /* Define White Color */
+  .uiDropdownWithIcon .nav-pills > .active > a > [class^="uiIconChat"],
+  .uiDropdownWithIcon .nav-list > .active > a > [class^="uiIconChat"],
+  .uiDropdownWithIcon .navbar-inverse .nav > .active > a > [class^="uiIconChat"],
+  .uiDropdownWithIcon .dropdown-menu > li > a:hover > [class^="uiIconChat"],
+  .uiDropdownWithIcon .dropdown-menu > .active > a > [class^="uiIconChat"],
+  .uiDropdownWithIcon .dropdown-submenu:hover > a > [class^="uiIconChat"],
+  .btn-primary [class^="uiIconChat"],
+  .btn-primary:hover [class^="uiIconChat"],
+  .uiDropDownCal a:hover [class^="uiIconChat"],
+  .uiDropDownCal .active a:hover [class^="uiIconChat"],
+  .eventAllDay [class^="uiIconChat"],
+  .eventDayContainer [class^="uiIconChat"],
+  .uiIconChatWhite,
+  .chat-message .dropdown-menu a:hover [class^="uiIconChat"],
+  .users-online.info .td-status [class^="uiIconChat"],
+  .room-detail-button .btn:hover [class^="uiIconChat"],
+  .room-detail-button .btn [class^="uiIconChat"]:hover,
+  .chat-notification-detail:hover [class^="uiIconChat"] {
+    background-image: url('chat/img/x2/uiIconChatWhite.png');
+  }
+}

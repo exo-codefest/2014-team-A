@@ -1,0 +1,10 @@
+#chat-application{height:645px;padding-left:1px;min-width:600px;padding:20px;}
+.chat-search{background-image:-webkit-linear-gradient(bottom, #e0e0e0 45%, #f1f1f1 73%);background-image:linear-gradient(bottom, #e0e0e0 45%, #f1f1f1 73%);background-image:-o-linear-gradient(bottom, #e0e0e0 45%, #f1f1f1 73%);background-image:-moz-linear-gradient(bottom, #e0e0e0 45%, #f1f1f1 73%);background-image:-webkit-linear-gradient(bottom, #e0e0e0 45%, #f1f1f1 73%);background-image:-ms-linear-gradient(bottom, #e0e0e0 45%, #f1f1f1 73%);border-top:1px solid #cccccc;border-left:1px solid #cccccc;padding:0px 4px 5px 6px;margin-bottom:0px;border-right:1px solid #cccccc;width:587px;position:relative;}
+.label-user{display:block;margin-top:5px;float:left;line-height:20px;color:#2f5e92;font-weight:bold;}
+.label-demo{display:block;margin-top:5px;float:left;line-height:20px;color:black;padding-left:5px;}
+.chat-message{background-color:#f1f1f1;border-top:1px solid #cccccc;height:60px;}
+#chats{height:479px;overflow-y:scroll;}
+.sh_container{overflow-x:scroll;min-width:361px;width:90%;background-color:#ffffff;}
+.sh_java,.sh_javascript,.sh_css,.sh_html{min-width:361px;border:0;font-style:10px;}
+.chat-error-panel,.chat-login-panel,.chat-about-panel,.chat-demo-panel,.chat-sync-panel{float:left;z-index:10;position:absolute;width:100%;height:594px;color:#ffffff;padding:15px 0 50px 0;text-align:center;font-size:17px;font-weight:normal;margin-left:-20px;margin-top:-20px;background:#323232;background-color:rgba(0, 0, 0, 0.8);}
+.chat-status-panel{background:#ffffff;cursor:pointer;margin-left:-5px;-moz-border-radius:3px;border-radius:3px;z-index:100;}

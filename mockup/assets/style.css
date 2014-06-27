@@ -1,0 +1,594 @@
+/* Default color for all title, text, text input, label */
+/* Navigation text color, special purpose in use */
+/* Default gray color for small text, sub title, text field explanation */
+/* Pop up, tab... border, line... */
+/* Hover/press background in table, content background in special cases */
+/* Pop up, table, main header background */
+/* Table row background, content background */
+/* Special title, text, hover, press, hyper-link or selected link */
+.progress-danger .bar,
+.progress .bar-danger {
+  background-color: #dd514c;
+  background-image: -moz-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#c43c35));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: -o-linear-gradient(top, #ee5f5b, #c43c35);
+  background-image: linear-gradient(to bottom, #ee5f5b, #c43c35);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffc43c35', GradientType=0);
+}
+.progress-danger.progress-striped .bar,
+.progress-striped .bar-danger {
+  background-color: #ee5f5b;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-success .bar,
+.progress .bar-success {
+  background-color: #5eb95e;
+  background-image: -moz-linear-gradient(top, #62c462, #57a957);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#57a957));
+  background-image: -webkit-linear-gradient(top, #62c462, #57a957);
+  background-image: -o-linear-gradient(top, #62c462, #57a957);
+  background-image: linear-gradient(to bottom, #62c462, #57a957);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff57a957', GradientType=0);
+}
+.progress-success.progress-striped .bar,
+.progress-striped .bar-success {
+  background-color: #62c462;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-info .bar,
+.progress .bar-info {
+  background-color: #4bb1cf;
+  background-image: -moz-linear-gradient(top, #5bc0de, #339bb9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#339bb9));
+  background-image: -webkit-linear-gradient(top, #5bc0de, #339bb9);
+  background-image: -o-linear-gradient(top, #5bc0de, #339bb9);
+  background-image: linear-gradient(to bottom, #5bc0de, #339bb9);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff339bb9', GradientType=0);
+}
+.progress-info.progress-striped .bar,
+.progress-striped .bar-info {
+  background-color: #5bc0de;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.progress-warning .bar,
+.progress .bar-warning {
+  background-color: #f8be23;
+  background-image: -moz-linear-gradient(top, #ffca3b, #edad00);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffca3b), to(#edad00));
+  background-image: -webkit-linear-gradient(top, #ffca3b, #edad00);
+  background-image: -o-linear-gradient(top, #ffca3b, #edad00);
+  background-image: linear-gradient(to bottom, #ffca3b, #edad00);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffca3b', endColorstr='#ffedad00', GradientType=0);
+}
+.progress-warning.progress-striped .bar,
+.progress-striped .bar-warning {
+  background-color: #ffca3b;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+.full {
+  width: 100%;
+}
+.inline-block {
+  display: inline-block;
+}
+.btn .icon-image {
+  vertical-align: -3px;
+}
+.hero-unit {
+  position: relative;
+}
+.hero-unit.mini {
+  padding: 30px;
+}
+.hero-unit.mini > h1 {
+  margin-top: 0;
+  font-size: 40px;
+}
+.progress .bar {
+  line-height: 18px;
+}
+.overviewTask {
+  position: relative;
+}
+.overviewTask .close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+.overviewTask h4 {
+  font-weight: normal;
+}
+.overviewTask h4 > b {
+  color: #2f5e92;
+}
+.overviewTask h4 > a {
+  font-size: 14px;
+  font-weight: bold;
+}
+.uiGrayLightBox label {
+  display: inline-block;
+  height: 28px;
+  line-height: 27px;
+  margin-top: 0;
+  vertical-align: top;
+}
+.exTaskManagement {
+  padding: 20px;
+}
+.iconStarMedium {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  vertical-align: baseline;
+  background: url("../images/icon-star-24.png") no-repeat 0 0 transparent;
+}
+.iconStarMini {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: text-top;
+  background: url("../images/icon-star-16.png") no-repeat 0 0 transparent;
+}
+.iconStarMini.gray {
+  background: url("../images/icon-star-16-gray.png") no-repeat 0 0 transparent;
+}
+.iconStarMini.gray:hover {
+  background: url("../images/icon-star-16.png") no-repeat 0 0 transparent;
+}
+.TitleForm {
+  color: #626262;
+  text-align: center;
+  margin: 24px 0 0;
+  text-shadow: 0 1px 0 #FFFFFF;
+  background: url("../images/TitleFormBG.png") no-repeat bottom center;
+  line-height: 32px;
+  padding: 20px 0 25px;
+}
+.page-header > h2 {
+  position: relative;
+}
+.page-header > h2 > i {
+  margin-right: 10px;
+  vertical-align: -1px;
+}
+.uiListTask .uiBox {
+  position: relative;
+}
+.uiListTask .uiBox:hover {
+  background-color: #5373a9;
+  border-color: #425c87;
+  color: #fff;
+}
+.uiListTask .uiBox:hover a,
+.uiListTask .uiBox:hover h1,
+.uiListTask .uiBox:hover h2,
+.uiListTask .uiBox:hover h3,
+.uiListTask .uiBox:hover h4,
+.uiListTask .uiBox:hover h5,
+.uiListTask .uiBox:hover h6 {
+  color: #fff;
+  text-shadow: none;
+}
+.uiListTask .uiBox:hover .favorite {
+  display: block;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2) inset;
+  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2) inset;
+}
+.uiListTask .uiBox .favorite {
+  display: block;
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  width: 24px;
+  height: 24px;
+  line-height: 22px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  border-radius: 24px;
+  text-align: center;
+  background-color: #fff;
+  display: none;
+}
+.uiListTask .uiBox .title-board {
+  margin-top: 0;
+  max-height: 20px;
+  overflow: hidden;
+}
+.uiListTask .uiBox .desc {
+  height: 40px;
+  overflow: hidden;
+}
+.uiListTask.stared .favorite {
+  display: block;
+}
+.uiWrapBoard {
+  overflow: auto;
+  width: 100%;
+}
+.uiListColBoard > .uiColBoard {
+  width: 240px;
+  background-color: #ececec;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border-bottom: 1px solid #ccc;
+  float: left;
+}
+.uiListColBoard > .uiColBoard + .uiColBoard {
+  margin-left: 20px;
+}
+.uiColBoard .btn-link {
+  background: none;
+  background-position: 0 0;
+  border-color: #224886;
+  color: #fff;
+  text-shadow: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+.uiColBoard .uiHeadColBoard {
+  background-color: #5373a9;
+  color: #fff;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-right-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+  *zoom: 1;
+}
+.uiColBoard .uiHeadColBoard.toggleQuickEdit.edit {
+  background-color: #ddd;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05) inset;
+  -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05) inset;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05) inset;
+  border-bottom: 1px solid #f5f5f5;
+}
+.uiColBoard .uiHeadColBoard.toggleQuickEdit.edit .btn-group {
+  display: none;
+}
+.uiColBoard .uiHeadColBoard:before,
+.uiColBoard .uiHeadColBoard:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.uiColBoard .uiHeadColBoard:after {
+  clear: both;
+}
+.uiColBoard .uiHeadColBoard .title {
+  font-size: 16px;
+  color: #fff;
+  margin: 0;
+  padding: 5px 10px;
+  float: left;
+}
+.uiColBoard .uiHeadColBoard > .pull-right {
+  margin-right: 5px;
+  margin-top: 6px;
+}
+.uiColBoard .uiHeadColBoard .actionIcon,
+.uiColBoard .uiHeadColBoard .actionIconSmall {
+  background: transparent;
+}
+.uiColBoard .uiHeadColBoard .actionIcon:hover,
+.uiColBoard .uiHeadColBoard .actionIconSmall:hover {
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+}
+.uiColBoard .uiHeadColBoard .actionIcon:hover,
+.uiColBoard .uiHeadColBoard .actionIconSmall:hover,
+.uiColBoard .uiHeadColBoard .actionIcon:active,
+.uiColBoard .uiHeadColBoard .actionIconSmall:active {
+  background-color: #fff!important;
+  border-color: transparent!important;
+}
+.uiColBoard .uiHeadColBoard .actionIcon:focus,
+.uiColBoard .uiHeadColBoard .actionIconSmall:focus {
+  border-color: transparent!important;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset;
+}
+.uiColBoard .uiHeadColBoard .btn-group.open .actionIcon {
+  background-color: #fff;
+}
+.uiColBoard .uiHeadColBoard .btn-group.open .actionIcon [class^="uiIcon"] {
+  background-image: url("plf/eXoResources/skin/images/Icons/uiIconsBlue.png");
+}
+.uiColBoard .uiContenColBoard {
+  padding: 10px;
+}
+.toggleQuickEdit .text {
+  cursor: pointer!important;
+}
+.toggleQuickEdit.edit + .btn-group {
+  display: none;
+}
+.toggleQuickEdit.edit .text,
+.toggleQuickEdit.edit .toggle-edit {
+  display: none!important;
+}
+.toggleQuickEdit.edit .quickEdit {
+  display: block;
+}
+.quickEdit {
+  display: none;
+  padding: 5px 0;
+}
+.quickEdit textarea {
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 48px;
+}
+.quickEdit .actionIcon > i {
+  margin-top: 1px;
+}
+.quickEditInline .quickEditBox {
+  display: inline-block;
+}
+.quickEditInline .quickEditBox .btn {
+  float: right;
+}
+.taskAddBoard {
+  margin-bottom: 20px;
+}
+.taskAddBoard + .uiActionBorder {
+  padding: 15px 0 0!important;
+  margin-bottom: 5px;
+}
+.uiListBoard > li {
+  background-color: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 5px 10px;
+  list-style: none;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+.uiListBoard > li .quickEdit textarea {
+  height: 70px;
+}
+.uiListBoard > li.move {
+  cursor: move;
+}
+.uiListBoard > li.move.fly {
+  position: fixed;
+  width: 200px;
+}
+.uiListBoard > li .text-hide {
+  display: none;
+}
+.uiListBoard > li.drop-here {
+  background-color: #e2e2e2!important;
+  border: 1px dashed #ccc;
+  min-height: 40px;
+  text-align: center;
+}
+.uiListBoard > li.drop-here .text-hide {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -30px;
+  margin-top: -10px;
+}
+.uiListBoard > li.add {
+  background: none;
+  border-color: transparent;
+}
+.uiListBoard > li.add.editing {
+  display: none;
+}
+.uiListBoard > li.add:hover {
+  background-color: #ddd;
+}
+.uiListBoard > li.add:active {
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) inset;
+}
+.uiListBoard > li.add > a {
+  display: block;
+  text-align: center;
+}
+.uiListBoard > li + li {
+  margin-top: 10px;
+}
+.uiListBoard > li .toggle-edit {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  display: none;
+  background: #f9f9f9;
+  padding: 2px 5px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.uiListBoard > li:hover {
+  background: #f9f9f9;
+}
+.uiListBoard > li:hover .toggle-edit {
+  display: block;
+}
+.uiActionBoardBar {
+  margin-bottom: 20px;
+  *zoom: 1;
+  /*margin-top: 20px;
+	background: url("@{imgPatch}/bgCloudTitle.png") repeat 0 0 transparent;
+	.box-shadow(~"1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6)");
+	.border-radius(3px);
+	padding: 10px;*/
+
+}
+.uiActionBoardBar:before,
+.uiActionBoardBar:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.uiActionBoardBar:after {
+  clear: both;
+}
+.uiSidebarBoard {
+  position: fixed;
+  top: 41px;
+  bottom: 0;
+  right: 0;
+  width: 230px;
+  background: #ECECEC;
+  padding: 15px;
+  border-left: 1px solid #ccc;
+  -webkit-transition: all 100ms ease-in;
+  -moz-transition: all 100ms ease-in;
+  -o-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+  -webkit-transform: translate(260px, 0);
+  -moz-transform: translate(260px, 0);
+  -ms-transform: translate(260px, 0);
+  -o-transform: translate(260px, 0);
+  transform: translate(260px, 0);
+}
+.uiSidebarBoard.open {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.uiSidebarBoard.open .toggleShowSidebar .close-icon {
+  display: inline-block;
+}
+.uiSidebarBoard.open .toggleShowSidebar .show-icon {
+  display: none;
+}
+.uiSidebarBoard .inner {
+  height: 100%;
+  overflow: auto;
+}
+.uiSidebarBoard .toggleShowSidebar {
+  border: 1px solid #ccc;
+  border-right: none;
+  position: absolute;
+  right: 100%;
+  top: 20px;
+  background: #ECECEC;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-bottom-left-radius: 3px;
+  padding: 5px;
+  white-space: nowrap;
+}
+.uiSidebarBoard .toggleShowSidebar .close-icon {
+  display: none;
+}
+.uiAddmemToBoard .title {
+  margin-top: 0;
+}
+.uiAddmemToBoard .uiAddtedMem {
+  border-bottom: 1px solid #d1d1d1;
+  margin-bottom: 10px;
+}
+.uiAddmemToBoard .uiAddtedMem > .memInBoard {
+  margin-right: 5px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.uiAddmemToBoard .uiAddtedMem > .memInBoard img {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.searchMemBoard {
+  padding-bottom: 10px;
+}
+.searchMemBoard .inputSearchMem {
+  width: 100%;
+}
+.searchMemBoard .buttonAddMem {
+  margin-bottom: 10px;
+}
+.searchMemBoard .listMem > li {
+  padding: 5px;
+}
+.searchMemBoard .listMem > li img {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+.searchMemBoard .listMem > li .name {
+  color: #333333;
+}
+.searchMemBoard .listMem > li:hover {
+  background-color: #f9f9f9;
+}
+.uiPopup {
+  z-index: 1200!important;
+}
+.uiPopup.popDetailTask .quickEdit .actionIcon > i {
+  margin: 1px 0 0;
+}
+.uiPopup.popDetailTask .popupHeader {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.uiPopup.popDetailTask .popupHeader .popupTitle {
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 26px;
+}
+.uiPopup.popDetailTask .popupHeader .popupTitle > b {
+  color: #5373a9;
+}
+.uiPopup.popDetailTask .popupHeader .uiIconClose {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.uiPopup.popDetailTask .popupHeader .toggleQuickEdit + .uiIconClose {
+  display: none;
+}
+.uiPopup.popDetailTask .popupHeader .quickEdit textarea {
+  font-size: 16px;
+}
+.uiPopup.popDetailTask .popupContent .desc {
+  border-bottom: 1px solid #d1d1d1;
+}
+.uiPopup.popDetailTask .popupContent .desc .quickEdit textarea {
+  height: 150px;
+}
+.uiPopup.popDetailTask .popupContent h5 > span {
+  font-weight: normal;
+}
