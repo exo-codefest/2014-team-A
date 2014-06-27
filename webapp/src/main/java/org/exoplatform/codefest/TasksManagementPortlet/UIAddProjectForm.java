@@ -77,7 +77,9 @@ public class UIAddProjectForm extends UIForm implements UIPopupComponent {
       String description = form.getUIFormTextAreaInput(DESCRIPTION).getValue();
       String user = ConversationState.getCurrent().getIdentity().getUserId();
       Utils.getService(ProjectService.class).addProject(name, user, description);
+      form.getAncestorOfType(UIPopupContainer.class).deActivate();
       event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);
+      
     }
   }  
 

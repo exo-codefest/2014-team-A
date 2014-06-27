@@ -90,6 +90,10 @@ public class ProjectServiceImpl implements ProjectService {
       pNode.setProperty(NodeTypes.PROJECT_CREATOR, creator);
       pNode.setProperty(NodeTypes.PROJECT_NAME, pName);
       pNode.setProperty(NodeTypes.PROJECT_DESCRIPTION, description);
+      Value[] mems = new Value[1];
+      mems[0] = pNode.getSession().getValueFactory().createValue(creator);
+      pNode.setProperty(NodeTypes.PROJECT_MEMBERS, mems);
+      
       pRoot.save();
       return convertToEntity(pNode);
     } catch (Exception e) {
@@ -323,10 +327,13 @@ public class ProjectServiceImpl implements ProjectService {
   }
   
   private Project convertToEntity(Node pNode) throws TaskManagerException {
+    if (pNode == null) return null;
     try {
       Project ret = new Project();
       ret.setCreator(pNode.hasProperty(NodeTypes.PROJECT_CREATOR) ? 
                      pNode.getProperty(NodeTypes.PROJECT_CREATOR).getString() : "");
+      ret.setDescription(pNode.hasProperty(NodeTypes.PROJECT_DESCRIPTION) ? 
+                         pNode.getProperty(NodeTypes.PROJECT_DESCRIPTION).getString() : "");
       ret.setId(pNode.hasProperty(NodeTypes.PROJECT_ID) ? 
                 (int)pNode.getProperty(NodeTypes.PROJECT_ID).getLong() : 0);
       ret.setMembers(pNode.hasProperty(NodeTypes.PROJECT_MEMBERS) ?
@@ -349,7 +356,7 @@ public class ProjectServiceImpl implements ProjectService {
       Node pRoot = getProjectRootNode();
       String statement = "SELECT * FROM " + NodeTypes.PROJECT + " WHERE jcr:path LIKE '" + 
           pRoot.getPath() + "/%' AND " + NodeTypes.PROJECT_CREATOR + "='" + creator +
-          "' AND " + NodeTypes.PROJECT_NAME + "'" + pName + "'";
+          "' AND " + NodeTypes.PROJECT_NAME + "='" + pName + "'";
 
       Query query = pRoot.getSession().getWorkspace().getQueryManager().createQuery(statement, Query.SQL);
       for (NodeIterator iter = query.execute().getNodes(); iter.hasNext();) {

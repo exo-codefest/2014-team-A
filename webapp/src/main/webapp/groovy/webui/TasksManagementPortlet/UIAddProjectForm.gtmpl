@@ -3,13 +3,13 @@
    <div class="control-group">
      <label class="control-label" for="inputEmail">Name:</label>
      <div class="controls">
-      <input type="text" class="span6">
+      <% uiform.renderField(uiform.NAME);%>
      </div>
    </div>
    <div class="control-group">
    <label class="control-label" for="inputEmail">Description:</label>
    <div class="controls">
-     <textarea class="span6" ></textarea>
+   <% uiform.renderField(uiform.DESCRIPTION);%>
    </div>
   </div>
      

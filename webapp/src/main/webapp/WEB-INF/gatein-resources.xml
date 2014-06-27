@@ -30,9 +30,15 @@
         <path>/javascript/taskManagement.js</path>
       </script>
       <depends>
+        <module>base</module>
+      </depends>      
+      <depends>
         <module>jquery</module>
         <as>jq</as>
       </depends>
+	    <depends>
+	      <module>webui-ext</module>
+	    </depends>
     </module>
   </portlet>
 

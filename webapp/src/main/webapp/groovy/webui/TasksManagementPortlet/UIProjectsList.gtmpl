@@ -27,6 +27,7 @@
         html += "</div></div>";
         if (count%3 == 0) html += "</div>";
       }
+      if (count%3 != 0) html += "</div>";
       return html;
   }
 %>

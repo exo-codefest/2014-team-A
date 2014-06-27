@@ -62,7 +62,7 @@ public class UIProjectsList extends UIComponent {
       UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
       UIPopupContainer uiPopupContainer = uiParent.getChild(UIPopupContainer.class);
       UIAddProjectForm form = uiPopupContainer.createUIComponent(UIAddProjectForm.class, null, null);
-      uiPopupContainer.activate(form, 700, 500);
+      uiPopupContainer.activate(form, 400, 500);
       event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);
     }
   }
