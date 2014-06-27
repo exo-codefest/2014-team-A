@@ -18,9 +18,9 @@
                   xmlns="http://www.gatein.org/xml/ns/gatein_resources_1_3">
 
     <portlet-skin>
-        <application-name>tasks-management</application-name>
+        <application-name>team-a-addon-webapp</application-name>
         <portlet-name>TasksManagementPortlet</portlet-name>
         <skin-name>Default</skin-name>
-        <css-path>/skin/TasksManagementPortlet/style.css</css-path>
+        <css-path>/skin/TasksManagementPortlet/Style.css</css-path>
     </portlet-skin>
 </gatein-resources>

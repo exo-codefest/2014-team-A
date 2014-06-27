@@ -3,6 +3,7 @@ package org.exoplatform.codefest.TasksManagementPortlet;
 import javax.portlet.PortletMode;
 import javax.portlet.PortletPreferences;
  
+import org.exoplatform.webui.application.WebuiApplication;
 import org.exoplatform.webui.application.WebuiRequestContext;
 import org.exoplatform.webui.application.portlet.PortletRequestContext;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
@@ -19,5 +20,17 @@ import org.exoplatform.webui.form.UIFormStringInput;
 )
 public class UIBasicConfig extends UIForm {
  
-
+	private String projectName;
+	
+	public void processRender(WebuiApplication app, WebuiRequestContext context) throws Exception {
+		super.processRender(context);
+    }	
+		
+	public void setProjectName(String name){
+		this.projectName = name;
+	}
+	
+	public String getProjectName(){
+		return projectName;
+	}
 }

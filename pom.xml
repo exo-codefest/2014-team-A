@@ -82,6 +82,13 @@
         <scope>provided</scope>
         <type>jar</type>
       </dependency>
+      <dependency>
+        <groupId>org.exoplatform.addons.codefest.team_a</groupId>
+        <artifactId>team-a-addon-lib</artifactId>
+        <version>${project.version}</version>
+        <scope>provided</scope>
+        <type>jar</type>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <profiles>
