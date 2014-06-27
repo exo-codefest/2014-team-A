@@ -10,6 +10,9 @@
 		<link href="assets/plf/chat.css" rel="stylesheet" media="screen">
 		<link href="assets/style.css" rel="stylesheet" media="screen">
 		<link href="assets/doc.css" rel="stylesheet" media="screen">
+      <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+      <script type="text/javascript" src="js/jquery-ui-1.11.0.min.js"></script>
+      <script type="text/javascript" src="js/TasksManager.js"></script>
 	</head>
 	<body>
 		<div class="exTaskManagement">
@@ -43,8 +46,8 @@
          </div>
 
 			<div class="uiWrapBoard clearfix">
-            <div class="uiListColBoard">
-               <div class="uiColBoard">
+            <ul class="uiListColBoard">
+               <li class="uiColBoard">
                   <div class="uiHeadColBoard">
                      <h3 class="title toggleQuickEdit">
                         <span class="text">To do</span>
@@ -70,7 +73,7 @@
                      </div>
                   </div>
                   <div class="uiContenColBoard">
-                     <div class="uiListBoard">
+                     <ul class="uiListBoard">
                         <li class="move">
                            <div class="toggleQuickEdit">
                               <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
@@ -105,11 +108,11 @@
                            </div>
                         </li>
                         <li class="add"><a href="#">Add new task</a></li>
-                     </div>
+                     </ul>
                   </div>
-               </div><!-- .uiColBoard -->
+               </li><!-- .uiColBoard -->
 
-               <div class="uiColBoard">
+               <li class="uiColBoard">
                   <div class="uiHeadColBoard toggleQuickEdit edit">
                      <h3 class="title">
                         <span class="text">Doing</span>
@@ -129,10 +132,7 @@
                      </div>
                   </div>
                   <div class="uiContenColBoard">
-                     <div class="uiListBoard">
-                        <li class="drop-here">
-                           <span class="text-hide">Drop Here</span>
-                        </li>
+                     <ul class="uiListBoard">
                         <li>
                            <div class="toggleQuickEdit">
                               <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
@@ -167,11 +167,11 @@
                            </div>
                         </li>
                         <li class="add"><a href="#">Add new task</a></li>
-                     </div>
+                     </ul>
                   </div>
-               </div><!-- .uiColBoard -->
+               </li><!-- .uiColBoard -->
 
-               <div class="uiColBoard">
+               <li class="uiColBoard">
                   <div class="uiHeadColBoard">
                      <h3 class="title toggleQuickEdit">
                         <span class="text">Done</span>
@@ -191,7 +191,7 @@
                      </div>
                   </div>
                   <div class="uiContenColBoard">
-                     <div class="uiListBoard">
+                     <ul class="uiListBoard">
                         <li>
                            <div class="toggleQuickEdit">
                               <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
@@ -226,11 +226,11 @@
                            </div>
                         </li>
                         <li class="add"><a href="#">Add new task</a></li>
-                     </div>
+                     </ul>
                   </div>
-               </div><!-- .uiColBoard -->
+               </li><!-- .uiColBoard -->
 
-               <div class="uiColBoard">
+               <li class="uiColBoard">
                   <div class="uiHeadColBoard">
                      <h3 class="title toggleQuickEdit">
                         <span class="text">Closed</span>
@@ -250,7 +250,7 @@
                      </div>
                   </div>
                   <div class="uiContenColBoard">
-                     <div class="uiListBoard">
+                     <ul class="uiListBoard">
                         <li>
                            <div class="toggleQuickEdit edit">
                               <span class="text"></span>
@@ -263,10 +263,10 @@
                            </div>
                         </li>
                         <li class="add editing"><a href="#">Add new task</a></li>
-                     </div>
+                     </ul>
                   </div>
-               </div><!-- .uiColBoard -->
-            </div>
+               </li><!-- .uiColBoard -->
+            </ul>
          </div><!-- .uiWrapBoard -->
 
          <div class="uiSidebarBoard">

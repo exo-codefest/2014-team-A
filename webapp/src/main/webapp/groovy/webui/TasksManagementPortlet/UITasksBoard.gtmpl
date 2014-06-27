@@ -40,9 +40,9 @@ import java.util.Map;
          </div>
          
 			<div class="uiWrapBoard clearfix">
-            <div class="uiListColBoard">
+            <ul class="uiListColBoard">
              <% for (String stage : tasksMap.keySet()){%>
-               <div class="uiColBoard">
+               <li class="uiColBoard">
                   <div class="uiHeadColBoard">
                      <h3 class="title toggleQuickEdit">
                         <span class="text"><%=stage%></span>
@@ -68,7 +68,7 @@ import java.util.Map;
                      </div>
                   </div>
                   <div class="uiContenColBoard">
-                     <div class="uiListBoard">
+                     <ul class="uiListBoard">
                      <%for (Task task : tasksMap.get(stage)) {%>
                         <li class="move">
                            <div class="toggleQuickEdit">
@@ -95,11 +95,11 @@ import java.util.Map;
                         </li>                        
                         <li class="add addTask"><a href="#">Add new task</a></li>
                         
-                     </div>
+                     </ul>
                   </div>
-               </div><!-- .uiColBoard -->
+               </li><!-- .uiColBoard -->
                <%}%><!-- Stage list -->
-               <div class="uiColBoard">
+               <li class="uiColBoard">
                   <div class="uiHeadColBoard toggleQuickEdit edit">
                      <h3 class="title">
                         <span class="text">Doing</span>
@@ -119,16 +119,16 @@ import java.util.Map;
                      </div>
                   </div>
                   <div class="uiContenColBoard">
-                     <div class="uiListBoard">
+                     <ul class="uiListBoard">
                         <li class="drop-here">
                            <span class="text-hide">Drop Here</span>
                         </li>                       
                         <li class="add"><div class="addTask"><a href="#">Add new task</a></div></li>
-                     </div>
+                     </ul>
                   </div>
-               </div><!-- .uiColBoard -->
+               </li><!-- .uiColBoard -->
                
-            </div>
+            </ul>
          </div><!-- .uiWrapBoard -->
 
          <div class="uiSidebarBoard">
