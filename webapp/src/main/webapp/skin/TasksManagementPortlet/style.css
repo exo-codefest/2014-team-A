@@ -9,24 +9,41 @@
 .full {
   width: 100%;
 }
+.inline-block {
+  display: inline-block;
+}
 .btn .icon-image {
   vertical-align: -3px;
 }
-.iconStarMini {
+.uiGrayLightBox label {
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: url("../images/icon-star-16.png") no-repeat 0 0 transparent;
-  margin-top: 4px;
+  height: 28px;
+  line-height: 27px;
+  margin-top: 0;
+  vertical-align: top;
+}
+.exTaskManagement {
+  padding: 20px;
 }
 .iconStarMedium {
   display: inline-block;
   width: 24px;
   height: 24px;
+  vertical-align: baseline;
   background: url("../images/icon-star-24.png") no-repeat 0 0 transparent;
+}
+.iconStarMini {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: text-top;
+  background: url("../images/icon-star-16.png") no-repeat 0 0 transparent;
 }
 .iconStarMini.gray {
   background: url("../images/icon-star-16-gray.png") no-repeat 0 0 transparent;
+}
+.iconStarMini.gray:hover {
+  background: url("../images/icon-star-16.png") no-repeat 0 0 transparent;
 }
 .TitleForm {
   color: #626262;
@@ -40,9 +57,9 @@
 .page-header > h2 {
   position: relative;
 }
-.page-header > h2 img {
-  vertical-align: -2px;
+.page-header > h2 > i {
   margin-right: 10px;
+  vertical-align: -1px;
 }
 .uiListTask .uiBox {
   position: relative;
@@ -75,7 +92,7 @@
   top: 5px;
   width: 24px;
   height: 24px;
-  line-height: 20px;
+  line-height: 22px;
   -webkit-border-radius: 24px;
   -moz-border-radius: 24px;
   border-radius: 24px;
@@ -180,7 +197,7 @@
   background-color: #fff;
 }
 .uiColBoard .uiHeadColBoard .btn-group.open .actionIcon [class^="uiIcon"] {
-  background-image: url("/eXoResources/skin/images/Icons/uiIconsBlue.png");
+  background-image: url("plf/eXoResources/skin/images/Icons/uiIconsBlue.png");
 }
 .uiColBoard .uiContenColBoard {
   padding: 10px;
@@ -226,6 +243,27 @@
 .uiListBoard > li.move {
   cursor: move;
 }
+.uiListBoard > li.move.fly {
+  position: fixed;
+  width: 200px;
+}
+.uiListBoard > li .text-hide {
+  display: none;
+}
+.uiListBoard > li.drop-here {
+  background-color: #e2e2e2!important;
+  border: 1px dashed #ccc;
+  min-height: 40px;
+  text-align: center;
+}
+.uiListBoard > li.drop-here .text-hide {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -30px;
+  margin-top: -10px;
+}
 .uiListBoard > li + li {
   margin-top: 10px;
 }
@@ -247,15 +285,22 @@
   display: block;
 }
 .uiActionBoardBar {
-  margin-top: 20px;
-  background: url("../images/bgCloudTitle.png") repeat 0 0 transparent;
-  -webkit-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6);
-  -moz-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6);
-  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6);
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  padding: 10px;
+  *zoom: 1;
+  /*margin-top: 20px;
+	background: url("@{imgPatch}/bgCloudTitle.png") repeat 0 0 transparent;
+	.box-shadow(~"1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6)");
+	.border-radius(3px);
+	padding: 10px;*/
+
+}
+.uiActionBoardBar:before,
+.uiActionBoardBar:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.uiActionBoardBar:after {
+  clear: both;
 }
 .uiSidebarBoard {
   position: fixed;
@@ -283,6 +328,12 @@
   -o-transform: translate(0, 0);
   transform: translate(0, 0);
 }
+.uiSidebarBoard.open .toggleShowSidebar .close-icon {
+  display: inline-block;
+}
+.uiSidebarBoard.open .toggleShowSidebar .show-icon {
+  display: none;
+}
 .uiSidebarBoard .inner {
   height: 100%;
   overflow: auto;
@@ -303,6 +354,9 @@
   padding: 5px;
   white-space: nowrap;
 }
+.uiSidebarBoard .toggleShowSidebar .close-icon {
+  display: none;
+}
 .uiAddmemToBoard .title {
   margin-top: 0;
 }
@@ -321,7 +375,6 @@
   border-radius: 3px;
 }
 .searchMemBoard {
-  border-bottom: 1px solid #d1d1d1;
   padding-bottom: 10px;
 }
 .searchMemBoard .inputSearchMem {
@@ -344,4 +397,39 @@
 }
 .searchMemBoard .listMem > li:hover {
   background-color: #f9f9f9;
+}
+.uiPopup {
+  z-index: 1200!important;
+}
+.uiPopup.popDetailTask .quickEdit .actionIcon > i {
+  margin: 1px 0 0;
+}
+.uiPopup.popDetailTask .popupHeader {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.uiPopup.popDetailTask .popupHeader .popupTitle {
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 26px;
+}
+.uiPopup.popDetailTask .popupHeader .popupTitle > b {
+  color: #5373a9;
+}
+.uiPopup.popDetailTask .popupHeader .uiIconClose {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.uiPopup.popDetailTask .popupHeader .toggleQuickEdit + .uiIconClose {
+  display: none;
+}
+.uiPopup.popDetailTask .popupHeader .quickEdit textarea {
+  font-size: 16px;
+}
+.uiPopup.popDetailTask .popupContent .desc .quickEdit textarea {
+  height: 150px;
+}
+.uiPopup.popDetailTask .popupContent h5 > span {
+  font-weight: normal;
 }
