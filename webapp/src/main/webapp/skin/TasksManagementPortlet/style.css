@@ -226,7 +226,6 @@
 .uiWrapBoard {
   overflow: auto;
   width: 100%;
-  padding-top: 30px;
 }
 .uiListColBoard > .uiColBoard {
   width: 240px;
@@ -259,6 +258,16 @@
   -moz-border-radius-topleft: 5px;
   border-top-left-radius: 5px;
   *zoom: 1;
+}
+.uiColBoard .uiHeadColBoard.toggleQuickEdit.edit {
+  background-color: #ddd;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05) inset;
+  -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05) inset;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05) inset;
+  border-bottom: 1px solid #f5f5f5;
+}
+.uiColBoard .uiHeadColBoard.toggleQuickEdit.edit .btn-group {
+  display: none;
 }
 .uiColBoard .uiHeadColBoard:before,
 .uiColBoard .uiHeadColBoard:after {
@@ -313,6 +322,9 @@
 .uiColBoard .uiContenColBoard {
   padding: 10px;
 }
+.toggleQuickEdit .text {
+  cursor: pointer!important;
+}
 .toggleQuickEdit.edit + .btn-group {
   display: none;
 }
@@ -336,6 +348,19 @@
 }
 .quickEdit .actionIcon > i {
   margin-top: 1px;
+}
+.quickEditInline .quickEditBox {
+  display: inline-block;
+}
+.quickEditInline .quickEditBox .btn {
+  float: right;
+}
+.taskAddBoard {
+  margin-bottom: 20px;
+}
+.taskAddBoard + .uiActionBorder {
+  padding: 15px 0 0!important;
+  margin-bottom: 5px;
 }
 .uiListBoard > li {
   background-color: #fff;
@@ -374,6 +399,25 @@
   left: 50%;
   margin-left: -30px;
   margin-top: -10px;
+}
+.uiListBoard > li.add {
+  background: none;
+  border-color: transparent;
+}
+.uiListBoard > li.add.editing {
+  display: none;
+}
+.uiListBoard > li.add:hover {
+  background-color: #ddd;
+}
+.uiListBoard > li.add:active {
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1) inset;
+}
+.uiListBoard > li.add > a {
+  display: block;
+  text-align: center;
 }
 .uiListBoard > li + li {
   margin-top: 10px;
@@ -538,6 +582,9 @@
 }
 .uiPopup.popDetailTask .popupHeader .quickEdit textarea {
   font-size: 16px;
+}
+.uiPopup.popDetailTask .popupContent .desc {
+  border-bottom: 1px solid #d1d1d1;
 }
 .uiPopup.popDetailTask .popupContent .desc .quickEdit textarea {
   height: 150px;

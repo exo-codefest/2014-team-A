@@ -29,13 +29,13 @@ public class UIProjectsList extends UIComponent {
     }
     
     public List<Project> getProjects(){
-    	List<Project> ps = new ArrayList<Project>();
-        /*Project p1 = new Project(1, "Task one", "This is first task to test", null, "maydt", null);
-        Project p2 = new Project(2, "Task two", "This is second task to test", null, "maydt", null);
-        Project p3 = new Project(3, "Task three", "This is third task to test", null, "maydt", null);
-        ps.add(p1);
-        ps.add(p2);
-        ps.add(p3);*/
+    	List<Project> ps = new ArrayList<Project>();        
+    	Project p1 = new Project();
+    	p1.setName("demo"); p1.setId(1);
+    	Project p2 = new Project();
+      p2.setName("demo"); p2.setId(2);
+      ps.add(p1);
+      ps.add(p2);
     	return ps;
     }
  
@@ -44,8 +44,8 @@ public class UIProjectsList extends UIComponent {
 		public void execute(Event<UIProjectsList> event) throws Exception {
 			UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
 		    uiParent.getChild(UIProjectsList.class).setRendered(false);
-		    UIBasicConfig config = uiParent.getChild(UIBasicConfig.class);
-		    config.setProjectId(event.getRequestContext().getRequestParameter(OBJECTID));
+		    UITasksBoard config = uiParent.getChild(UITasksBoard.class);
+		    config.setProjectId(Integer.parseInt(event.getRequestContext().getRequestParameter(OBJECTID)));
 		    config.setRendered(true);
 		    event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);
 		}
