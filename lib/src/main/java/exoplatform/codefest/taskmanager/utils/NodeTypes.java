@@ -27,6 +27,7 @@ public interface NodeTypes {
   String PROJECT = "codefest:project";
   String PROJECT_ID = "id";
   String PROJECT_NAME = "name";
+  String PROJECT_DESCRIPTION = "description";
   String PROJECT_MEMBERS = "members"; 
   String PROJECT_CREATOR= "creator";
   String PROJECT_STAGELIST= "stageList"; 

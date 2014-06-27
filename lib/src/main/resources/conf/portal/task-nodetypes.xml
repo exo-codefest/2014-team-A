@@ -29,6 +29,9 @@
       <propertyDefinition name="name" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
         <valueConstraints/>
       </propertyDefinition>
+      <propertyDefinition name="description" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+        <valueConstraints/>
+      </propertyDefinition>
       <propertyDefinition name="members" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="true">
         <valueConstraints/>
       </propertyDefinition>
