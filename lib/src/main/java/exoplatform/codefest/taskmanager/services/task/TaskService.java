@@ -16,7 +16,7 @@
  */
 package exoplatform.codefest.taskmanager.services.task;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.jcr.Node;
@@ -24,6 +24,8 @@ import javax.jcr.Node;
 import exoplatform.codefest.taskmanager.entities.Comment;
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
+import exoplatform.codefest.taskmanager.exceptions.TaskExistException;
+import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
 
 /**
  * Created by The eXo Platform SAS
@@ -33,43 +35,46 @@ import exoplatform.codefest.taskmanager.entities.Task;
  */
 public interface TaskService {
 
-  public Task addTask(Project project, String name, String description, String type, String[] labels,
-                      String[] members, Date dueDate, int[] requiredTasks, String stage, int stageOrder);
+  public Task addTask(Project project, Task task) throws TaskExistException, TaskManagerException;
   
-  public Task addTask(Project project, String name, String description);
+  public Task addTask(Project project, String name, String stage) throws TaskExistException, TaskManagerException;
   
-  public Task rename(Task task, String oldName, String newName);
+  public Task addTask(Project project, String name) throws TaskExistException, TaskManagerException;
   
-  public Task setDescription(Task task, String description);
+  public boolean removeTask(Task task) throws TaskManagerException;
   
-  public Task setType(Task task, String type);
+  public Task rename(Task task, String newName) throws TaskExistException, TaskManagerException;
   
-  public Task addLabel(Task task, String label);
+  public Task setDescription(Task task, String description) throws TaskManagerException;
   
-  public Task removeLabel(Task task, String label);
+  public Task setType(Task task, String type) throws TaskManagerException;
   
-  public Task addMember(Task task, String member);
+  public Task addLabel(Task task, String label) throws TaskManagerException;
+  
+  public Task removeLabel(Task task, String label) throws TaskManagerException;
+  
+  public Task addMember(Task task, String member) throws TaskManagerException;
 
-  public Task removeMember(Task task, String member);
+  public Task removeMember(Task task, String member) throws TaskManagerException;
   
-  public Task setDueDate(Task task, Date dueDate);
+  public Task setDueDate(Task task, Calendar dueDate) throws TaskManagerException;
 
-  public Task addRequiredTask(Task task, int requiredTaskId);
+  public Task addRequiredTask(Task task, int requiredTaskId) throws TaskManagerException;
   
-  public Task removeRequiredTask(Task task, int requiredTaskId);
+  public Task removeRequiredTask(Task task, int requiredTaskId) throws TaskManagerException;
 
-  public Task setStage(Task task, String stage);
+  public Task setStage(Task task, String stage) throws TaskManagerException;
   
-  public Task setStageOrder(Task task, int order);
+  public Task setStageOrder(Task task, int order) throws TaskManagerException;
   
-  public Task getTaskById(int tagId);
+  public Task getTaskById(int taskId) throws TaskManagerException ;
   
-  public void storeTask(Task task);
+  public Node getTaskNodeById(int taskId) throws TaskManagerException;
   
-  public List<Comment> getComments();
+  public void storeTask(Task task) throws TaskManagerException;
   
-  public List<Comment> getCommentsByTask(Task task);
+  public List<Comment> getCommentsByTask(Task task) throws TaskManagerException;
   
-  public Task getTaskByNode(Node taskNode);
+  public Task getTaskByNode(Node taskNode) throws TaskManagerException;
 
 }

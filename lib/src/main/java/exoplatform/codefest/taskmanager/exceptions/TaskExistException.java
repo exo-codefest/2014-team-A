@@ -14,29 +14,19 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package exoplatform.codefest.taskmanager.services.comment;
-
-import javax.jcr.Node;
-
-import exoplatform.codefest.taskmanager.entities.Comment;
-import exoplatform.codefest.taskmanager.entities.Task;
+package exoplatform.codefest.taskmanager.exceptions;
 
 /**
  * Created by The eXo Platform SAS
  * Author : eXoPlatform
  *          exo@exoplatform.com
- * Jun 26, 2014  
+ * Jun 27, 2014  
  */
-public interface CommentService {
+public class TaskExistException extends Exception {
 
-  public Comment addComment(Task task, String content, String owner);
-  
-  public Comment setContent(Comment comment, String content);
-  
-  public Comment setOwner(Comment comment, String owner);
-  
-  public void storeComment(Task task, Comment comment);
-  
-  public Comment getCommentByNode(Node commentNode);
-  
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -3569985420783599886L;
+
 }

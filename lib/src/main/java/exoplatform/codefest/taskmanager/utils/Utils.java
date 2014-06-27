@@ -104,7 +104,22 @@ public class Utils {
     return ret;
   }
   
+  public static List<Integer> toIntList(Value[] values) throws ValueFormatException, IllegalStateException, RepositoryException {
+    List<Integer> ret = new ArrayList<Integer>();
+    for (Value v : values) {
+      ret.add((int)v.getLong());
+    }
+    return ret;
+  }
+  
   public static Value[] toValues(List<String> src, ValueFactory v) {
+    Value[] ret = new Value[src.size()];
+    for (int i = 0; i < src.size(); i++)
+      ret[i] = v.createValue(src.get(i));
+    return ret;
+  }
+
+  public static Value[] toIntValues(List<Integer> src, ValueFactory v) {
     Value[] ret = new Value[src.size()];
     for (int i = 0; i < src.size(); i++)
       ret[i] = v.createValue(src.get(i));

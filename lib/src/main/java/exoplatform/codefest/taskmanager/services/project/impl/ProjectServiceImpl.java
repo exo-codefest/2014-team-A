@@ -36,6 +36,7 @@ import exoplatform.codefest.taskmanager.entities.Task;
 import exoplatform.codefest.taskmanager.exceptions.ProjectExistException;
 import exoplatform.codefest.taskmanager.exceptions.StageExistException;
 import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
+import exoplatform.codefest.taskmanager.id.IdGeneratorService;
 import exoplatform.codefest.taskmanager.services.project.ProjectService;
 import exoplatform.codefest.taskmanager.services.task.TaskService;
 import exoplatform.codefest.taskmanager.utils.NodeTypes;
@@ -83,7 +84,7 @@ public class ProjectServiceImpl implements ProjectService {
       throw new ProjectExistException();
     }
     try {
-      int newId = ProjectIdGenerator.getProjectIdGenerator().generateId();
+      int newId = Utils.getService(IdGeneratorService.class).generateId(NodeTypes.PROJECT);
       Node pNode = pRoot.addNode(newId + "", NodeTypes.PROJECT);
       pNode.setProperty(NodeTypes.PROJECT_ID, newId);
       pNode.setProperty(NodeTypes.PROJECT_CREATOR, creator);
@@ -95,6 +96,19 @@ public class ProjectServiceImpl implements ProjectService {
     }
   }
 
+  @Override
+  public boolean removeProject(Project project) throws TaskManagerException {
+    try {
+      Node pRoot = getProjectRootNode();
+      Node pNode = getProjectNodeById(project.getId());
+      pNode.remove();
+      pRoot.save();
+    } catch (Exception e) {
+      return false;
+    }
+    return true;
+  }
+  
   @Override
   public Project rename(Project project, String newName) throws TaskManagerException {
     project.setName(newName);
@@ -289,7 +303,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
   }
   
-  private Node getProjectRootNode() {
+  public Node getProjectRootNode() {
     SessionProvider sessionProvider = Utils.getSystemSessionProvider();
     try {
       return nodeCreator.getPublicApplicationNode(sessionProvider).getNode(projectRootNodeName);
@@ -328,22 +342,6 @@ public class ProjectServiceImpl implements ProjectService {
     }
   }
   
-  static class ProjectIdGenerator {
-    private static ProjectIdGenerator idGenerator;
-    private int id = 1;
-    private ProjectIdGenerator() {
-      idGenerator = new ProjectIdGenerator();
-    }
-    
-    public static ProjectIdGenerator getProjectIdGenerator() {
-      return idGenerator;
-    }
-    
-    public int generateId() {
-      return id++;
-    }
-  }
-
   @Override
   public Node getProjectNode(String creator, String pName) throws TaskManagerException{
     try {

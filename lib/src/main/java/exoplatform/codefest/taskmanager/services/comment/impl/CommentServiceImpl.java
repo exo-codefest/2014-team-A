@@ -16,6 +16,8 @@
  */
 package exoplatform.codefest.taskmanager.services.comment.impl;
 
+import javax.jcr.Node;
+
 import exoplatform.codefest.taskmanager.entities.Comment;
 import exoplatform.codefest.taskmanager.entities.Task;
 import exoplatform.codefest.taskmanager.services.comment.CommentService;
@@ -50,6 +52,12 @@ public class CommentServiceImpl implements CommentService {
   public void storeComment(Task task, Comment comment) {
     // TODO Auto-generated method stub
     
+  }
+
+  @Override
+  public Comment getCommentByNode(Node commentNode) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }

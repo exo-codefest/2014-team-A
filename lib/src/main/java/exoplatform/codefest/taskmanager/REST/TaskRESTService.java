@@ -32,6 +32,8 @@ import org.exoplatform.services.rest.resource.ResourceContainer;
 
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
+import exoplatform.codefest.taskmanager.exceptions.TaskExistException;
+import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
 import exoplatform.codefest.taskmanager.services.project.ProjectService;
 import exoplatform.codefest.taskmanager.services.task.TaskService;
 /**
@@ -57,8 +59,14 @@ public class TaskRESTService implements ResourceContainer{
     //Project proj = projectService.getProjectById(id);
     Project proj = new Project();
     proj.setId(projId);
-    Task t = taskService.addTask(proj, title, stage);
-    return Response.ok(t.toString()).build();
+    try {
+      Task t = taskService.addTask(proj, title, stage);
+      return Response.ok(t.toString()).build();
+    } catch (TaskExistException e) {
+      return Response.serverError().build();
+    } catch (TaskManagerException e) {
+      return Response.serverError().build();
+    }
   }
   
   @POST
@@ -67,14 +75,18 @@ public class TaskRESTService implements ResourceContainer{
   @Produces(MediaType.TEXT_HTML)
   @RolesAllowed("users")
   public Response changeTaskOrder(MultivaluedMap<Integer, Integer> formParams) {
-    Task task;
-    StringBuilder data = new StringBuilder();
-    for (int id : formParams.keySet()){
-      task = taskService.getTaskById(id);    
-      task.setStageOrder(formParams.getFirst(id));
-      data.append(task.toString());
-    }            
-    return Response.ok().build();
+    try {
+      Task task;
+      StringBuilder data = new StringBuilder();
+      for (int id : formParams.keySet()){
+        task = taskService.getTaskById(id);    
+        task.setStageOrder(formParams.getFirst(id));
+        data.append(task.toString());
+      }            
+      return Response.ok().build();
+    } catch (TaskManagerException e) {
+      return Response.serverError().build();
+    }
   }
   
   @POST
@@ -82,9 +94,13 @@ public class TaskRESTService implements ResourceContainer{
   @Produces(MediaType.TEXT_HTML)
   @RolesAllowed("users")
   public Response updateTaskStage(@QueryParam("taskId") Integer id, @QueryParam("stage") String stage) {
-    Task task = taskService.getTaskById(id);
-    task.setStage(stage);
-    return Response.ok().build();
+    try {
+      Task task = taskService.getTaskById(id);
+      task.setStage(stage);
+      return Response.ok().build();
+    } catch (TaskManagerException e) {
+      return Response.serverError().build();
+    }
   }   
   
   @POST

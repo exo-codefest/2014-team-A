@@ -16,7 +16,7 @@
  */
 package exoplatform.codefest.taskmanager.entities;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -34,7 +34,7 @@ public class Task {
   private String type;
   private List<String>labels;
   private List<String> members;
-  private Date dueDate;
+  private Calendar dueDate;
   private List<Integer> requiredTasks;
   private String stage;
   private int stageOrder;
@@ -81,10 +81,10 @@ public class Task {
   public void setMembers(List<String> members) {
     this.members = members;
   }
-  public Date getDueDate() {
+  public Calendar getDueDate() {
     return dueDate;
   }
-  public void setDueDate(Date dueDate) {
+  public void setDueDate(Calendar dueDate) {
     this.dueDate = dueDate;
   }
   public List<Integer> getRequiredTasks() {

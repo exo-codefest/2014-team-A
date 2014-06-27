@@ -14,29 +14,32 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package exoplatform.codefest.taskmanager.services.comment;
+package exoplatform.codefest.taskmanager.id;
 
-import javax.jcr.Node;
-
-import exoplatform.codefest.taskmanager.entities.Comment;
-import exoplatform.codefest.taskmanager.entities.Task;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by The eXo Platform SAS
  * Author : eXoPlatform
  *          exo@exoplatform.com
- * Jun 26, 2014  
+ * Jun 27, 2014  
  */
-public interface CommentService {
+public class IdGeneratorService {
+  
+  private Map<String, Integer> counter;
+  
+  public IdGeneratorService() {
+    counter = new HashMap<String, Integer>();
+  }
 
-  public Comment addComment(Task task, String content, String owner);
-  
-  public Comment setContent(Comment comment, String content);
-  
-  public Comment setOwner(Comment comment, String owner);
-  
-  public void storeComment(Task task, Comment comment);
-  
-  public Comment getCommentByNode(Node commentNode);
+  public int generateId(String name) {
+    if (counter.get(name) == null) {
+      counter.put(name, 0);
+    }
+    int ret = counter.get(name);
+    counter.put(name, ret++);
+    return ret;
+  }
   
 }

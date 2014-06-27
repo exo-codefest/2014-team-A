@@ -37,6 +37,8 @@ public interface ProjectService {
   public List<Project> getAllProjectByUser(String user) throws TaskManagerException;
 
   public Project addProject(String pName, String creator) throws ProjectExistException, TaskManagerException;
+  
+  public boolean removeProject(Project project) throws TaskManagerException;
 
   public Project rename(Project project, String newName) throws TaskManagerException;
   
@@ -67,5 +69,7 @@ public interface ProjectService {
   public List<Task> getTasksByStage(Project project, String stage) throws TaskManagerException;
   
   public void setTaskOrderInStage(String stage, List<Task> task) throws TaskManagerException;
+  
+  public Node getProjectRootNode();
   
 }

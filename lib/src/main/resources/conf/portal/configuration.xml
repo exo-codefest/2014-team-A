@@ -45,6 +45,11 @@
     </init-params>
   </component>
   
+  <component>
+    <key>exoplatform.codefest.taskmanager.id.IdGeneratorService</key>
+    <type>exoplatform.codefest.taskmanager.id.IdGeneratorService</type>
+  </component>
+  
   <!-- REST Service -->
   <component>
     <key>exoplatform.codefest.taskmanager.REST.ProjectRESTService</key>
