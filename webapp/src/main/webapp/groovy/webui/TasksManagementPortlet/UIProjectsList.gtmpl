@@ -17,7 +17,7 @@
 	    	String actionLink = uicomponent.event("ShowTaskDetail", id);
 	    	
 	    	if (count%3 == 1) html += "<div class=\"row-fluid\">";
-	    	html += "<div class=\"span4 uiBox\" onclick=\"" + actionLink + ">";
+	    	html += "<div class=\"span4 uiBox\" onclick=\"" + actionLink + "\">";
 	    	html += "<div class=\"uiContentBox\">";
 	    	html += "<a class=\"favorite\" href=\"#\"><span class=\"iconStarMini\"></span></a>";
 	    	html += "<h4 class=\"title-board\">" + name + "</h4>";
