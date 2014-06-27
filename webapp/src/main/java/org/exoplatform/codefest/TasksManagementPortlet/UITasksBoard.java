@@ -1,7 +1,9 @@
 package org.exoplatform.codefest.TasksManagementPortlet; 
  
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.exoplatform.webui.application.WebuiApplication;
 import org.exoplatform.webui.application.WebuiRequestContext;
@@ -54,6 +56,8 @@ public class UITasksBoard extends UIForm {
 	    Task t2 = new Task();
 	    t1.setName("Kill all");
 	    t2.setName("Kill myself");
+	    tasks.add(t1);
+	    tasks.add(t2);
 	    return tasks;
     } catch (Exception e) {
       return null;
@@ -71,20 +75,43 @@ public class UITasksBoard extends UIForm {
 		return project;
 	}
 	
+	public Map<String,List<Task>> getTasksMapByStage(){
+	  Map<String,List<Task>> tasks = new HashMap<String,List<Task>>();
+	  /*
+	  for (String stage : project.getStageList()){
+	    try {
+        tasks.put(stage, prjService.getTasksByStage(project, stage));
+      } catch (TaskManagerException e) {
+        
+      }
+	  }*/
+	  Task t1 = new Task();
+    Task t2 = new Task();
+    t1.setName("Kill all");
+    t2.setName("Kill myself");
+    List l1 = new ArrayList<Task>();
+    l1.add(t1);
+    List l2 = new ArrayList<Task>();
+    l2.add(t2);
+    tasks.put("TODO",l1);
+    tasks.put("DONE",l2);        
+	  return tasks;
+	}
+	
 	/*
 	 *  Listeners 
 	 */
-	public static class CreateTaskActionListener extends EventListener<UIBasicForm> {    
+	public static class CreateTaskActionListener extends EventListener<UIProjectsList> {    
     @Override
-    public void execute(Event<UIBasicForm> event) throws Exception {
+    public void execute(Event<UIProjectsList> event) throws Exception {
         UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);        
         event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);  
     }
   }
 	
-	public static class UpdateTaskActionListener extends EventListener<UIBasicForm> {    
+	public static class UpdateTaskActionListener extends EventListener<UIProjectsList> {    
     @Override
-    public void execute(Event<UIBasicForm> event) throws Exception {
+    public void execute(Event<UIProjectsList> event) throws Exception {
       UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
       event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);  
     }

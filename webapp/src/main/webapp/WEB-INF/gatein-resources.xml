@@ -23,4 +23,17 @@
         <skin-name>Default</skin-name>
         <css-path>/skin/TasksManagementPortlet/style.css</css-path>
     </portlet-skin>
+    <portlet>
+    <name>TasksManagementPortlet</name>
+    <module>
+      <script>
+        <path>/javascript/taskManagement.js</path>
+      </script>
+      <depends>
+        <module>jquery</module>
+        <as>jq</as>
+      </depends>
+    </module>
+  </portlet>
+
 </gatein-resources>

@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Detail</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Bootstrap CSS -->
-		<link href="assets/plf/bootstrap.css" rel="stylesheet" media="screen">
-		<link href="assets/plf/Core.css" rel="stylesheet" media="screen">
-		<link href="assets/plf/chat.css" rel="stylesheet" media="screen">
-		<link href="assets/style.css" rel="stylesheet" media="screen">
-		<link href="assets/doc.css" rel="stylesheet" media="screen">
-	</head>
-	<body>
+<%
+import exoplatform.codefest.taskmanager.entities.Project;
+import exoplatform.codefest.taskmanager.entities.Task;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+%>
+<%
+  Project p = uicomponent.getProject();
+  String projectName = p.getName();  
+  Map<String,List<Task>> tasksMap = uicomponent.getTasksMapByStage();  
+%>   
 		<div class="exTaskManagement">
+      <h3><%=projectName%></h3>
 			<div class="uiGrayLightBox uiActionBoardBar">
             <div class="searchTasks pull-left">
                <label for="Search">Search:&nbsp;</label>
@@ -41,10 +41,11 @@
          
 			<div class="uiWrapBoard clearfix">
             <div class="uiListColBoard">
+             <% for (String stage : tasksMap.keySet()){%>
                <div class="uiColBoard">
                   <div class="uiHeadColBoard">
                      <h3 class="title toggleQuickEdit">
-                        <span class="text">To do</span>
+                        <span class="text"><%=stage%></span>
                         <div class="quickEdit">
                            <textarea name="" id="" rows="1"></textarea>
                            <button class="btn btn-primary">Save</button>
@@ -68,9 +69,10 @@
                   </div>
                   <div class="uiContenColBoard">
                      <div class="uiListBoard">
+                     <%for (Task task : tasksMap.get(stage)) {%>
                         <li class="move">
                            <div class="toggleQuickEdit">
-                              <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                              <span class="text"><%=task.getName()%></span>
                               <div class="quickEdit">
                                  <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
                                  <button class="btn btn-primary">Save</button>
@@ -79,6 +81,7 @@
                               <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
                            </div>
                         </li>
+                     <%}%><!--end tasklist -->
                         <li>
                            <div class="toggleQuickEdit edit">
                               <span class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
@@ -89,23 +92,13 @@
                               </div>
                               <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
                            </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Ut enim ad minim veniam Ut enim ad minim veniam</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Ut enim ad minim veniam</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li class="add"><a href="#">Add new task</a></li>
+                        </li>                        
+                        <li class="add addTask"><a href="#">Add new task</a></li>
+                        
                      </div>
                   </div>
                </div><!-- .uiColBoard -->
-
+               <%}%><!-- Stage list -->
                <div class="uiColBoard">
                   <div class="uiHeadColBoard toggleQuickEdit edit">
                      <h3 class="title">
@@ -129,140 +122,12 @@
                      <div class="uiListBoard">
                         <li class="drop-here">
                            <span class="text-hide">Drop Here</span>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Ut enim ad minim veniam</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Ut enim ad minim veniam</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li class="add"><a href="#">Add new task</a></li>
+                        </li>                       
+                        <li class="add"><div class="addTask"><a href="#">Add new task</a></div></li>
                      </div>
                   </div>
                </div><!-- .uiColBoard -->
-
-               <div class="uiColBoard">
-                  <div class="uiHeadColBoard">
-                     <h3 class="title toggleQuickEdit">
-                        <span class="text">Done</span>
-                        <div class="quickEdit">
-                           <textarea name="" id="" rows="1">Done</textarea>
-                           <button class="btn btn-primary">Save</button>
-                           <div class="actionIcon"><i class="uiIconRemove uiIconWhite"></i></div>
-                        </div>
-                     </h3>
-                     <div class="btn-group pull-right open">
-                        <button class="actionIcon dropdown-toggle btn-mini" data-toggle="dropdown"><i class="uiIconArrowDown uiIconWhite"></i></button>
-                        <ul class="dropdown-menu">
-                           <li><a href="#">Lorem ipsum dolor</a></li>
-                           <li><a href="#">In non risus quis</a></li>
-                           <li><a href="#">Libero convallis </a></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <div class="uiContenColBoard">
-                     <div class="uiListBoard">
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Ut enim ad minim veniam</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Ut enim ad minim veniam</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li class="add"><a href="#">Add new task</a></li>
-                     </div>
-                  </div>
-               </div><!-- .uiColBoard -->
-
-               <div class="uiColBoard">
-                  <div class="uiHeadColBoard">
-                     <h3 class="title toggleQuickEdit">
-                        <span class="text">Closed</span>
-                        <div class="quickEdit">
-                           <textarea name="" id="" rows="1">Closed</textarea>
-                           <button class="btn btn-primary">Save</button>
-                           <div class="actionIcon"><i class="uiIconRemove uiIconWhite"></i></div>
-                        </div>
-                     </h3>
-                     <div class="btn-group pull-right">
-                        <button class="actionIcon dropdown-toggle btn-mini" data-toggle="dropdown"><i class="uiIconArrowDown uiIconWhite"></i></button>
-                        <ul class="dropdown-menu">
-                           <li><a href="#">Lorem ipsum dolor</a></li>
-                           <li><a href="#">In non risus quis</a></li>
-                           <li><a href="#">Libero convallis </a></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <div class="uiContenColBoard">
-                     <div class="uiListBoard">
-                        <li>
-                           <div class="toggleQuickEdit edit">
-                              <span class="text"></span>
-                              <div class="quickEdit">
-                                 <textarea name="" id="" rows="1"></textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a href="#" class="toggle-edit"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li class="add editing"><a href="#">Add new task</a></li>
-                     </div>
-                  </div>
-               </div><!-- .uiColBoard -->
+               
             </div>
          </div><!-- .uiWrapBoard -->
 
@@ -313,7 +178,20 @@
             </div>
          </div>
 
+<!-- fragments -->
 
-		</div>
-	</body>
-</html>
+      <div id="taskEditName_fragment" style="dislay:none">   
+         <div class="toggleQuickEdit edit">
+           <span class="text">Title...</span>
+           <div class="quickEdit">
+              <textarea rows="1" id="" name="">Title...</textarea>
+              <button class="btn btn-primary save-button">Save</button>
+              <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+           </div>
+           <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+         </div>
+      </div>   
+      
+<script>
+  
+</script>         
