@@ -1,5 +1,6 @@
 package org.exoplatform.codefest.TasksManagementPortlet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.exoplatform.webui.application.WebuiApplication;
@@ -24,25 +25,29 @@ public class UIBasicForm extends UIComponent {
 
 	
     public void processRender(WebuiApplication app, WebuiRequestContext context) throws Exception {
-    	//Get Project lists
     	super.processRender(context);
     }
     
     public List<Project> getProjects(){
-    	return null;
+    	List<Project> ps = new ArrayList<Project>();
+        Project p1 = new Project(1, "Task one", "This is first task to test", null, "maydt", null);
+        Project p2 = new Project(2, "Task two", "This is second task to test", null, "maydt", null);
+        Project p3 = new Project(3, "Task three", "This is third task to test", null, "maydt", null);
+        ps.add(p1);
+        ps.add(p2);
+        ps.add(p3);
+    	return ps;
     }
- 
  
 	public static class ShowTaskDetailActionListener extends EventListener<UIBasicForm> {		
 		@Override
 		public void execute(Event<UIBasicForm> event) throws Exception {
-			// TODO Auto-generated method stub
 			UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
 		    uiParent.getChild(UIBasicForm.class).setRendered(false);
 		    UIBasicConfig config = uiParent.getChild(UIBasicConfig.class);
-		    //config.setProjectName(event.getRequestContext().getRequestParameter(OBJECTID));
-		    config.setProjectName("demo");
+		    config.setProjectId(event.getRequestContext().getRequestParameter(OBJECTID));
 		    config.setRendered(true);
+		    event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);
 		}
 	}
 }

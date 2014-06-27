@@ -16,21 +16,21 @@ import org.exoplatform.webui.form.UIFormStringInput;
  
 @ComponentConfig(
     lifecycle = UIFormLifecycle.class,
-    template = "system:/groovy/webui/form/UIForm.gtmpl"
+    template = "app:/groovy/webui/TasksManagementPortlet/UIProjectDetail.gtmpl"
 )
 public class UIBasicConfig extends UIForm {
  
-	private String projectName;
+	private String projectId;
 	
 	public void processRender(WebuiApplication app, WebuiRequestContext context) throws Exception {
 		super.processRender(context);
     }	
 		
-	public void setProjectName(String name){
-		this.projectName = name;
+	public void setProjectId(String id){
+		this.projectId = id;
 	}
 	
-	public String getProjectName(){
-		return projectName;
+	public String getProjectId(){
+		return projectId;
 	}
 }
