@@ -3,11 +3,11 @@
 %>
 <%
 	public String renderTasksList(List<Project> ps){
+		String html = "";
 		if(ps == null || ps.isEmpty()) {
-	      return;
+	      return html;
 	    }
 	
-	  	String html = "";
 	    int count = 0;
 	    for(Project project : ps) {
 	    	count++;
@@ -27,7 +27,7 @@
 	    }
 	    return html;
 	}
-+%>
+%>
 
 	<div class="exTaskManagement">
 		<div class="uiGrayLightBox uiActionBoardBar">

@@ -30,12 +30,12 @@ public class UIBasicForm extends UIComponent {
     
     public List<Project> getProjects(){
     	List<Project> ps = new ArrayList<Project>();
-        Project p1 = new Project(1, "Task one", "This is first task to test", null, "maydt", null);
+        /*Project p1 = new Project(1, "Task one", "This is first task to test", null, "maydt", null);
         Project p2 = new Project(2, "Task two", "This is second task to test", null, "maydt", null);
         Project p3 = new Project(3, "Task three", "This is third task to test", null, "maydt", null);
         ps.add(p1);
         ps.add(p2);
-        ps.add(p3);
+        ps.add(p3);*/
     	return ps;
     }
  
