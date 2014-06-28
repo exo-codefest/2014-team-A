@@ -249,6 +249,7 @@
   box-shadow: none;
 }
 .uiColBoard .uiHeadColBoard {
+  cursor: pointer;
   background-color: #5373a9;
   color: #fff;
   -webkit-border-top-right-radius: 5px;

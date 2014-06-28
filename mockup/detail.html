@@ -46,227 +46,229 @@
          </div>
 
 			<div class="uiWrapBoard clearfix">
-            <ul class="uiListColBoard">
-               <li class="uiColBoard">
-                  <div class="uiHeadColBoard">
-                     <h3 class="title toggleQuickEdit">
-                        <span class="text">To do</span>
-                        <div class="quickEdit">
-                           <textarea name="" id="" rows="1"></textarea>
-                           <button class="btn btn-primary">Save</button>
-                           <div class="actionIcon"><i class="uiIconRemove uiIconWhite"></i></div>
+            <div class="dragdropContainer">
+               <ul class="uiListColBoard">
+                  <li class="uiColBoard">
+                     <div class="uiHeadColBoard">
+                        <h3 class="title toggleQuickEdit">
+                           <span class="text">To do</span>
+                           <div class="quickEdit">
+                              <textarea name="" id="" rows="1"></textarea>
+                              <button class="btn btn-primary">Save</button>
+                              <div class="actionIcon"><i class="uiIconRemove uiIconWhite"></i></div>
+                           </div>
+                        </h3>
+                        <div class="btn-group pull-right">
+                           <button class="actionIcon dropdown-toggle btn-mini" data-toggle="dropdown"><i class="uiIconArrowDown uiIconWhite"></i></button>
+                           <ul class="dropdown-menu">
+                              <li>
+                                 <a href="#">Lorem ipsum dolor</a>
+                              </li>
+                              <li>
+                                 <a href="#">In non risus quis</a>
+                              </li>
+                              <li>
+                                 <a href="#">Libero convallis </a>
+                              </li>
+                           </ul>
                         </div>
-                     </h3>
-                     <div class="btn-group pull-right">
-                        <button class="actionIcon dropdown-toggle btn-mini" data-toggle="dropdown"><i class="uiIconArrowDown uiIconWhite"></i></button>
-                        <ul class="dropdown-menu">
-                           <li>
-                              <a href="#">Lorem ipsum dolor</a>
+                     </div>
+                     <div class="uiContenColBoard">
+                        <ul class="uiListBoard">
+                           <li class="move">
+                              <div class="toggleQuickEdit">
+                                 <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                 <div class="quickEdit">
+                                    <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+                                    <button class="btn btn-primary">Save</button>
+                                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                                 </div>
+                                 <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                              </div>
                            </li>
                            <li>
-                              <a href="#">In non risus quis</a>
+                              <div class="toggleQuickEdit edit">
+                                 <span class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+                                 <div class="quickEdit">
+                                    <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+                                    <button class="btn btn-primary">Save</button>
+                                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                                 </div>
+                                 <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                              </div>
                            </li>
                            <li>
-                              <a href="#">Libero convallis </a>
+                              <div class="toggleQuickEdit">
+                                 <span class="text">Ut enim ad minim veniam Ut enim ad minim veniam</span>
+                                 <div class="quickEdit">
+                                    <textarea rows="1" id="" name="">Ut enim ad minim veniam</textarea>
+                                    <button class="btn btn-primary">Save</button>
+                                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                                 </div>
+                                 <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                              </div>
                            </li>
+                           <li class="add"><a href="#">Add new task</a></li>
                         </ul>
                      </div>
-                  </div>
-                  <div class="uiContenColBoard">
-                     <ul class="uiListBoard">
-                        <li class="move">
-                           <div class="toggleQuickEdit">
-                              <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit edit">
-                              <span class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Ut enim ad minim veniam Ut enim ad minim veniam</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Ut enim ad minim veniam</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li class="add"><a href="#">Add new task</a></li>
-                     </ul>
-                  </div>
-               </li><!-- .uiColBoard -->
+                  </li><!-- .uiColBoard -->
 
-               <li class="uiColBoard">
-                  <div class="uiHeadColBoard toggleQuickEdit edit">
-                     <h3 class="title">
-                        <span class="text">Doing</span>
-                        <div class="quickEdit">
-                           <textarea name="" id="" rows="1">Doing</textarea>
-                           <button class="btn btn-primary">Save</button>
-                           <div class="actionIcon"><i class="uiIconRemove uiIconWhite"></i></div>
+                  <li class="uiColBoard">
+                     <div class="uiHeadColBoard toggleQuickEdit edit">
+                        <h3 class="title">
+                           <span class="text">Doing</span>
+                           <div class="quickEdit">
+                              <textarea name="" id="" rows="1">Doing</textarea>
+                              <button class="btn btn-primary">Save</button>
+                              <div class="actionIcon"><i class="uiIconRemove uiIconWhite"></i></div>
+                           </div>
+                        </h3>
+                        <div class="btn-group pull-right">
+                           <button class="actionIcon dropdown-toggle btn-mini" data-toggle="dropdown"><i class="uiIconArrowDown uiIconWhite"></i></button>
+                           <ul class="dropdown-menu">
+                              <li><a href="#">Lorem ipsum dolor</a></li>
+                              <li><a href="#">In non risus quis</a></li>
+                              <li><a href="#">Libero convallis </a></li>
+                           </ul>
                         </div>
-                     </h3>
-                     <div class="btn-group pull-right">
-                        <button class="actionIcon dropdown-toggle btn-mini" data-toggle="dropdown"><i class="uiIconArrowDown uiIconWhite"></i></button>
-                        <ul class="dropdown-menu">
-                           <li><a href="#">Lorem ipsum dolor</a></li>
-                           <li><a href="#">In non risus quis</a></li>
-                           <li><a href="#">Libero convallis </a></li>
+                     </div>
+                     <div class="uiContenColBoard">
+                        <ul class="uiListBoard">
+                           <li>
+                              <div class="toggleQuickEdit">
+                                 <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                 <div class="quickEdit">
+                                    <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+                                    <button class="btn btn-primary">Save</button>
+                                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                                 </div>
+                                 <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="toggleQuickEdit">
+                                 <span class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+                                 <div class="quickEdit">
+                                    <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+                                    <button class="btn btn-primary">Save</button>
+                                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                                 </div>
+                                 <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="toggleQuickEdit">
+                                 <span class="text">Ut enim ad minim veniam</span>
+                                 <div class="quickEdit">
+                                    <textarea rows="1" id="" name="">Ut enim ad minim veniam</textarea>
+                                    <button class="btn btn-primary">Save</button>
+                                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                                 </div>
+                                 <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                              </div>
+                           </li>
+                           <li class="add"><a href="#">Add new task</a></li>
                         </ul>
                      </div>
-                  </div>
-                  <div class="uiContenColBoard">
-                     <ul class="uiListBoard">
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Ut enim ad minim veniam</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Ut enim ad minim veniam</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li class="add"><a href="#">Add new task</a></li>
-                     </ul>
-                  </div>
-               </li><!-- .uiColBoard -->
+                  </li><!-- .uiColBoard -->
 
-               <li class="uiColBoard">
-                  <div class="uiHeadColBoard">
-                     <h3 class="title toggleQuickEdit">
-                        <span class="text">Done</span>
-                        <div class="quickEdit">
-                           <textarea name="" id="" rows="1">Done</textarea>
-                           <button class="btn btn-primary">Save</button>
-                           <div class="actionIcon"><i class="uiIconRemove uiIconWhite"></i></div>
+                  <li class="uiColBoard">
+                     <div class="uiHeadColBoard">
+                        <h3 class="title toggleQuickEdit">
+                           <span class="text">Done</span>
+                           <div class="quickEdit">
+                              <textarea name="" id="" rows="1">Done</textarea>
+                              <button class="btn btn-primary">Save</button>
+                              <div class="actionIcon"><i class="uiIconRemove uiIconWhite"></i></div>
+                           </div>
+                        </h3>
+                        <div class="btn-group pull-right open">
+                           <button class="actionIcon dropdown-toggle btn-mini" data-toggle="dropdown"><i class="uiIconArrowDown uiIconWhite"></i></button>
+                           <ul class="dropdown-menu">
+                              <li><a href="#">Lorem ipsum dolor</a></li>
+                              <li><a href="#">In non risus quis</a></li>
+                              <li><a href="#">Libero convallis </a></li>
+                           </ul>
                         </div>
-                     </h3>
-                     <div class="btn-group pull-right open">
-                        <button class="actionIcon dropdown-toggle btn-mini" data-toggle="dropdown"><i class="uiIconArrowDown uiIconWhite"></i></button>
-                        <ul class="dropdown-menu">
-                           <li><a href="#">Lorem ipsum dolor</a></li>
-                           <li><a href="#">In non risus quis</a></li>
-                           <li><a href="#">Libero convallis </a></li>
+                     </div>
+                     <div class="uiContenColBoard">
+                        <ul class="uiListBoard">
+                           <li>
+                              <div class="toggleQuickEdit">
+                                 <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                 <div class="quickEdit">
+                                    <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+                                    <button class="btn btn-primary">Save</button>
+                                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                                 </div>
+                                 <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="toggleQuickEdit">
+                                 <span class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+                                 <div class="quickEdit">
+                                    <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+                                    <button class="btn btn-primary">Save</button>
+                                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                                 </div>
+                                 <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                              </div>
+                           </li>
+                           <li>
+                              <div class="toggleQuickEdit">
+                                 <span class="text">Ut enim ad minim veniam</span>
+                                 <div class="quickEdit">
+                                    <textarea rows="1" id="" name="">Ut enim ad minim veniam</textarea>
+                                    <button class="btn btn-primary">Save</button>
+                                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                                 </div>
+                                 <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                              </div>
+                           </li>
+                           <li class="add"><a href="#">Add new task</a></li>
                         </ul>
                      </div>
-                  </div>
-                  <div class="uiContenColBoard">
-                     <ul class="uiListBoard">
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="toggleQuickEdit">
-                              <span class="text">Ut enim ad minim veniam</span>
-                              <div class="quickEdit">
-                                 <textarea rows="1" id="" name="">Ut enim ad minim veniam</textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li class="add"><a href="#">Add new task</a></li>
-                     </ul>
-                  </div>
-               </li><!-- .uiColBoard -->
+                  </li><!-- .uiColBoard -->
 
-               <li class="uiColBoard">
-                  <div class="uiHeadColBoard">
-                     <h3 class="title toggleQuickEdit">
-                        <span class="text">Closed</span>
-                        <div class="quickEdit">
-                           <textarea name="" id="" rows="1">Closed</textarea>
-                           <button class="btn btn-primary">Save</button>
-                           <div class="actionIcon"><i class="uiIconRemove uiIconWhite"></i></div>
+                  <li class="uiColBoard">
+                     <div class="uiHeadColBoard">
+                        <h3 class="title toggleQuickEdit">
+                           <span class="text">Closed</span>
+                           <div class="quickEdit">
+                              <textarea name="" id="" rows="1">Closed</textarea>
+                              <button class="btn btn-primary">Save</button>
+                              <div class="actionIcon"><i class="uiIconRemove uiIconWhite"></i></div>
+                           </div>
+                        </h3>
+                        <div class="btn-group pull-right">
+                           <button class="actionIcon dropdown-toggle btn-mini" data-toggle="dropdown"><i class="uiIconArrowDown uiIconWhite"></i></button>
+                           <ul class="dropdown-menu">
+                              <li><a href="#">Lorem ipsum dolor</a></li>
+                              <li><a href="#">In non risus quis</a></li>
+                              <li><a href="#">Libero convallis </a></li>
+                           </ul>
                         </div>
-                     </h3>
-                     <div class="btn-group pull-right">
-                        <button class="actionIcon dropdown-toggle btn-mini" data-toggle="dropdown"><i class="uiIconArrowDown uiIconWhite"></i></button>
-                        <ul class="dropdown-menu">
-                           <li><a href="#">Lorem ipsum dolor</a></li>
-                           <li><a href="#">In non risus quis</a></li>
-                           <li><a href="#">Libero convallis </a></li>
+                     </div>
+                     <div class="uiContenColBoard">
+                        <ul class="uiListBoard">
+                           <li>
+                              <div class="toggleQuickEdit edit">
+                                 <span class="text"></span>
+                                 <div class="quickEdit">
+                                    <textarea name="" id="" rows="1"></textarea>
+                                    <button class="btn btn-primary">Save</button>
+                                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                                 </div>
+                                 <a href="#" class="toggle-edit"><i class="uiIconEdit uiIconLightGray"></i></a>
+                              </div>
+                           </li>
+                           <li class="add editing"><a href="#">Add new task</a></li>
                         </ul>
                      </div>
-                  </div>
-                  <div class="uiContenColBoard">
-                     <ul class="uiListBoard">
-                        <li>
-                           <div class="toggleQuickEdit edit">
-                              <span class="text"></span>
-                              <div class="quickEdit">
-                                 <textarea name="" id="" rows="1"></textarea>
-                                 <button class="btn btn-primary">Save</button>
-                                 <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
-                              </div>
-                              <a href="#" class="toggle-edit"><i class="uiIconEdit uiIconLightGray"></i></a>
-                           </div>
-                        </li>
-                        <li class="add editing"><a href="#">Add new task</a></li>
-                     </ul>
-                  </div>
-               </li><!-- .uiColBoard -->
-            </ul>
+                  </li><!-- .uiColBoard -->
+               </ul>
+            </div>
          </div><!-- .uiWrapBoard -->
 
          <div class="uiSidebarBoard">

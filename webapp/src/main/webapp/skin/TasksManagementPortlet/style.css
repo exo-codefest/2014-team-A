@@ -249,6 +249,7 @@
   box-shadow: none;
 }
 .uiColBoard .uiHeadColBoard {
+  cursor: pointer;
   background-color: #5373a9;
   color: #fff;
   -webkit-border-top-right-radius: 5px;
@@ -349,11 +350,40 @@
 .quickEdit .actionIcon > i {
   margin-top: 1px;
 }
+.quickEditInline {
+  position: relative;
+}
+.quickEditInline .editToggle {
+  position: absolute;
+  right: 0;
+  top: -2px;
+  padding: 2px;
+  background-color: #fff;
+  display: none;
+}
+.quickEditInline .text {
+  cursor: pointer;
+}
+.quickEditInline.edit .editToggle {
+  display: none;
+}
+.quickEditInline.edit .quickEditBox {
+  display: block;
+}
+.quickEditInline.edit .text {
+  display: none;
+}
 .quickEditInline .quickEditBox {
-  display: inline-block;
+  display: none;
 }
 .quickEditInline .quickEditBox .btn {
-  float: right;
+  margin-left: 5px;
+}
+.quickEditInline .quickEditBox .inputWrap input,
+.quickEditInline .quickEditBox .inputWrap select,
+.quickEditInline .quickEditBox .inputWrap textarea {
+  width: 100%;
+  margin-bottom: 5px;
 }
 .taskAddBoard {
   margin-bottom: 20px;
@@ -385,6 +415,7 @@
 }
 .uiListBoard > li .text-hide {
   display: none;
+  color: #999;
 }
 .uiListBoard > li.drop-here {
   background-color: #e2e2e2!important;
@@ -442,12 +473,6 @@
 .uiActionBoardBar {
   margin-bottom: 20px;
   *zoom: 1;
-  /*margin-top: 20px;
-	background: url("@{imgPatch}/bgCloudTitle.png") repeat 0 0 transparent;
-	.box-shadow(~"1px 1px 2px 0 rgba(0, 0, 0, 0.1) inset, 1px 1px 0 0 rgba(255, 255, 255, 0.6)");
-	.border-radius(3px);
-	padding: 10px;*/
-
 }
 .uiActionBoardBar:before,
 .uiActionBoardBar:after {
@@ -458,6 +483,17 @@
 .uiActionBoardBar:after {
   clear: both;
 }
+.uiActionBoardBar .breadcrumb {
+  float: left;
+  margin-top: 4px;
+}
+.uiActionBoardBar .breadcrumb a {
+  float: none;
+}
+.uiActionBoardBar .breadcrumb .uiIconMiniArrowLeft {
+  float: left;
+  margin-top: 3px;
+}
 .uiSidebarBoard {
   position: fixed;
   top: 41px;
@@ -467,6 +503,7 @@
   background: #ECECEC;
   padding: 15px;
   border-left: 1px solid #ccc;
+  z-index: 1000;
   -webkit-transition: all 100ms ease-in;
   -moz-transition: all 100ms ease-in;
   -o-transition: all 100ms ease-in;
@@ -591,4 +628,30 @@
 }
 .uiPopup.popDetailTask .popupContent h5 > span {
   font-weight: normal;
+}
+.title-part {
+  line-height: 26px;
+}
+.taskAttached {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #d1d1d1;
+  padding-bottom: 10px;
+}
+.taskAttached .addAttachment {
+  float: right;
+  margin-right: 6px;
+  margin-top: 2px;
+}
+.listAttached > li {
+  padding: 5px;
+}
+.listAttached > li > a {
+  color: #333333;
+  line-height: 26px;
+}
+.listAttached > li > a:hover {
+  color: #2f5e92;
+}
+.listAttached > li:hover {
+  background-color: #f9f9f9;
 }
