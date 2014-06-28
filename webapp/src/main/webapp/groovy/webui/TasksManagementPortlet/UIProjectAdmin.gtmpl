@@ -1,0 +1,62 @@
+<%
+	import org.exoplatform.social.core.identity.model.Identity;
+	import org.exoplatform.social.core.service.LinkProvider;
+
+	public String renderMember(List<Identity> members){
+		String html = "";
+		if (members.size() <= 0) return html;
+		for (Identity member : members){
+			String username = member.getProfile().getFullName();
+			String avatarUrl = member.getProfile().getAvatarUrl();
+			if (avatarUrl == null || avatarUrl.isEmpty()) {
+				avatarUrl = LinkProvider.PROFILE_DEFAULT_AVATAR_URL;
+	        }
+			
+			html += "<span class=\"memInBoard\">";
+			html += "<img src=\"" + avatarUrl + "\" alt=\"" + username + "\" title=\"" + username + "\"></span>";
+		}
+		return html;
+	}
+%>
+<div class="uiSidebarBoard open">
+    <div class="toggleShowSidebar">
+       <i class="uiIconArrowLeft uiIconLightGray show-icon"></i>
+       <i class="uiIconArrowRight uiIconLightGray close-icon"></i>
+    </div>
+    <div class="inner">
+       <div class="uiAddmemToBoard">
+          <h4 class="title">Member</h4>
+          <div class="uiAddtedMem">
+             <%=renderMember(uicomponent.getMembersOfProject());%>
+          </div>
+       </div>
+       <div class="searchMemBoard">
+          <a class="searchBtn"><i class="uiIconSearch uiIconLightGrey"></i></a>
+          <input type="text" class="inputSearchMem" placeholder="Search Member..." value="">
+          <ul class="listMem">
+             <li>
+                <a href="#">
+                 <img src="images/user.png" alt="user">
+                 <span class="name">Nguyen Truong Giang</span>
+                </a>
+                <span style="float: right; padding-top: 2px;"><input type="checkbox"></span>
+             </li>
+             <li>
+                <a href="#">
+                 <img src="images/user.png" alt="user">
+                 <span class="name">Nguyen Truong Giang</span>
+                </a>
+                <span style="float: right; padding-top: 2px;"><input type="checkbox"></span>
+             </li>
+             <li>
+                <a href="#">
+                 <img src="images/user.png" alt="user">
+                 <span class="name">Nguyen Truong Giang</span>
+                </a>
+                <span style="float: right; padding-top: 2px;"><input type="checkbox"></span>
+             </li>
+          </ul>
+          <button class="btn btn-primary buttonAddMem full">Add Member</button>
+       </div>
+    </div>
+ </div>

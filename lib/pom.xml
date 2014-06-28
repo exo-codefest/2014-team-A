@@ -291,5 +291,11 @@
       <artifactId>slf4j-simple</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.exoplatform.social</groupId>
+      <artifactId>social-component-core</artifactId>
+      <scope>provided</scope>
+      <type>jar</type>
+    </dependency>
   </dependencies>
 </project>

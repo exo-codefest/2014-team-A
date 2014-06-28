@@ -38,9 +38,10 @@ public class UITasksBoard extends UIContainer {
 	
 	private int projectId;
 	
-	public UITasksBoard(){
+	public UITasksBoard() throws Exception{
 	  this.prjService = Utils.getService(ProjectService.class);
 	  this.taskService = Utils.getService(TaskService.class);
+	  this.addChild(UIProjectAdmin.class, null, null);
 	}
 	
 	public void setProjectId(int id) {

@@ -1,20 +1,6 @@
-<!--html>
-  <head>
-    <title>Detail</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="assets/plf/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="assets/plf/Core.css" rel="stylesheet" media="screen">
-    <link href="assets/plf/chat.css" rel="stylesheet" media="screen">
-    <link href="assets/style.css" rel="stylesheet" media="screen">
-    <link href="assets/doc.css" rel="stylesheet" media="screen">
-      <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-      <script type="text/javascript" src="js/jquery-ui-1.11.0.min.js"></script>
-      <script type="text/javascript" src="js/TasksManager.js"></script>
-  </head>
-  <body-->
 <%
+  import org.exoplatform.codefest.TasksManagementPortlet.UIProjectAdmin;
+
   def backToProjectListAction = uicomponent.event("BackToProjectList");
   def addStageAction = uicomponent.event("AddStage");
   def projectId = uicomponent.getProjectId();
@@ -125,52 +111,6 @@
         </div>
      </div><!-- .uiWrapBoard -->
 
-     <div class="uiSidebarBoard">
-        <div class="toggleShowSidebar">
-           <i class="uiIconArrowLeft uiIconLightGray show-icon"></i>
-           <i class="uiIconArrowRight uiIconLightGray close-icon"></i>
-        </div>
-        <div class="inner">
-           <div class="uiAddmemToBoard">
-              <h4 class="title">Member</h4>
-              <div class="uiAddtedMem">
-                 <span class="memInBoard">
-                    <img src="images/user.png" alt="user">
-                 </span>
-                 <span class="memInBoard">
-                    <img src="images/user.png" alt="user">
-                 </span>
-                 <span class="memInBoard">
-                    <img src="images/user.png" alt="user">
-                 </span>
-              </div>
-           </div>
-           <div class="searchMemBoard">
-              <button class="btn btn-primary buttonAddMem full">Add Member</button>
-              <input type="text" class="inputSearchMem" placeholder="" value="Nguyen">
-              <ul class="listMem">
-                 <li>
-                    <a href="#">
-                     <img src="images/user.png" alt="user">
-                     <span class="name">Nguyen Truong Giang</span>
-                    </a>
-                 </li>
-                 <li>
-                    <a href="#">
-                     <img src="images/user.png" alt="user">
-                     <span class="name">Nguyen Truong Giang</span>
-                    </a>
-                 </li>
-                 <li>
-                    <a href="#">
-                     <img src="images/user.png" alt="user">
-                     <span class="name">Nguyen Truong Giang</span>
-                    </a>
-                 </li>
-              </ul>
-           </div>
-        </div>
-     </div>
-
+     <%uicomponent.renderChild(UIProjectAdmin);%>
 
 </div>

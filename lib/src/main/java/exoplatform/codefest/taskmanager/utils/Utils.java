@@ -37,6 +37,11 @@ import org.exoplatform.services.jcr.ext.app.SessionProviderService;
 import org.exoplatform.services.jcr.ext.common.SessionProvider;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
+import org.exoplatform.social.core.identity.model.Identity;
+import org.exoplatform.social.core.identity.provider.OrganizationIdentityProvider;
+import org.exoplatform.social.core.manager.IdentityManager;
+
+import exoplatform.codefest.taskmanager.entities.Project;
 
 /**
  * Created by The eXo Platform SAS
@@ -124,6 +129,24 @@ public class Utils {
     for (int i = 0; i < src.size(); i++)
       ret[i] = v.createValue(src.get(i));
     return ret;
+  }
+  
+  public static List<Identity> getMembersIdentity(List<String> members) {
+	List<Identity> memberUsers = new ArrayList<Identity>();
+  	try {
+  		if (members != null && members.size() > 0) {
+  			for (String member : members) {
+  				IdentityManager identityManager = (IdentityManager) ExoContainerContext.getCurrentContainer()
+                          									.getComponentInstanceOfType(IdentityManager.class);
+  				Identity identity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME,
+                          															member, true);
+  				if (identity != null) memberUsers.add(identity);
+  			}
+  		}
+  	} catch (Exception e){
+  		// LOG info
+  	}
+  	return memberUsers;
   }
 
 }
