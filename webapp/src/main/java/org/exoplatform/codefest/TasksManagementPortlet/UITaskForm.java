@@ -53,6 +53,7 @@ import exoplatform.codefest.taskmanager.utils.Utils;
 public class UITaskForm extends UIForm implements UIPopupComponent {
   
   private Task task;
+  private int taskId;
   private static final String NAME = "name";
   private static final String DESCRIPTION = "description";
   private static final String DUEDATE = "duedate";
@@ -61,24 +62,12 @@ public class UITaskForm extends UIForm implements UIPopupComponent {
     task = new Task();
     addUIFormInput(new UIFormStringInput(NAME, NAME, null).addValidator(MandatoryValidator.class));
     addUIFormInput(new UIFormStringInput(DESCRIPTION, DESCRIPTION, null).addValidator(MandatoryValidator.class));
-    addUIFormInput(new UIFormStringInput(DESCRIPTION, DESCRIPTION, null).addValidator(MandatoryValidator.class));
     addUIFormInput(new UIFormDateTimeInput(DUEDATE, DUEDATE, null).addValidator(MandatoryValidator.class));    
   }
   
   public void setTaskId(Integer taskId) throws TaskManagerException{
-    if (taskId != null)
-      try{
-        this.task = Utils.getService(TaskService.class).getTaskById(taskId);
-      }catch(TaskManagerException e){
-        //FIXME: to remove
-        this.task = new Task();
-        this.task.setName("MOCK-"+taskId);
-        this.task.setDescription("Mock ti cho vui");
-        this.task.setDueDate(Calendar.getInstance());
-      }
-    else  
-      this.task = new Task();
-    
+    this.task = Utils.getService(TaskService.class).getTaskById(taskId);
+    this.taskId = taskId;
     updateFormInputValues();
   }
   
@@ -88,7 +77,14 @@ public class UITaskForm extends UIForm implements UIPopupComponent {
   
   @Override
   public void activate() {
-    // TODO Auto-generated method stub
+    try {
+      Task task = Utils.getService(TaskService.class).getTaskById(taskId);
+      this.getUIStringInput(NAME).setValue(task.getName());
+      this.getUIStringInput(DESCRIPTION).setValue(task.getDescription());
+      this.getUIFormDateTimeInput(DUEDATE).setCalendar(task.getDueDate());
+    } catch (TaskManagerException e) {
+      // TODO : LOG 
+    }
   }
 
   @Override

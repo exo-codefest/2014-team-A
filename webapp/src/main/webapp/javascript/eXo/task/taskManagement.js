@@ -15,7 +15,6 @@
 		eXo.task.TaskManagement.initDnD();
 		eXo.task.TaskManagement.initAddTask();
 		eXo.task.TaskManagement.initAdminBar();
-		eXo.task.TaskManagement.initQuickEdit();
 	}
 	
 	TaskManagement.prototype.initAdminBar = function() {

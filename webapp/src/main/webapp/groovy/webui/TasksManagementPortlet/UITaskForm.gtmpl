@@ -1,17 +1,22 @@
 <%
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import exoplatform.codefest.taskmanager.utils.Utils;
-import org.exoplatform.social.core.identity.model.Identity;
-
-def task = uicomponent.getTask();
-SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+  import java.text.DateFormat;
+  import java.text.SimpleDateFormat;
+  import exoplatform.codefest.taskmanager.utils.Utils;
+  import org.exoplatform.social.core.identity.model.Identity;
+  
+  def rcontext = _ctx.getRequestContext() ;
+  def jsManager = rcontext.getJavascriptManager();
+  jsManager.require("SHARED/taskManager", "taskManager").
+  addScripts("taskManager.initQuickEdit();");
+  
+  def task = uicomponent.getTask();
+  SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 %>
 <div class="uiForm $uicomponent.id">
 <%uiform.begin()%>
   <div class="popupHeader clearfix">
      <div class="toggleQuickEdit">
-        <span class="PopupTitle popupTitle text"> <%=task.getName()%> in <b id="stage"><%=task.getStage()%></b> </span>
+        <span class="PopupTitle popupTitle text"> <%=task.getName()%></b> </span>
         <div class="quickEdit">
            <% uiform.renderField(uiform.NAME);%>           
            <div class="text-right">
@@ -21,7 +26,6 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         </div>
      </div>   
   </div>
-  <div class="PopupContent popupContent">
      <div class="row-fluid">
         <div class="span8">
            <div class="mgB10">
@@ -78,7 +82,7 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                  <div class="mgB10">
                     <div class="quickEditInline">
                        <div class="media">
-                           <b class="pull-left">Due date:</b> <%=dateFormat.format(task.getDueDate().getTime())%>
+                           <b class="pull-left">Due date:</b> <!--%=dateFormat.format(task.getDueDate().getTime())%-->
                            <div class="media-body quickEditBox">
                                <div class="inputWrap">
                                    <% uiform.renderField(uiform.DUEDATE);%>
@@ -188,6 +192,5 @@ SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
   </div>
    
 
-</div>
 <%uiform.end()%>
 </div>
