@@ -94,6 +94,10 @@ public class ProjectServiceImpl implements ProjectService {
       mems[0] = pNode.getSession().getValueFactory().createValue(creator);
       pNode.setProperty(NodeTypes.PROJECT_MEMBERS, mems);
       
+      Value[] stages = new Value[1];
+      stages[0] = pNode.getSession().getValueFactory().createValue(Project.DEFAULT_STAGE);
+      pNode.setProperty(NodeTypes.PROJECT_STAGELIST, stages);
+      
       pRoot.save();
       return convertToEntity(pNode);
     } catch (Exception e) {

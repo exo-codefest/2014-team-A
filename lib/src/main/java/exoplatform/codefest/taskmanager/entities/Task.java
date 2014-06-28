@@ -26,7 +26,7 @@ import java.util.List;
  * Jun 26, 2014  
  */
 public class Task {
-
+  
   private int id;
   private int projectId;
   private String name;

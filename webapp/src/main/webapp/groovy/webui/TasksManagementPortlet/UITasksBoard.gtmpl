@@ -16,6 +16,7 @@
   <body-->
 <%
   def backToProjectListAction = uicomponent.event("BackToProjectList");
+  def addStageAction = uicomponent.event("AddStage");
 %>
 <div class="exTaskManagement" id="$uicomponent.id">
   <div class="uiGrayLightBox uiActionBoardBar">
@@ -26,6 +27,10 @@
            </div>
         </div>
         <div class="pull-right mgL10">
+           <div class="btn-group">
+              <button onclick="$addStageAction" class="btn"><i class="uiIconPlus uiIconLightGray"></i> Add New Stage</button>
+           </div>
+
            <div class="btn-group">
               <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="uiIconSetting uiIconLightGray"></i></button>
               <ul class="dropdown-menu pull-right">

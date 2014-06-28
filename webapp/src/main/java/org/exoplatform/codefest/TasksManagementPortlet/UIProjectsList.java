@@ -49,9 +49,9 @@ public class UIProjectsList extends UIComponent {
 		public void execute(Event<UIProjectsList> event) throws Exception {
 			UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
 	    uiParent.getChild(UIProjectsList.class).setRendered(false);
-	    UITasksBoard config = uiParent.getChild(UITasksBoard.class);
-	    config.setProjectId(Integer.parseInt(event.getRequestContext().getRequestParameter(OBJECTID)));
-	    config.setRendered(true);
+	    UITasksBoard taskBoard = uiParent.getChild(UITasksBoard.class);
+	    taskBoard.setProjectId(Integer.parseInt(event.getRequestContext().getRequestParameter(OBJECTID)));
+	    taskBoard.setRendered(true);
 	    event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);
 		}
 	}

@@ -25,6 +25,8 @@ import java.util.List;
  * Jun 26, 2014  
  */
 public class Project {
+  
+  public static final String DEFAULT_STAGE = "Start";
 
   private int id;
   private String name;
