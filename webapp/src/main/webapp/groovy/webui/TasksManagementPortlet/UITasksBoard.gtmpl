@@ -11,6 +11,8 @@
   jsManager.require("SHARED/taskManager", "taskManager").
   addScripts("taskManager.init(" + projectId + ");");
 
+  def editMockedTaskAction = uicomponent.event("UpdateTask","1");
+
 %>
 <div class="exTaskManagement" id="$uicomponent.id">
   <div class="uiGrayLightBox uiActionBoardBar">
@@ -18,6 +20,7 @@
            <div class="">
               <span class="uiIconMiniArrowLeft"></span>
               <a target="ContentViewFrame" href="$backToProjectListAction">Back to Project list</a>
+              <span><a target="ContentViewFrame" onclick="$editMockedTaskAction"  href="javascript:void(0);">Edit Mocked-Task</a></span>
            </div>
         </div>
         <div class="pull-right mgL10">
@@ -80,8 +83,9 @@
 
                    <% for (task in uicomponent.getTasksByStage(stage)) {
                      def removeTaskLink = uicomponent.event("RemoveTask", task.getId() + "");
+                     def updateTaskLink = uicomponent.event("UpdateTask", task.getId() + "");
                      %>
-                    <li class="move taskId" taskId="<%=task.getId()%>">
+                    <li class="move taskId" taskId="<%=task.getId()%>" onclick="$updateTaskLink">
                        <div class="toggleQuickEdit">
                           <span class="text"><%=task.getName()%></span>
                           <div class="quickEdit">

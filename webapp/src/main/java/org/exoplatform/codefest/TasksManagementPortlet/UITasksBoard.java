@@ -20,12 +20,12 @@ import exoplatform.codefest.taskmanager.utils.Utils;
 @ComponentConfig(
     template = "app:/groovy/webui/TasksManagementPortlet/UITasksBoard.gtmpl",
     events = {
-      @EventConfig(listeners = UITasksBoard.CreateTaskActionListener.class),
       @EventConfig(listeners = UITasksBoard.UpdateTaskActionListener.class),
       @EventConfig(listeners = UITasksBoard.BackToProjectListActionListener.class),
       @EventConfig(listeners = UITasksBoard.AddStageActionListener.class),
       @EventConfig(listeners = UITasksBoard.RemoveTaskActionListener.class,
-                   confirm = "Are you sure want to remove this task?")
+                   confirm = "Are you sure want to remove this task?"),
+      @EventConfig(listeners = UITasksBoard.UpdateTaskActionListener.class)
     }
 )
 public class UITasksBoard extends UIContainer {
@@ -95,29 +95,17 @@ public class UITasksBoard extends UIContainer {
     }
   }
 
-	/*
-	 *  Listeners 
-	 */
-	public static class CreateTaskActionListener extends EventListener<UITasksBoard> {    
-    @Override
-    public void execute(Event<UITasksBoard> event) throws Exception {
-        UITasksBoard uicomponent = event.getSource();
-        //Need get name and stage
-        String stage = event.getRequestContext().getRequestParameter(OBJECTID);
-        TaskService service = Utils.getService(TaskService.class);            
-        service.addTask(uicomponent.getProject(), "Task"+stage, stage);
-        Task t = new Task();
-        t.setStage(stage);
-        t.setName("Task"+stage);
-        event.getRequestContext().addUIComponentToUpdateByAjax(uicomponent);  
-    }
-  }
-	
 	public static class UpdateTaskActionListener extends EventListener<UITasksBoard> {    
     @Override
     public void execute(Event<UITasksBoard> event) throws Exception {
-      UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
-      event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);  
+      UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);      
+      String taskId = event.getRequestContext().getRequestParameter(OBJECTID);
+      UIPopupContainer uiPopupContainer = uiParent.getChild(UIPopupContainer.class);
+      UITaskForm uiTaskForm = uiPopupContainer.createUIComponent(UITaskForm.class, null, null);          
+      //Create Task form with data of current task
+      uiTaskForm.setTaskId(Integer.parseInt(taskId));
+      uiPopupContainer.activate(uiTaskForm, 710, 430);
+      event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);     
     }
   }
 	
