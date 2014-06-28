@@ -37,7 +37,8 @@
 		
 		$("#addMemberToProject").click(function(){
 			var listMembers = $("#listMembers").find(".checkItem");
-			var userIds = new Array();
+			var userIds = "";
+			var html = "";
 			if (listMembers){
 				for (var i=0;i<listMembers.length;i++){
 					var item = listMembers[i];
@@ -45,16 +46,39 @@
 					if (value) {
 						var parent = $(item).parent().parent();
 						var userId = parent.attr("id");
-						userIds.push(userId);
+						userIds += userId + ";";
 						
 						var image = parent.find("img");
 						var avatarUrl = image.attr("src");
 						var username = image.attr("title");
-						html = "<span class=\"memInBoard\">";
+						html += "<span class=\"memInBoard\">";
 						html += "<img src=\"" + avatarUrl + "\" alt=\"" + username + "\" title=\"" + username + "\"></span>";
-						$("#addedMember").append(html);
 					}
 				}
+				
+				var projectId = $("#projectId").val();
+				var upDate = "projectId=" + projectId + "&listusers=" + userIds;
+				$.ajax({
+					url: "/rest/taskManager/addmembers",
+					dataType: "text",
+					data: upDate,
+					type: "POST"
+				})
+				.success(function(data) {
+					if (data.indexOf("true") != -1) {
+						$("#addedMember").append(html);
+						$("#memberKeywork").val("");
+						$("#listMembers").empty();
+					} else if (data.indexOf("exist") != -1) {
+						alert("Member was already added.");
+					} else {
+						alert("Cannot add this member.");
+					}
+				})
+				.error(function(jqXHR, textStatus, error) {
+					var err = textStatus + ', ' + error;
+					console.log("Transaction Failed: " + err);
+				});
 			}
 		});
 	}
@@ -83,7 +107,7 @@
 				$("#listMembers").empty();
 				$("#listMembers").append(html);
 			})
-			.error(function() {
+			.error(function(jqXHR, textStatus, error) {
 				var err = textStatus + ', ' + error;
 				console.log("Transaction Failed: " + err);
 			});

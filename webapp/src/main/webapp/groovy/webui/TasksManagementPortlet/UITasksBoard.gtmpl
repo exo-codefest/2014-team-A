@@ -19,11 +19,15 @@
         <div class="breadcrumb pull-left span6" id="newBreadcrumbs">
            <div class="">
               <span class="uiIconMiniArrowLeft"></span>
-              <a target="ContentViewFrame" href="$backToProjectListAction">Back to Project list</a>
+              <a style="cursor: pointer" onclick="$backToProjectListAction">Back to Project list</a>
               <span><a target="ContentViewFrame" onclick="$editMockedTaskAction"  href="javascript:void(0);">Edit Mocked-Task</a></span>
            </div>
         </div>
         <div class="pull-right mgL10">
+	        <div class="btn-group searchTasks">
+	        	<a class="searchBtn"><i class="uiIconSearch uiIconLightGrey"></i></a>
+		        <input type="text" title="Name" value="" placeholder="Search Task..." id="Search" name="Tasks">
+		     </div>
            <div class="btn-group">
               <button onclick="$addStageAction" class="btn"><i class="uiIconPlus uiIconLightGray"></i> Add New Stage</button>
            </div>
@@ -42,10 +46,6 @@
                  </li>
               </ul>
            </div>
-        </div>
-        <div class="searchTasks pull-right">
-           <label for="Search">Search:&nbsp;</label>
-           <input type="text" title="Name" value="Tasks" id="Search" name="Tasks">
         </div>
      </div>
 
@@ -116,7 +116,7 @@
         </ul>
         </div>
      </div><!-- .uiWrapBoard -->
-
+     <input type="hidden" id="projectId" name="projectId" value="$projectId" />
      <%uicomponent.renderChild(UIProjectAdmin);%>
 
 </div>

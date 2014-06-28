@@ -665,3 +665,11 @@
 .listAttached > li:hover {
   background-color: #f9f9f9;
 }
+.searchTasks {
+	position: relative;
+}
+.searchTasks .searchBtn {
+  position: absolute;
+  right: 5px;
+  top: -4px;
+}

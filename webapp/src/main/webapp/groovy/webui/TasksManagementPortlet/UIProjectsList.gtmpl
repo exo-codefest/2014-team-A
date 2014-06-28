@@ -20,7 +20,7 @@
         
         if (count%3 == 1) html += "<div class=\"row-fluid\">";
         html += "<div class=\"span4 uiBox\" onclick=\"" + actionLink + "\">";
-        html += "<div class=\"uiContentBox\">";
+        html += "<div style=\"cursor: pointer\" class=\"uiContentBox\">";
         html += "<a class=\"favorite\" href=\"#\"><span class=\"iconStarMini\"></span></a>";
         html += "<h4 class=\"title-board\">" + name + "</h4>";
         html += "<div class=\"desc\">" + description + "</div>";
@@ -34,11 +34,11 @@
 
   <div class="exTaskManagement">
     <div class="uiGrayLightBox uiActionBoardBar">
-      <div class="searchTasks pull-left">
-        <label for="Search">Search:&nbsp;</label>
-        <input type="text" title="Name" value="Tasks" id="Search" name="Tasks">
-      </div>
             <div class="pull-right">
+             <div class="btn-group searchTasks">
+	        	<a class="searchBtn"><i class="uiIconSearch uiIconLightGrey"></i></a>
+		        <input type="text" title="Name" value="" placeholder="Search Project..." id="Search" name="Tasks">
+		     </div>
                <div class="btn-group">
                   <button onclick="$addProjectLink" class="btn"><i class="uiIconPlus uiIconLightGray"></i> Add New Board</button>
                </div>
@@ -78,44 +78,5 @@
     <div class="uiListTask">
       <%=renderTasksList(uicomponent.getProjects());%>
     </div>
-    <div class="page-header">
-        <h2>Space</h2>
-    </div>
-      <div class="uiListTask">
-      <div class="row-fluid">
-        <div class="span4 uiBox">
-          <div class="uiContentBox">
-            <a class="favorite" href="#">
-              <span class="iconStarMini"></span>
-            </a>
-            <h4 class="title-board">Title Board</h4>
-            <div class="desc">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </div>
-            </div>
-        </div>
-        <div class="span4 uiBox">
-          <div class="uiContentBox">
-            <a class="favorite" href="#">
-              <span class="iconStarMini"></span>
-            </a>
-            <h4 class="title-board">Title Board</h4>
-            <div class="desc">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </div>
-            </div>
-        </div>
-        <div class="span4 uiBox">
-          <div class="uiContentBox">
-            <a class="favorite" href="#">
-              <span class="iconStarMini"></span>
-            </a>
-            <h4 class="title-board">Title Board</h4>
-            <div class="desc">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </div>
-            </div>
-        </div>
-      </div>
-    </div>
+ 
   </div>

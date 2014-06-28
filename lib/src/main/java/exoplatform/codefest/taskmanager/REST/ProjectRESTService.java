@@ -17,12 +17,14 @@
 package exoplatform.codefest.taskmanager.REST;
 
 import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -76,7 +78,6 @@ public class ProjectRESTService implements ResourceContainer{
     }
   }
 
-  
   @POST
   @Path("/project/{name}")
   @Produces(MediaType.TEXT_HTML)
@@ -127,5 +128,42 @@ public class ProjectRESTService implements ResourceContainer{
   		// LOG info
   	}
   	return Response.ok(jArray.toString(), MediaType.APPLICATION_JSON).build();
+  }
+  
+  @POST
+  @Path("/addmembers")
+  @RolesAllowed("users")
+  public Response createProject(@FormParam("projectId") int projectId, @FormParam("listusers") String listusers) {
+	  try {
+	    Project project = projectService.getProjectById(projectId);
+	    List<String> members = project.getMembers();
+	    boolean isExist = false;
+	    if (listusers != null && listusers != "") {
+	    	String[] users = listusers.split(";");
+	    	for (String user: users){
+	    		if (user != null && user != "") {
+	    			if (!isMemberExist(members, user)) {
+	    				projectService.addMember(project, user);
+	    			} else {
+	    				isExist = true;
+	    			}
+	    		}
+	    	}
+	    	if (users.length == 1 && isExist) return Response.ok("exist").build();
+	    	else return Response.ok("true").build();
+	    }
+	  } catch (TaskManagerException e) {
+		  //
+	  }
+	  return Response.ok("false").build();
+  }
+  
+  private boolean isMemberExist(List<String> members, String id){
+	  if (members != null && members.size() > 0) {
+		  for (String memberId : members) {
+			  if (memberId.equals(id)) return true;
+		  }
+	  }
+	  return false;
   }
 }
