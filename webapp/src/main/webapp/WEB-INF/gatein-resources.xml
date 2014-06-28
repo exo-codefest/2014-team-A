@@ -26,20 +26,44 @@
     <portlet>
     <name>TasksManagementPortlet</name>
     <module>
-      <script>
-        <path>/javascript/taskManagement.js</path>
-      </script>
       <depends>
-        <module>base</module>
+        <module>taskManager</module>
       </depends>      
-      <depends>
-        <module>jquery</module>
-        <as>jq</as>
-      </depends>
-	    <depends>
-	      <module>webui-ext</module>
-	    </depends>
     </module>
   </portlet>
-
+  
+  <module>
+    <name>jqueryui</name>
+    <as>jqueryui</as>
+    <script>
+      <path>/javascript/eXo/task/jqueryui.js</path>
+    </script>
+    <depends>
+      <module>jquery</module>
+      <as>gj</as>
+    </depends>
+  </module>
+  
+  <module>
+    <name>taskManager</name>
+    <as>taskManager</as>
+    <script>
+      <path>/javascript/eXo/task/taskManagement.js</path>
+    </script>
+    <depends>
+      <module>base</module>
+    </depends>      
+    <depends>
+      <module>jquery</module>
+      <as>gj</as>
+    </depends>
+    <depends>
+      <module>jqueryui</module>
+      <as>gjui</as>
+    </depends>
+    <depends>
+        <module>webui-ext</module>
+    </depends>    
+  </module>
+  
 </gatein-resources>

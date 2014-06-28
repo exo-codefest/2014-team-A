@@ -17,6 +17,13 @@
 <%
   def backToProjectListAction = uicomponent.event("BackToProjectList");
   def addStageAction = uicomponent.event("AddStage");
+  
+  def rcontext = _ctx.getRequestContext() ;
+  def jsManager = rcontext.getJavascriptManager();
+  def test = "test";
+  jsManager.require("SHARED/taskManager", "taskManager").
+  addScripts("taskManager.alert('" + test + "');");
+
 %>
 <div class="exTaskManagement" id="$uicomponent.id">
   <div class="uiGrayLightBox uiActionBoardBar">
