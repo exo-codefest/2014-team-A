@@ -189,9 +189,15 @@
 	
 	TaskManagement.prototype.initQuickEdit = function(){
 		var taskForm = $(".UITaskForm");
-		taskForm.delegate(".toggleQuickEdit","click",function(){
+		$(".toggleQuickEdit", taskForm).click(function(){
 			$( this ).addClass("edit");			
 		});
+		$(".uiIconRemove", taskForm).each(function(index, elem){
+			$(elem.parentNode).click(function(event){
+	 			$( this ).parents(".toggleQuickEdit").removeClass("edit");
+  	   		    event.stopPropagation();
+			});	
+		})
 		taskForm.delegate("div.quickEdit > button","click",function(){			
 			var name = $("input#name").val();
 			var description = $("input#description").val();
@@ -212,9 +218,7 @@
 			       }
 		 	);
 		});	
-		taskForm.delegate("div.quickEdit > .uiIconRemove","click",function(){
-			$( this ).parents(".toggleQuickEdit").removeClass("edit");
-		});	
+		
 	}
 	
 	//---------------All setter methods---------------------//
