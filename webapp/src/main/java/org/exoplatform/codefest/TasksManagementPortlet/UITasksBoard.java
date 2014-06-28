@@ -1,12 +1,7 @@
 package org.exoplatform.codefest.TasksManagementPortlet; 
  
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.exoplatform.webui.application.WebuiApplication;
-import org.exoplatform.webui.application.WebuiRequestContext;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.core.UIContainer;
@@ -28,7 +23,9 @@ import exoplatform.codefest.taskmanager.utils.Utils;
       @EventConfig(listeners = UITasksBoard.CreateTaskActionListener.class),
       @EventConfig(listeners = UITasksBoard.UpdateTaskActionListener.class),
       @EventConfig(listeners = UITasksBoard.BackToProjectListActionListener.class),
-      @EventConfig(listeners = UITasksBoard.AddStageActionListener.class)
+      @EventConfig(listeners = UITasksBoard.AddStageActionListener.class),
+      @EventConfig(listeners = UITasksBoard.RemoveTaskActionListener.class,
+                   confirm = "Are you sure want to remove this task?")
     }
 )
 public class UITasksBoard extends UIContainer {
@@ -76,6 +73,28 @@ public class UITasksBoard extends UIContainer {
 	  }
 	}
 	
+  public static class BackToProjectListActionListener extends EventListener<UITasksBoard> {
+    @Override
+    public void execute(Event<UITasksBoard> event) throws Exception {
+      UITasksManagementPortlet uiPortlet = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
+      uiPortlet.getChild(UIProjectsList.class).setRendered(true);
+      uiPortlet.getChild(UITasksBoard.class).setRendered(false);
+      event.getRequestContext().addUIComponentToUpdateByAjax(uiPortlet);
+    }
+  }
+
+  public static class RemoveTaskActionListener extends EventListener<UITasksBoard> {
+    @Override
+    public void execute(Event<UITasksBoard> event) throws Exception {
+      UITasksBoard uiTask = event.getSource();
+      UITasksManagementPortlet uiPortlet = uiTask.getAncestorOfType(UITasksManagementPortlet.class);
+      int taskId = Integer.parseInt(event.getRequestContext().getRequestParameter(OBJECTID));
+      Task task = uiTask.taskService.getTaskById(taskId);
+      uiTask.taskService.removeTask(task);
+      event.getRequestContext().addUIComponentToUpdateByAjax(uiPortlet);
+    }
+  }
+
 	/*
 	 *  Listeners 
 	 */
@@ -102,13 +121,4 @@ public class UITasksBoard extends UIContainer {
     }
   }
 	
-	public static class BackToProjectListActionListener extends EventListener<UITasksBoard> {
-	  @Override
-	  public void execute(Event<UITasksBoard> event) throws Exception {
-	    UITasksManagementPortlet uiPortlet = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
-	    uiPortlet.getChild(UIProjectsList.class).setRendered(true);
-	    uiPortlet.getChild(UITasksBoard.class).setRendered(false);
-	    event.getRequestContext().addUIComponentToUpdateByAjax(uiPortlet);
-	  }
-	}
 }

@@ -78,7 +78,9 @@
               <div class="uiContenColBoard">
                  <ul class="uiListBoard">
 
-                   <% for (task in uicomponent.getTasksByStage(stage)) {%>
+                   <% for (task in uicomponent.getTasksByStage(stage)) {
+                     def removeTaskLink = uicomponent.event("RemoveTask", task.getId() + "");
+                     %>
                     <li class="move taskId" taskId="<%=task.getId()%>">
                        <div class="toggleQuickEdit">
                           <span class="text"><%=task.getName()%></span>
@@ -87,7 +89,7 @@
                              <button class="btn btn-primary">Save</button>
                              <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
                           </div>
-                          <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                          <a class="toggle-edit" href="$removeTaskLink"><i class="uiIconRemove uiIconLightGray"></i></a>
                        </div>
                     </li>
                     <% } %>
