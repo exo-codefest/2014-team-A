@@ -274,6 +274,7 @@ public class ProjectServiceImpl implements ProjectService {
       TaskService taskService = Utils.getService(TaskService.class);
       List<Task> ret = new ArrayList<Task>();
       Node pNode = getProjectNodeById(project.getId());
+      if (!pNode.hasNode(NodeTypes.PROJECT_TASKS)) return ret;
       for (NodeIterator iter = pNode.getNode(NodeTypes.PROJECT_TASKS).getNodes(); iter.hasNext();) {
         ret.add(taskService.getTaskByNode(iter.nextNode()));
       }
