@@ -109,6 +109,7 @@ public class Task {
   public void clone(Task t){
     this.name = t.getName();
     this.stage = t.getStage();
+    this.description = t.getDescription();
     this.dueDate = t.dueDate;    
   }
   

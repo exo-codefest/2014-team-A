@@ -1,0 +1,193 @@
+<%
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import exoplatform.codefest.taskmanager.utils.Utils;
+import org.exoplatform.social.core.identity.model.Identity;
+
+def task = uicomponent.getTask();
+SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+%>
+<div class="uiForm $uicomponent.id">
+<%uiform.begin()%>
+  <div class="popupHeader clearfix">
+     <div class="toggleQuickEdit">
+        <span class="PopupTitle popupTitle text"> <%=task.getName()%> in <b id="stage"><%=task.getStage()%></b> </span>
+        <div class="quickEdit">
+           <% uiform.renderField(uiform.NAME);%>           
+           <div class="text-right">
+              <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+              <button class="btn btn-primary">Save</button>
+           </div>
+        </div>
+     </div>   
+  </div>
+  <div class="PopupContent popupContent">
+     <div class="row-fluid">
+        <div class="span8">
+           <div class="mgB10">
+              <h5 class="title-part mg0">Description:</h5>
+              <div class="desc toggleQuickEdit">
+                 <p class="text">
+                    <%=task.getDescription()%>
+                 </p>
+                 <div class="quickEdit">
+                    <% uiform.renderField(uiform.DESCRIPTION);%>
+                    <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                    <button class="btn btn-primary">Save</button>
+                 </div>
+              </div>
+           </div>
+  
+           <div class="taskAttached">
+               <h5 class="title-part ">Attachments <a href="#" class="actionIcon addAttachment"><i class="uiIconPlus uiIconLightGray"></i></a></h5>
+               <ul class="listAttached clearfix">                   
+                   <li>
+                       <a href="#">thebluebook-logs.txt</a>
+                       <div class="pull-right">
+                           <a href="#" class="actionIcon"><i class="uiIconDownload uiIconLightGray"></i></a>
+                           <a href="#" class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></a>
+                       </div>
+                   </li>
+               </ul>
+           </div>
+  
+           <div class="row-fluid">
+              <div class="span6">
+                 <div class="mgB10">
+                    <div class="quickEditInline">
+                       <div class="media">
+                           <b class="pull-left">Type:</b> <span class="text"><%=task.getType()%></span>
+                           <div class="media-body quickEditBox ">
+                               <div class="inputWrap">
+                                   <select name="" id="" class="mgB10 full">
+                                       <option value="">Bug</option>
+                                       <option value="">Task</option>
+                                   </select>
+                                   <div class="text-right">
+                                       <button class="btn btn-mini">Canel</button>
+                                       <button class="btn btn-primary btn-mini">Save</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!-- <a href="#" class="editToggle"><i class="uiIconEdit uiIconLightGray"></i></a> -->
+                    </div>
+                 </div>
+              </div>
+              <div class="span6">
+                 <div class="mgB10">
+                    <div class="quickEditInline">
+                       <div class="media">
+                           <b class="pull-left">Due date:</b> <%=dateFormat.format(task.getDueDate().getTime())%>
+                           <div class="media-body quickEditBox">
+                               <div class="inputWrap">
+                                   <% uiform.renderField(uiform.DUEDATE);%>
+                               </div>
+                               <div class="text-right">
+                                   <button class="btn btn-mini">Canel</button>
+                                   <button class="btn btn-primary btn-mini">Save</button>
+                               </div>
+                           </div>
+                       </div>
+                       <!-- <a href="#" class="editToggle"><i class="uiIconEdit uiIconLightGray"></i></a> -->
+                    </div>
+                 </div>
+              </div>
+           </div>
+  
+           <div class="row-fluid">
+               <div class="span6">
+                 <div class="mgB10">
+                    <div class="quickEditInline">
+                       <div class="media">
+                           <b class="pull-left">Dependencies:</b> <span class="text"><%=task.getRequiredTasks()%></span>
+                           <div class="media-body quickEditBox ">
+                               <div class="inputWrap">
+                                   <select name="" id="" class="mgB10 full">
+                                       <option value="">UI-3200</option>
+                                       <option value="">UI-3201</option>
+                                   </select>
+                                   <div class="text-right">
+                                       <button class="btn btn-mini">Canel</button>
+                                       <button class="btn btn-primary btn-mini">Save</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!-- <a href="#" class="editToggle"><i class="uiIconEdit uiIconLightGray"></i></a> -->
+                    </div>
+                 </div>
+              </div>
+              <div class="span6">
+                 <div class="mgB10">
+                    <div class="quickEditInline">
+                       <div class="media">
+                           <b class="pull-left">Label:</b> <span class="text">HTML-CSS</span>
+                           <div class="media-body quickEditBox ">
+                               <div class="inputWrap">
+                                   <select name="" id="" class="mgB10 full">
+                                       <option value="">UI-3200</option>
+                                       <option value="">UI-3201</option>
+                                   </select>
+                                   <div class="text-right">
+                                       <button class="btn btn-mini">Canel</button>
+                                       <button class="btn btn-primary btn-mini">Save</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!-- <a href="#" class="editToggle"><i class="uiIconEdit uiIconLightGray"></i></a> -->
+                    </div>
+                 </div>
+              </div>
+           </div>
+     </div>
+     <div class="span4">
+        <div class="uiAddmemToBoard">
+           <h4 class="title">Member</h4>
+           <div class="uiAddtedMem">
+           <% 
+             List<Identity> users = Utils.getMembersIdentity(task.getMembers());
+             for (String user : users){
+               String avatarUrl = user.getProfile().getAvatarUrl();
+               if (avatarUrl == null || avatarUrl.isEmpty()) {
+                 avatarUrl = LinkProvider.PROFILE_DEFAULT_AVATAR_URL;
+               }         
+           %>
+              <span class="memInBoard">
+                 <img alt="user" src="$avatarUrl">
+              </span>              
+           <%}%>   
+           </div>
+        </div>
+        <div class="searchMemBoard">
+        <button class="btn btn-primary buttonAddMem full">Add Member</button>
+        <input value="Nguyen" placeholder="" class="inputSearchMem" type="text">
+        <ul class="listMem">
+           <li>
+              <a href="#">
+               <img alt="user" src="images/user.png">
+               <span class="name">Nguyen Truong Giang</span>
+              </a>
+           </li>
+           <li>
+              <a href="#">
+               <img alt="user" src="images/user.png">
+               <span class="name">Nguyen Truong Giang</span>
+              </a>
+           </li>
+           <li>
+              <a href="#">
+               <img alt="user" src="images/user.png">
+               <span class="name">Nguyen Truong Giang</span>
+              </a>
+           </li>
+        </ul>
+     </div>
+     </div>
+  </div>
+   
+
+</div>
+<%uiform.end()%>
+</div>
