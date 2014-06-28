@@ -19,6 +19,7 @@ package exoplatform.codefest.taskmanager.REST;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -47,20 +48,20 @@ public class TaskRESTService implements ResourceContainer{
   private TaskService taskService;
   private ProjectService projectService;
   
-  public TaskRESTService(TaskService taskService) {
+  public TaskRESTService(TaskService taskService, ProjectService projectService) {
     this.taskService = taskService;
+    this.projectService = projectService;
   }    
   
-  @POST
-  @Path("/{projectId}")
+  @GET
+  @Path("/addTask")
   @Produces(MediaType.TEXT_HTML)
   @RolesAllowed("users")
-  public Response createTask(@PathParam("projectId") int projId, @FormParam("stage") String stage, @FormParam("task") String title) {    
-    //Project proj = projectService.getProjectById(id);
-    Project proj = new Project();
-    proj.setId(projId);
+  public Response createTask(@QueryParam("projectId") int projId, 
+                             @QueryParam("taskName") String taskName, @QueryParam("stage") String stage) {    
     try {
-      Task t = taskService.addTask(proj, title, stage);
+      Project proj = projectService.getProjectById(projId);
+      Task t = taskService.addTask(proj, taskName, stage);
       return Response.ok(t.toString()).build();
     } catch (TaskExistException e) {
       return Response.serverError().build();
@@ -68,6 +69,12 @@ public class TaskRESTService implements ResourceContainer{
       return Response.serverError().build();
     }
   }
+  
+
+  
+  
+  
+  
   
   @POST
   @Path("/order")

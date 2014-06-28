@@ -16,6 +16,7 @@
  */
 package exoplatform.codefest.taskmanager.id;
 
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,10 +36,10 @@ public class IdGeneratorService {
 
   public int generateId(String name) {
     if (counter.get(name) == null) {
-      counter.put(name, 0);
+      counter.put(name, (int)(new GregorianCalendar().getTimeInMillis()));
     }
     int ret = counter.get(name);
-    counter.put(name, ret++);
+    counter.put(name, ++ret);
     return ret;
   }
   

@@ -47,6 +47,10 @@ public class UITasksBoard extends UIContainer {
 	  this.projectId = id;
 	}
 	
+  public int getProjectId() {
+    return projectId;
+  }
+	
 	public Project getProject() throws TaskManagerException {
 	  return prjService.getProjectById(projectId);
 	}

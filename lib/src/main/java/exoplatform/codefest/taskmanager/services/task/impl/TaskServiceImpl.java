@@ -290,27 +290,37 @@ public class TaskServiceImpl implements TaskService {
     try {
       Task task = new Task();
       //private int id;
-      task.setId((int)taskNode.getProperty(NodeTypes.TASK_ID).getLong());
+      if (taskNode.hasProperty(NodeTypes.TASK_ID))
+        task.setId((int)taskNode.getProperty(NodeTypes.TASK_ID).getLong());
       //private int projectId;
       task.setProjectId((int)taskNode.getParent().getParent().getProperty(NodeTypes.PROJECT_ID).getLong());
       //private String name;
-      task.setName(taskNode.getProperty(NodeTypes.TASK_NAME).getString());
+      if (taskNode.hasProperty(NodeTypes.TASK_NAME))
+        task.setName(taskNode.getProperty(NodeTypes.TASK_NAME).getString());
       //private String description;
-      task.setDescription(taskNode.getProperty(NodeTypes.TASK_DESCRIPTION).getString());
+      if (taskNode.hasProperty(NodeTypes.TASK_DESCRIPTION))
+        task.setDescription(taskNode.getProperty(NodeTypes.TASK_DESCRIPTION).getString());
       //private String type;
-      task.setType(taskNode.getProperty(NodeTypes.TASK_TYPE).getString());
+      if (taskNode.hasProperty(NodeTypes.TASK_TYPE))
+        task.setType(taskNode.getProperty(NodeTypes.TASK_TYPE).getString());
       //private List<String>labels;
-      task.setLabels(Utils.toStringList(taskNode.getProperty(NodeTypes.TASK_LABELS).getValues()));
+      if (taskNode.hasProperty(NodeTypes.TASK_LABELS))
+        task.setLabels(Utils.toStringList(taskNode.getProperty(NodeTypes.TASK_LABELS).getValues()));
       //private List<String> members;
-      task.setMembers(Utils.toStringList(taskNode.getProperty(NodeTypes.TASK_MEMBERS).getValues()));
+      if (taskNode.hasProperty(NodeTypes.TASK_MEMBERS))
+        task.setMembers(Utils.toStringList(taskNode.getProperty(NodeTypes.TASK_MEMBERS).getValues()));
       //private Calendar dueDate;
-      task.setDueDate(taskNode.getProperty(NodeTypes.TASK_DUE_DATE).getDate());
+      if (taskNode.hasProperty(NodeTypes.TASK_DUE_DATE))
+        task.setDueDate(taskNode.getProperty(NodeTypes.TASK_DUE_DATE).getDate());
       //private List<Integer> requiredTasks;
+      if (taskNode.hasProperty(NodeTypes.TASK_REQUIRED_TASKS))
       task.setRequiredTasks(Utils.toIntList(taskNode.getProperty(NodeTypes.TASK_REQUIRED_TASKS).getValues()));
       //private String stage;
-      task.setStage(taskNode.getProperty(NodeTypes.TASK_STAGE).getString());
+      if (taskNode.hasProperty(NodeTypes.TASK_STAGE))
+        task.setStage(taskNode.getProperty(NodeTypes.TASK_STAGE).getString());
       //private int stageOrder;
-      task.setStageOrder((int)taskNode.getProperty(NodeTypes.TASK_STAGE_ORDER).getLong());
+      if (taskNode.hasProperty(NodeTypes.TASK_STAGE_ORDER))
+        task.setStageOrder((int)taskNode.getProperty(NodeTypes.TASK_STAGE_ORDER).getLong());
       return task;
     } catch (Exception e) {
       throw new TaskManagerException();

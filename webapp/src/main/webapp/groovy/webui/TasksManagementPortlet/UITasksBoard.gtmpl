@@ -17,12 +17,13 @@
 <%
   def backToProjectListAction = uicomponent.event("BackToProjectList");
   def addStageAction = uicomponent.event("AddStage");
+  def projectId = uicomponent.getProjectId();
   
   def rcontext = _ctx.getRequestContext() ;
   def jsManager = rcontext.getJavascriptManager();
   def test = "test";
   jsManager.require("SHARED/taskManager", "taskManager").
-  addScripts("taskManager.alert('" + test + "');");
+  addScripts("taskManager.init(" + projectId + ");");
 
 %>
 <div class="exTaskManagement" id="$uicomponent.id">
@@ -60,6 +61,7 @@
      </div>
 
   <div class="uiWrapBoard clearfix">
+      <div class="dragdropContainer">
         <ul class="uiListColBoard">
           <% for (stage in uicomponent.getStages()) {%>
            <li class="uiColBoard">
@@ -89,6 +91,7 @@
               </div>
               <div class="uiContenColBoard">
                  <ul class="uiListBoard">
+
                    <% for (task in uicomponent.getTasksByStage(stage)) {%>
                     <li class="move">
                        <div class="toggleQuickEdit">
@@ -102,12 +105,24 @@
                        </div>
                     </li>
                     <% } %>
-                    <li class="add"><a href="#">Add new task</a></li>
+                    <li class="add">
+                      <div class="toggleQuickEdit" style="display:none">
+                        <span class="text">Ut enim ad minim veniam</span>
+                        <div class="quickEdit" stage="$stage">
+                           <textarea rows="1" id="" name="">Ut enim ad minim veniam</textarea>
+                           <button class="btn btn-primary">Save</button>
+                           <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
+                        </div>
+                        <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
+                      </div>
+                      <a href="#">Add new task</a>
+                    </li>
                  </ul>
               </div>
            </li><!-- .uiColBoard -->
            <% } %>
         </ul>
+        </div>
      </div><!-- .uiWrapBoard -->
 
      <div class="uiSidebarBoard">
