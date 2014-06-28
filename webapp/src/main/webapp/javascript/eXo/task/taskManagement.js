@@ -36,6 +36,80 @@
 		eXo.task.TaskManagement.projectId = projectId;
 		eXo.task.TaskManagement.initDnD();
 		eXo.task.TaskManagement.initAddTask();
+		eXo.task.TaskManagement.initAdminBar();
+	}
+	
+	TaskManagement.prototype.initAdminBar = function() {
+		$(".toggleShowSidebar").click(function(){
+			var container = $(this).parent();
+			if (container.hasClass("open")) container.removeClass("open");
+			else container.addClass("open");
+		});
+		
+		$("#searchMember").click(function(){
+			eXo.task.TaskManagement.searchUser();
+		});
+		
+		$("#memberKeywork").keypress(function(event) {
+			var key = window.event ? event.keyCode : event.which;
+			if (key == 13) {
+				eXo.task.TaskManagement.searchUser();
+			} else return true;
+		});
+		
+		$("#addMemberToProject").click(function(){
+			var listMembers = $("#listMembers").find(".checkItem");
+			var userIds = new Array();
+			if (listMembers){
+				for (var i=0;i<listMembers.length;i++){
+					var item = listMembers[i];
+					var value = $(item).prop("checked");
+					if (value) {
+						var parent = $(item).parent().parent();
+						var userId = parent.attr("id");
+						userIds.push(userId);
+						
+						var image = parent.find("img");
+						var avatarUrl = image.attr("src");
+						var username = image.attr("title");
+						html = "<span class=\"memInBoard\">";
+						html += "<img src=\"" + avatarUrl + "\" alt=\"" + username + "\" title=\"" + username + "\"></span>";
+						$("#addedMember").append(html);
+					}
+				}
+			}
+		});
+	}
+	
+	TaskManagement.prototype.searchUser = function() {
+		var keyword = $("#memberKeywork").val();
+		if (keyword) {
+			$.ajax({
+				url: "/rest/taskManager/search/" + keyword,
+				dataType: "json",
+				type: "GET"
+			})
+			.success(function(data) {
+				var html = "";
+				if (data.length > 0) {
+					for (var i=0;i<data.length;i++){
+						var member = data[i];
+						html += '<li id="' + member.userId + '"><a href="#">';
+						html += '<img src="' + member.avatar + '" alt="' + member.fullname + '" title="' + member.fullname + '">';
+						html += '<span class="name">' + member.fullname + '</span></a>';
+						html += '<span style="float: right; padding-top: 2px;"><input class="checkItem" type="checkbox"></span></li>';
+					}
+				} else {
+					html += '<li>Result not found</li>';
+				}
+				$("#listMembers").empty();
+				$("#listMembers").append(html);
+			})
+			.error(function() {
+				var err = textStatus + ', ' + error;
+				console.log("Transaction Failed: " + err);
+			});
+		}
 	}
 	
 	TaskManagement.prototype.initDnD = function() {

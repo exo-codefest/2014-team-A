@@ -28,10 +28,19 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.exoplatform.commons.utils.ListAccess;
+import org.exoplatform.container.ExoContainerContext;
+import org.exoplatform.services.organization.OrganizationService;
+import org.exoplatform.services.organization.User;
 import org.exoplatform.services.rest.resource.ResourceContainer;
+import org.exoplatform.social.core.identity.model.Identity;
+import org.exoplatform.social.core.identity.provider.OrganizationIdentityProvider;
+import org.exoplatform.social.core.manager.IdentityManager;
+import org.exoplatform.social.core.service.LinkProvider;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import exoplatform.codefest.taskmanager.entities.Project;
-import exoplatform.codefest.taskmanager.entities.Task;
 import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
 import exoplatform.codefest.taskmanager.services.project.ProjectService;
 import exoplatform.codefest.taskmanager.services.task.TaskService;
@@ -79,4 +88,44 @@ public class ProjectRESTService implements ResourceContainer{
     return Response.ok(proj.toString()).build();
   }
   
+  @GET
+  @Path("/search/{keyword}")
+  @RolesAllowed("users")
+  public Response searchUser(@PathParam("keyword") String keyword) {
+	JSONArray jArray = new JSONArray();
+  	try {
+  		OrganizationService orgService = (OrganizationService) ExoContainerContext.getCurrentContainer()
+																.getComponentInstanceOfType(OrganizationService.class);
+  		IdentityManager identityManager = (IdentityManager) ExoContainerContext.getCurrentContainer()
+																.getComponentInstanceOfType(IdentityManager.class);
+
+  		ListAccess<User> usersListAccess = orgService.getUserHandler().findAllUsers();
+  		if (usersListAccess.getSize() > 0) {
+  			User[] users = usersListAccess.load(0, usersListAccess.getSize());
+  			for (User user: users){
+  				String username = user.getUserName();
+  				String firstname = user.getFirstName();
+  				String lastname = user.getLastName();
+  				String displayname = user.getDisplayName();
+  				
+  				if (username.contains(keyword) || firstname.contains(keyword) || lastname.contains(keyword) || displayname.contains(keyword)){
+  					Identity identity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME,
+  																									username, true);
+  					String avatarUrl = identity.getProfile().getAvatarUrl();
+  					if (avatarUrl == null || avatarUrl.isEmpty()) {
+  						avatarUrl = LinkProvider.PROFILE_DEFAULT_AVATAR_URL;
+  			        }
+  					JSONObject jObj = new JSONObject();
+  					jObj.put("userId", username);
+  					jObj.put("fullname", displayname);
+  					jObj.put("avatar", avatarUrl);
+  					jArray.put(jObj);
+  				}
+  			}
+  		}
+  	} catch (Exception e){
+  		// LOG info
+  	}
+  	return Response.ok(jArray.toString(), MediaType.APPLICATION_JSON).build();
+  }
 }
