@@ -9,10 +9,9 @@ import org.exoplatform.webui.application.WebuiApplication;
 import org.exoplatform.webui.application.WebuiRequestContext;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
-import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
+import org.exoplatform.webui.core.UIContainer;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
-import org.exoplatform.webui.form.UIForm;
 
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
@@ -23,14 +22,14 @@ import exoplatform.codefest.taskmanager.utils.Utils;
 
  
 @ComponentConfig(
-    lifecycle = UIFormLifecycle.class,
     template = "app:/groovy/webui/TasksManagementPortlet/UITasksBoard.gtmpl",
     events = {
       @EventConfig(listeners = UITasksBoard.CreateTaskActionListener.class),
-      @EventConfig(listeners = UITasksBoard.UpdateTaskActionListener.class)
+      @EventConfig(listeners = UITasksBoard.UpdateTaskActionListener.class),
+      @EventConfig(listeners = UITasksBoard.BackToProjectListActionListener.class)
     }
 )
-public class UITasksBoard extends UIForm {
+public class UITasksBoard extends UIContainer {
   
 	private Project project;
 	private ProjectService prjService;
@@ -135,4 +134,14 @@ public class UITasksBoard extends UIForm {
       event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);  
     }
   }
+	
+	public static class BackToProjectListActionListener extends EventListener<UITasksBoard> {
+	  @Override
+	  public void execute(Event<UITasksBoard> event) throws Exception {
+	    UITasksManagementPortlet uiPortlet = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
+	    uiPortlet.getChild(UIProjectsList.class).setRendered(true);
+	    uiPortlet.getChild(UITasksBoard.class).setRendered(false);
+	    event.getRequestContext().addUIComponentToUpdateByAjax(uiPortlet);
+	  }
+	}
 }
