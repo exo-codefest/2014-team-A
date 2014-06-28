@@ -50,7 +50,7 @@
       <div class="dragdropContainer">
         <ul class="uiListColBoard">
           <% for (stage in uicomponent.getStages()) {%>
-           <li class="uiColBoard">
+           <li class="uiColBoard" stage="$stage">
               <div class="uiHeadColBoard">
                  <h3 class="title toggleQuickEdit">
                     <span class="text">$stage</span>
@@ -79,11 +79,11 @@
                  <ul class="uiListBoard">
 
                    <% for (task in uicomponent.getTasksByStage(stage)) {%>
-                    <li class="move">
+                    <li class="move taskId" taskId="<%=task.getId()%>">
                        <div class="toggleQuickEdit">
                           <span class="text"><%=task.getName()%></span>
                           <div class="quickEdit">
-                             <textarea rows="1" id="" name="">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea>
+                             <textarea rows="1" id="" name=""><%=task.getName()%></textarea>
                              <button class="btn btn-primary">Save</button>
                              <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
                           </div>
@@ -101,7 +101,7 @@
                         </div>
                         <a class="toggle-edit" href="#"><i class="uiIconEdit uiIconLightGray"></i></a>
                       </div>
-                      <a href="#">Add new task</a>
+                      <a href="javascript:void(0)">Add new task</a>
                     </li>
                  </ul>
               </div>

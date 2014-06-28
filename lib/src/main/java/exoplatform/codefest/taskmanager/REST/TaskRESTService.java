@@ -70,9 +70,20 @@ public class TaskRESTService implements ResourceContainer{
     }
   }
   
-
-  
-  
+  @GET
+  @Path("/changeStage")
+  @Produces(MediaType.TEXT_HTML)
+  @RolesAllowed("users")
+  public Response updateTaskStage(@QueryParam("taskId") Integer id, @QueryParam("stage") String stage) {
+    try {
+      Task task = taskService.getTaskById(id);
+      task.setStage(stage);
+      taskService.storeTask(task);
+      return Response.ok().build();
+    } catch (TaskManagerException e) {
+      return Response.serverError().build();
+    }
+  }
   
   
   
@@ -96,19 +107,6 @@ public class TaskRESTService implements ResourceContainer{
     }
   }
   
-  @POST
-  @Path("/stage")
-  @Produces(MediaType.TEXT_HTML)
-  @RolesAllowed("users")
-  public Response updateTaskStage(@QueryParam("taskId") Integer id, @QueryParam("stage") String stage) {
-    try {
-      Task task = taskService.getTaskById(id);
-      task.setStage(stage);
-      return Response.ok().build();
-    } catch (TaskManagerException e) {
-      return Response.serverError().build();
-    }
-  }   
   
   @POST
   @Consumes("application/x-www-form-urlencoded")  

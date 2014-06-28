@@ -55,8 +55,24 @@
 		    $( ".uiListColBoard" ).disableSelection();
 		});
 
-		function stopDragRow(){
+		function stopDragRow(event, ui){
 			// TODO: Update state of task after drag drop
+			var taskName = $("span", ui.item)[0].innerHTML;
+			var taskId = ui.item.attr("taskId");
+			var stage = $($(ui.item).parents(".uiColBoard:first")).attr("stage");
+		    var uri = eXo.task.TaskManagement.restContext + "/taskManager/task/changeStage?" +
+  			  "taskId=" + taskId +
+  			  "&stage=" + stage;
+		    
+			$.ajax({url: uri,
+				   success: function(result, status, xhr) {
+				     location.reload();
+			       },
+			       error: function() {
+		    	     location.reload();
+				   }
+			       }
+		   	);
 		}
 
 		function stopDragCol(){
@@ -65,7 +81,10 @@
 	}
 	
 	TaskManagement.prototype.initAddTask = function() {
-	   $("li.add > a:first").click(function(){	   
+	   $("li.add").each(function() {
+		   $(this).removeClass("ui-sortable-handle");
+	   });
+	   $("li.add > a").click(function(){	   
 			var addLink = $(this);
 			addLink.hide();
 			editForm = $(this).siblings("div.toggleQuickEdit");
