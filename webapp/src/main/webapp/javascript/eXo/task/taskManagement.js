@@ -75,8 +75,29 @@
 		   	);
 		}
 
-		function stopDragCol(){
+		function stopDragCol(event, ui){
 			$(".uiListColBoard").sortable("disable");
+			var stages = "";
+			$(".uiColBoard").each(function(index, elem) {
+				console.log(index + " " + elem);
+				stages += $(elem).attr("stage") + "_";
+			});
+			stages = stages.substring(0, stages.length -1);
+			console.log(stages);
+			
+		    var uri = eXo.task.TaskManagement.restContext + "/taskManager/project/changeStages?" +
+			  "id=" + eXo.task.TaskManagement.projectId +
+			  "&stages=" + stages;
+				$.ajax({url: uri,
+					   success: function(result, status, xhr) {
+					     location.reload();
+				       },
+				       error: function() {
+			    	     location.reload();
+					   }
+			       }
+				);
+			
 		}
 	}
 	

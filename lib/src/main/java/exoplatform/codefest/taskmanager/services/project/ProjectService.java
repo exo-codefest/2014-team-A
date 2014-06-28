@@ -54,6 +54,8 @@ public interface ProjectService {
   
   public Project removeStage(Project project, String stage) throws TaskManagerException;
   
+  public Project changeStages(Project project, List<String> stages) throws TaskManagerException;
+  
   public Project getProject(String creator, String pName) throws TaskManagerException;
   
   public Project getProjectById(int id) throws TaskManagerException;

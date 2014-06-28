@@ -16,7 +16,10 @@
  */
 package exoplatform.codefest.taskmanager.REST;
 
+import java.util.Arrays;
+
 import javax.annotation.security.RolesAllowed;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -28,6 +31,8 @@ import javax.ws.rs.core.Response;
 import org.exoplatform.services.rest.resource.ResourceContainer;
 
 import exoplatform.codefest.taskmanager.entities.Project;
+import exoplatform.codefest.taskmanager.entities.Task;
+import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
 import exoplatform.codefest.taskmanager.services.project.ProjectService;
 import exoplatform.codefest.taskmanager.services.task.TaskService;
 
@@ -46,6 +51,23 @@ public class ProjectRESTService implements ResourceContainer{
     this.projectService = projectService;
   }
   
+  @GET
+  @Path("/project/changeStages")
+  @Produces(MediaType.TEXT_HTML)
+  @RolesAllowed("users")
+  public Response changeStages(@QueryParam("id") int id,
+                               @QueryParam("stages") String stages) {
+    //Project proj = projectService.getProjectById(id);
+    try {
+      Project prj = projectService.getProjectById(id);
+      projectService.changeStages(prj, Arrays.asList(stages.split("_")));
+      return Response.ok().build();
+    } catch (TaskManagerException e) {
+      return Response.serverError().build();
+    }
+  }
+
+  
   @POST
   @Path("/project/{name}")
   @Produces(MediaType.TEXT_HTML)
@@ -56,5 +78,5 @@ public class ProjectRESTService implements ResourceContainer{
     proj.setName(name);
     return Response.ok(proj.toString()).build();
   }
-    
+  
 }

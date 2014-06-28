@@ -240,6 +240,24 @@ public class ProjectServiceImpl implements ProjectService {
   }
 
   @Override
+  public Project changeStages(Project project, List<String> stages) throws TaskManagerException {
+    try {
+      Node pNode = getProjectNodeById(project.getId());
+      int length = stages.size();
+      Value[] values = new Value[length];
+      int count = 0;
+      for (String s : stages) {
+        values[count++] = pNode.getSession().getValueFactory().createValue(s);
+      }
+      pNode.setProperty(NodeTypes.PROJECT_STAGELIST, values);
+      pNode.save();
+      return getProjectById(project.getId());
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
+  }
+
+  @Override
   public Project getProject(String creator, String pName) throws TaskManagerException {
     Node pNode = getProjectNode(creator, pName);
     return convertToEntity(pNode);
