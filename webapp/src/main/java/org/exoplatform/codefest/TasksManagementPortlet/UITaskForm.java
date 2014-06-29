@@ -16,9 +16,11 @@
  */
 package org.exoplatform.codefest.TasksManagementPortlet;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.exoplatform.social.core.identity.model.Identity;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.core.UIComponent;
@@ -29,8 +31,10 @@ import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.Event.Phase;
 import org.exoplatform.webui.event.EventListener;
 
+import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
 import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
+import exoplatform.codefest.taskmanager.services.project.ProjectService;
 import exoplatform.codefest.taskmanager.services.task.TaskService;
 import exoplatform.codefest.taskmanager.utils.Utils;
 
@@ -86,6 +90,36 @@ public class UITaskForm extends UIComponent implements UIPopupComponent {
   
   public int getTaskId(){
     return this.taskId;       
+  }
+  
+  public List<Identity> getMembersOfProject(){
+	  try {
+		  Task task = Utils.getService(TaskService.class).getTaskById(taskId);
+		  List<String> memberOfTask = task.getMembers();
+		  int projectId = task.getProjectId();
+		  Project project = Utils.getService(ProjectService.class).getProjectById(projectId);
+		  List<String> memberOfProject = project.getMembers();
+		  List<String> result = new ArrayList<String>();
+		  if (memberOfProject != null && memberOfProject.size()>0){
+			  for (String memberProject : memberOfProject) {
+				  if (!isExist(memberOfTask, memberProject)) result.add(memberProject);
+			  }
+		  }
+		  List<Identity> users = Utils.getMembersIdentity(result);
+		  return users;
+	  } catch (TaskManagerException e){
+		  
+	  }
+	  return new ArrayList<Identity>();
+  }
+  
+  private boolean isExist(List<String> members, String memberId){
+	  if (members != null && members.size() > 0){
+		  for (String member : members){
+			  if (member.equals(memberId)) return true;
+		  }
+	  }
+	  return false;
   }
   
   @Override

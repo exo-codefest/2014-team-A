@@ -144,16 +144,13 @@
   background: url("../images/icon-star-24.png") no-repeat 0 0 transparent;
 }
 .iconStarMini {
+  background: url("../images/icon-star-16-gray.png") no-repeat 0 0 transparent;
   display: inline-block;
   width: 16px;
   height: 16px;
   vertical-align: text-top;
-  background: url("../images/icon-star-16.png") no-repeat 0 0 transparent;
 }
-.iconStarMini.gray {
-  background: url("../images/icon-star-16-gray.png") no-repeat 0 0 transparent;
-}
-.iconStarMini.gray:hover {
+.uiBox:hover .iconStarMini {
   background: url("../images/icon-star-16.png") no-repeat 0 0 transparent;
 }
 .TitleForm {
@@ -209,7 +206,6 @@
   border-radius: 24px;
   text-align: center;
   background-color: #fff;
-  display: none;
 }
 .uiListTask .uiBox .title-board {
   margin-top: 0;

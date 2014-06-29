@@ -3,6 +3,7 @@
   import java.text.SimpleDateFormat;
   import exoplatform.codefest.taskmanager.utils.Utils;
   import org.exoplatform.social.core.identity.model.Identity;
+  import org.exoplatform.social.core.service.LinkProvider;
   
   def rcontext = _ctx.getRequestContext() ;
   def jsManager = rcontext.getJavascriptManager();
@@ -10,8 +11,31 @@
   addScripts("taskManager.initEditTaskForm(" + uicomponent.getTaskId() + ");");
   
   def task = uicomponent.getTask();
+  def taskId = task.getId();
+  def taskType = (task.getType() == null) ? "None" : task.getType();
+  def taskDescription = (task.getDescription() == null) ? "No description." : task.getDescription();
   SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-  def duedate = task.getDueDate() != null ? dateFormat.format(task.getDueDate().getTime()) : "none";
+  def duedate = task.getDueDate() != null ? dateFormat.format(task.getDueDate().getTime()) : "None";
+  
+  public String renderProjectMembers(){
+	  List<Identity> members = uicomponent.getMembersOfProject();
+	  String html = "";
+	  if (members.size() <= 0) return html;
+	  for (Identity member : members){
+		String username = member.getRemoteId();
+		String fullname = member.getProfile().getFullName();
+		String avatarUrl = member.getProfile().getAvatarUrl();
+		if (avatarUrl == null || avatarUrl.isEmpty()) {
+			avatarUrl = LinkProvider.PROFILE_DEFAULT_AVATAR_URL;
+        }
+		
+		html += "<li id=\"" + username + "\"><a href=\"#\">";
+		html += "<img src=\"" + avatarUrl + "\" alt=\"" + fullname + "\" title=\"" + fullname + "\">";
+		html += "<span class=\"name\">" + fullname + "</span></a>";
+		html += "<span style=\"float: right; padding-top: 2px;\"><input class=\"checkItem\" type=\"checkbox\"></span></li>";
+	  }
+	  return html;
+  }
 %>
 <div class="uiForm $uicomponent.id" id = "$uicomponent.id">
   <div class="popupHeader clearfix">
@@ -32,10 +56,10 @@
               <h5 class="title-part mg0">Description:</h5>
               <div class="desc toggleQuickEdit" inputtype="description">
                  <p class="text">
-                    <%=task.getDescription()%>
+                    $taskDescription
                  </p>
                  <div class="quickEdit">
-                    <textarea name="" id="editTaskDescription" rows="1"><%=task.getDescription()%></textarea>
+                    <textarea name="" id="editTaskDescription" rows="1">$taskDescription</textarea>
                     <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
                     <button class="quickSave btn btn-primary">Save</button>
                  </div>
@@ -45,13 +69,13 @@
            <div class="taskAttached">
                <h5 class="title-part ">Attachments <a href="#" class="actionIcon addAttachment"><i class="uiIconPlus uiIconLightGray"></i></a></h5>
                <ul class="listAttached clearfix">                   
-                   <li>
+                   <!--li>
                        <a href="#">thebluebook-logs.txt</a>
                        <div class="pull-right">
                            <a href="#" class="actionIcon"><i class="uiIconDownload uiIconLightGray"></i></a>
                            <a href="#" class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></a>
                        </div>
-                   </li>
+                   </li-->
                </ul>
            </div>
   
@@ -60,7 +84,7 @@
                  <div class="mgB10">
                     <div class="quickEditInline" inputtype="type">
                        <div class="media">
-                           <b class="pull-left">Type:</b> <span class="text"><%=task.getType()%></span>
+                           <b class="pull-left">Type:</b> <span class="text">$taskType</span>
                            <div class="media-body quickEditBox ">
                                <div class="inputWrap">
                                    <select name="" id="editTaskType" class="mgB10 full">
@@ -120,7 +144,7 @@
                    </div>
                     <div class="quickEditInline" inputtype="required">
                        <div class="media">
-                           <span class="text">Add more<i class="uiIconPlus uiIconLightGray"></i></span><br/>
+                           <span class="text">Add more &nbsp;<i class="uiIconPlus uiIconLightGray"></i></span><br/>
                            <div class="media-body quickEditBox ">
                                <div class="inputWrap">
                                    <select name="" id="editTaskRequired" class="mgB10 full">
@@ -168,48 +192,32 @@
               </div>
            </div>
      </div>
-     <div class="span4">
+     <input type="hidden" id="taskId" name="taskId" value="$taskId" />
+     <div style="margin-top: 5px;" class="span4">
         <div class="uiAddmemToBoard">
-           <h4 class="title">Member</h4>
-           <div class="uiAddtedMem">
+           <h4 class="title">Who do me?</h4>
+           <div id="addedAssignee" class="uiAddtedMem">
            <% 
              List<Identity> users = Utils.getMembersIdentity(task.getMembers());
-             for (String user : users){
+             for (Identity user : users){
+               String username = user.getProfile().getFullName();
                String avatarUrl = user.getProfile().getAvatarUrl();
                if (avatarUrl == null || avatarUrl.isEmpty()) {
                  avatarUrl = LinkProvider.PROFILE_DEFAULT_AVATAR_URL;
                }         
            %>
               <span class="memInBoard">
-                 <img alt="user" src="$avatarUrl">
+                 <img alt="$username" title="$username" src="$avatarUrl">
               </span>              
            <%}%>   
            </div>
         </div>
         <div class="searchMemBoard">
-        <button class="btn btn-primary buttonAddMem full">Add Member</button>
-        <input value="Nguyen" placeholder="" class="inputSearchMem" type="text">
-        <ul class="listMem">
-           <li>
-              <a href="#">
-               <img alt="user" src="images/user.png">
-               <span class="name">Nguyen Truong Giang</span>
-              </a>
-           </li>
-           <li>
-              <a href="#">
-               <img alt="user" src="images/user.png">
-               <span class="name">Nguyen Truong Giang</span>
-              </a>
-           </li>
-           <li>
-              <a href="#">
-               <img alt="user" src="images/user.png">
-               <span class="name">Nguyen Truong Giang</span>
-              </a>
-           </li>
-        </ul>
-     </div>
+	        <ul id="listAssignees" class="listMem">
+	        	<%=renderProjectMembers()%>
+	        </ul>
+	        <button id="assign" class="btn btn-primary buttonAddMem full">Assign to</button>
+	      </div>
      </div>
   </div>
    

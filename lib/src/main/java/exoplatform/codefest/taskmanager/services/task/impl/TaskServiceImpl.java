@@ -156,7 +156,10 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   public Task addMember(Task task, String member) throws TaskManagerException {
-    task.getMembers().add(member);
+	List<String> members = task.getMembers();
+	if (members == null) members = new ArrayList<String>();
+    members.add(member);
+    task.setMembers(members);
     this.storeTask(task);
     return task;
   }

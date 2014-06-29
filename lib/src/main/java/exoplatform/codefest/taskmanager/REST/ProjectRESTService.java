@@ -111,6 +111,7 @@ public class ProjectRESTService implements ResourceContainer{
   				String firstname = user.getFirstName();
   				String lastname = user.getLastName();
   				String displayname = user.getDisplayName();
+  				if (displayname == null || displayname == "") displayname = firstname + " " + lastname;
   				
   				if (username.contains(keyword) || firstname.contains(keyword) || lastname.contains(keyword) || displayname.contains(keyword)){
   					Identity identity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME,
@@ -165,7 +166,7 @@ public class ProjectRESTService implements ResourceContainer{
   @POST
   @Path("/addmembers")
   @RolesAllowed("users")
-  public Response createProject(@FormParam("projectId") int projectId, @FormParam("listusers") String listusers) {
+  public Response addMembersToProject(@FormParam("projectId") int projectId, @FormParam("listusers") String listusers) {
 	  try {
 	    Project project = projectService.getProjectById(projectId);
 	    List<String> members = project.getMembers();

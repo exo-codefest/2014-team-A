@@ -15,7 +15,7 @@
 		eXo.task.TaskManagement.initDnD();
 		eXo.task.TaskManagement.initAddTask();
 		eXo.task.TaskManagement.initAdminBar();
-		eXo.task.TaskManagement.initSearchTask();
+		eXo.task.TaskManagement.initTask();
 	}
 	
 	TaskManagement.prototype.initProject = function() {
@@ -199,7 +199,7 @@
 	
 	TaskManagement.prototype.initDnD = function() {
 		$(".dragdropContainer").sortable({
-			items: ".uiListBoard li.move",
+			items: ".uiListBoard li",
 			stop: stopDragRow
 		});
 
@@ -260,7 +260,12 @@
 		}
 	}
 	
-	TaskManagement.prototype.initSearchTask = function(){
+	TaskManagement.prototype.initTask = function(){
+		
+		var DDContainer = $(".dragdropContainer");
+		var listStates = DDContainer.find("li.uiColBoard");
+		if (listStates.length > 3) DDContainer.css("width", "1020px");
+		
 		$("#searchTasks").click(function(){
 			eXo.task.TaskManagement.searchTask();
 		});
@@ -270,6 +275,56 @@
 			if (key == 13) {
 				eXo.task.TaskManagement.searchTask();
 			} else return true;
+		});
+		
+		$("#assign").click(function(){
+			var listMembers = $("#listAssignees").find(".checkItem");
+			var userIds = "";
+			var html = "";
+			if (listMembers){
+				for (var i=0;i<listMembers.length;i++){
+					var item = listMembers[i];
+					var value = $(item).prop("checked");
+					if (value) {
+						var parent = $(item).parent().parent();
+						var userId = parent.attr("id");
+						userIds += userId + ";";
+						
+						var image = parent.find("img");
+						var avatarUrl = image.attr("src");
+						var username = image.attr("title");
+						html += "<span class=\"memInBoard\">";
+						html += "<img src=\"" + avatarUrl + "\" alt=\"" + username + "\" title=\"" + username + "\"></span>";
+					}
+				}
+				
+				var taskId = $("#taskId").val();
+				var upDate = "taskId=" + taskId + "&listusers=" + userIds;
+				$.ajax({
+					url: "/rest/taskManager/task/addmembers",
+					dataType: "text",
+					data: upDate,
+					type: "POST"
+				})
+				.success(function(data) {
+					if (data.indexOf("true") != -1) {
+						$("#addedAssignee").append(html);
+						var users = userIds.split(";");
+						for (var i=0;i<users.length;i++){
+							var user = users[i];
+							if (user) $("#listAssignees").find("#"+user).remove();
+						}
+					} else if (data.indexOf("exist") != -1) {
+						alert("This member was already assigned.");
+					} else {
+						alert("Cannot add this member.");
+					}
+				})
+				.error(function(jqXHR, textStatus, error) {
+					var err = textStatus + ', ' + error;
+					console.log("Transaction Failed: " + err);
+				});
+			}
 		});
 	}
 	
@@ -283,6 +338,8 @@
 			editForm = $(this).siblings("div.toggleQuickEdit");
 			editForm.show();
 			editForm.addClass("edit")
+			var textarea = editForm.find("textarea");
+			textarea.focus();
 			$("div.quickEdit > div.actionIcon, div.quickEdit > button",editForm).click(function(){
 				addLink.show();
 				editForm.hide();

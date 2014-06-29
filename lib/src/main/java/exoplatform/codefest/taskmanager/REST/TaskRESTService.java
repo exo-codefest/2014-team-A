@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
@@ -37,12 +36,9 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
 import org.exoplatform.services.rest.resource.ResourceContainer;
-import org.exoplatform.services.security.ConversationState;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.sun.tools.javac.code.Attribute.Array;
 
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
@@ -225,6 +221,43 @@ public class TaskRESTService implements ResourceContainer{
   		//
   	}
 	  return Response.ok(searchResults.toString(), MediaType.APPLICATION_JSON).build();
+  }
+  
+  @POST
+  @Path("/addmembers")
+  @RolesAllowed("users")
+  public Response addMembersToTask(@FormParam("taskId") int taskId, @FormParam("listusers") String listusers) {
+	  try {
+	    Task task = taskService.getTaskById(taskId);
+	    List<String> members = task.getMembers();
+	    boolean isExist = false;
+	    if (listusers != null && listusers != "") {
+	    	String[] users = listusers.split(";");
+	    	for (String user: users){
+	    		if (user != null && user != "") {
+	    			if (!isMemberExist(members, user)) {
+	    				taskService.addMember(task, user);
+	    			} else {
+	    				isExist = true;
+	    			}
+	    		}
+	    	}
+	    	if (users.length == 1 && isExist) return Response.ok("exist").build();
+	    	else return Response.ok("true").build();
+	    }
+	  } catch (TaskManagerException e) {
+		  //
+	  }
+	  return Response.ok("false").build();
+  }
+  
+  private boolean isMemberExist(List<String> members, String id){
+	  if (members != null && members.size() > 0) {
+		  for (String memberId : members) {
+			  if (memberId.equals(id)) return true;
+		  }
+	  }
+	  return false;
   }
   
 }
