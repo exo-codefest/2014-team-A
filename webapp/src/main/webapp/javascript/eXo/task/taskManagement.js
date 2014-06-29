@@ -427,6 +427,10 @@
 			var type = $("#editTaskDuedate").val();
 			return url + type;
 		}
+		if ("startdate" == inputtype) {
+			var type = $("#editTaskStartdate").val();
+			return url + type;
+		}
 		if ("type" == inputtype) {
 			var type = $("#editTaskType").val();
 			return url + type;

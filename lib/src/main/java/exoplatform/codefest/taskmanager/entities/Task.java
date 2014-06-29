@@ -34,6 +34,7 @@ public class Task {
   private String type;
   private List<String>labels;
   private List<String> members;
+  private Calendar startDate;
   private Calendar dueDate;
   private List<Integer> requiredTasks;
   private String stage;
@@ -86,6 +87,12 @@ public class Task {
   }
   public void setDueDate(Calendar dueDate) {
     this.dueDate = dueDate;
+  }
+  public Calendar getStartDate() {
+    return startDate;
+  }
+  public void setStartDate(Calendar startDate) {
+    this.startDate = startDate;
   }
   public List<Integer> getRequiredTasks() {
     return requiredTasks;

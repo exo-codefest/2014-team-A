@@ -177,6 +177,13 @@ public class TaskServiceImpl implements TaskService {
     this.storeTask(task);
     return task;
   }
+  
+  @Override
+  public Task setStartDate(Task task, Calendar startDate) throws TaskManagerException {
+    task.setStartDate(startDate);
+    this.storeTask(task);
+    return task;
+  }
 
   @Override
   public Task addRequiredTask(Task task, int requiredTaskId) throws TaskManagerException {

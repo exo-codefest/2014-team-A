@@ -58,6 +58,8 @@ public interface TaskService {
   public Task removeMember(Task task, String member) throws TaskManagerException;
   
   public Task setDueDate(Task task, Calendar dueDate) throws TaskManagerException;
+  
+  public Task setStartDate(Task task, Calendar startDate) throws TaskManagerException;
 
   public Task addRequiredTask(Task task, int requiredTaskId) throws TaskManagerException;
   

@@ -132,6 +132,12 @@ public class TaskRESTService implements ResourceContainer{
         cal.setTime(sdf.parse(value));//        
         task.setDueDate(cal);
       }
+      else if ("startdate".equals(inputtype)) {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        cal.setTime(sdf.parse(value));//        
+        task.setStartDate(cal);
+      }
       else if ("type".equals(inputtype)) 
         task.setType(value);
       else if ("labels".equals(inputtype)) 
