@@ -25,11 +25,11 @@
         </div>
         <div class="pull-right mgL10">
 	        <div class="btn-group searchTasks">
-	        	<a class="searchBtn"><i class="uiIconSearch uiIconLightGrey"></i></a>
-		        <input type="text" title="Name" value="" placeholder="Search Task..." id="Search" name="Tasks">
+	        	<a id="searchTasks" class="searchBtn"><i class="uiIconSearch uiIconLightGrey"></i></a>
+		        <input type="text" value="" placeholder="Search Task..." id="taskKeyword" name="Tasks">
 		     </div>
            <div class="btn-group">
-              <button onclick="$addStageAction" class="btn"><i class="uiIconPlus uiIconLightGray"></i> Add New Stage</button>
+              <button onclick="$addStageAction" class="btn"><i class="uiIconPlus uiIconLightGray"></i> Add New State</button>
            </div>
 
            <div class="btn-group">
@@ -73,7 +73,7 @@
                           <a href="#">In non risus quis</a>
                        </li>
                        <li>
-                          <a href="#">Libero convallis </a>
+                          <a href="#">Import</a>
                        </li>
                     </ul>
                  </div>

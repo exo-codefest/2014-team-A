@@ -16,6 +16,8 @@
  */
 package exoplatform.codefest.taskmanager.REST;
 
+import java.util.List;
+
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -30,6 +32,10 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 
 import org.exoplatform.services.rest.resource.ResourceContainer;
+import org.exoplatform.services.security.ConversationState;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
@@ -116,6 +122,33 @@ public class TaskRESTService implements ResourceContainer{
     //Task task = taskService.getTaskById(t.getId());
     //task.clone(t);
     return Response.ok(formParams.toString()).build();
-  }   
+  }
+  
+  @GET
+  @Path("/searchtask/{projectId}/{keyword}")
+  @RolesAllowed("users")
+  public Response searchTasks(@PathParam("projectId") int projectId, @PathParam("keyword") String keyword) {
+  	JSONArray searchResults = new JSONArray();
+	try {
+		Project project = projectService.getProjectById(projectId);
+		List<Task> tasks = projectService.getTasks(project);
+	    if (tasks != null && tasks.size() > 0) {
+	    	for (Task task : tasks) {
+	    		String taskName = (task.getName() == null) ? "" : task.getName();
+	    		String taskDesc = (task.getDescription() == null) ? "" : task.getDescription();
+	    		if (taskName.contains(keyword) || taskDesc.contains(keyword)) {
+	    			JSONObject obj = new JSONObject();
+	    			obj.put("id", task.getId());
+	    			searchResults.put(obj);
+	    		}
+	    	}
+	    }
+	} catch (TaskManagerException e) {
+		//
+	} catch (JSONException e) {
+		//
+	}
+	return Response.ok(searchResults.toString(), MediaType.APPLICATION_JSON).build();
+  }
   
 }

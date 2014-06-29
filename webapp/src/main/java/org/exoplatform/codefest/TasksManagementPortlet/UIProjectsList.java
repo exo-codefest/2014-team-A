@@ -29,13 +29,21 @@ import exoplatform.codefest.taskmanager.utils.Utils;
 )
 public class UIProjectsList extends UIComponent {
 
+	private String DEFAULT_PROJECT_NAME = "First Project";
+	private String DEFAULT_PROJECT_DESCRIPTION = "Add tasks to this project";
 	
     public void processRender(WebuiApplication app, WebuiRequestContext context) throws Exception {
     	super.processRender(context);
     }
     
-    public List<Project> getProjects() {
+    public List<Project> getProjects() throws Exception{
       try {
+    	List<Project> projects = Utils.getService(ProjectService.class).getAllProjectByUser(
+                								ConversationState.getCurrent().getIdentity().getUserId());
+    	if (projects.size() == 0) {
+	      String user = ConversationState.getCurrent().getIdentity().getUserId();
+	      Utils.getService(ProjectService.class).addProject(DEFAULT_PROJECT_NAME, user, DEFAULT_PROJECT_DESCRIPTION);
+    	}
       	return Utils.getService(ProjectService.class).getAllProjectByUser(
                      ConversationState.getCurrent().getIdentity().getUserId());
       } catch (TaskManagerException e) {

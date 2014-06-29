@@ -16,6 +16,7 @@
  */
 package exoplatform.codefest.taskmanager.REST;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,12 +36,14 @@ import org.exoplatform.container.ExoContainerContext;
 import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.services.organization.User;
 import org.exoplatform.services.rest.resource.ResourceContainer;
+import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.social.core.identity.model.Identity;
 import org.exoplatform.social.core.identity.provider.OrganizationIdentityProvider;
 import org.exoplatform.social.core.manager.IdentityManager;
 import org.exoplatform.social.core.service.LinkProvider;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONException;
 
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
@@ -90,7 +93,7 @@ public class ProjectRESTService implements ResourceContainer{
   }
   
   @GET
-  @Path("/search/{keyword}")
+  @Path("/searchuser/{keyword}")
   @RolesAllowed("users")
   public Response searchUser(@PathParam("keyword") String keyword) {
 	JSONArray jArray = new JSONArray();
@@ -128,6 +131,35 @@ public class ProjectRESTService implements ResourceContainer{
   		// LOG info
   	}
   	return Response.ok(jArray.toString(), MediaType.APPLICATION_JSON).build();
+  }
+  
+  @GET
+  @Path("/searchproject/{keyword}")
+  @RolesAllowed("users")
+  public Response searchProject(@PathParam("keyword") String keyword) {
+  	String user = ConversationState.getCurrent().getIdentity().getUserId();
+  	JSONArray searchResults = new JSONArray();
+	try {
+	    List<Project> projects = projectService.getAllProjectByUser(user);
+	    if (projects != null && projects.size() > 0) {
+	    	for (Project project : projects) {
+	    		String projectName = (project.getName() == null) ? "" : project.getName();
+	    		String projectDesc = (project.getDescription() == null) ? "" : project.getDescription();
+	    		if (projectName.contains(keyword) || projectDesc.contains(keyword)) {
+	    			JSONObject obj = new JSONObject();
+	    			obj.put("id", project.getId());
+	    			obj.put("name", projectName);
+	    			obj.put("description", projectDesc);
+	    			searchResults.put(obj);
+	    		}
+	    	}
+	    }
+	} catch (TaskManagerException e) {
+		//
+	} catch (JSONException e) {
+		//
+	}
+	return Response.ok(searchResults.toString(), MediaType.APPLICATION_JSON).build();
   }
   
   @POST

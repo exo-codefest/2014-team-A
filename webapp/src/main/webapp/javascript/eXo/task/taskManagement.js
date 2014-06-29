@@ -15,6 +15,20 @@
 		eXo.task.TaskManagement.initDnD();
 		eXo.task.TaskManagement.initAddTask();
 		eXo.task.TaskManagement.initAdminBar();
+		eXo.task.TaskManagement.initSearchTask();
+	}
+	
+	TaskManagement.prototype.initProject = function() {
+		$("#searchProject").click(function(){
+			eXo.task.TaskManagement.searchProject();
+		});
+		
+		$("#projectKeyword").keypress(function(event) {
+			var key = window.event ? event.keyCode : event.which;
+			if (key == 13) {
+				eXo.task.TaskManagement.searchProject();
+			} else return true;
+		});
 	}
 	
 	TaskManagement.prototype.initAdminBar = function() {
@@ -83,11 +97,50 @@
 		});
 	}
 	
+	TaskManagement.prototype.searchProject = function() {
+		var keyword = $("#projectKeyword").val();
+		if (keyword) {
+			$.ajax({
+				url: "/rest/taskManager/searchproject/" + keyword,
+				dataType: "json",
+				type: "GET"
+			})
+			.success(function(data) {
+				var html = "";
+				if (data.length > 0) {
+					for (var i=0;i<data.length;i++){
+						var project = data[i];
+						var projectId = project.id;
+						var projectDiv = $("#" + projectId);
+						var actionLink = projectDiv.attr("onclick");
+						if ((i+1)%3 == 1) html += "<div class=\"row-fluid\">";
+				        html += "<div class=\"span4 uiBox\" onclick=\"" + actionLink + "\">";
+				        html += "<div style=\"cursor: pointer\" class=\"uiContentBox\">";
+				        html += "<a class=\"favorite\" href=\"#\"><span class=\"iconStarMini\"></span></a>";
+				        html += "<h4 class=\"title-board\">" + project.name + "</h4>";
+				        html += "<div class=\"desc\">" + project.description + "</div>";
+				        html += "</div></div>";
+				        if ((i+1)%3 == 0) html += "</div>";
+					}
+				} else {
+					html += '<h5>Result not found</h5>';
+				}
+				$("#searchResult").empty();
+				$("#searchResult").append(html);
+				$("#searchPanel").show();
+			})
+			.error(function(jqXHR, textStatus, error) {
+				var err = textStatus + ', ' + error;
+				console.log("Transaction Failed: " + err);
+			});
+		}
+	}
+	
 	TaskManagement.prototype.searchUser = function() {
 		var keyword = $("#memberKeywork").val();
 		if (keyword) {
 			$.ajax({
-				url: "/rest/taskManager/search/" + keyword,
+				url: "/rest/taskManager/searchuser/" + keyword,
 				dataType: "json",
 				type: "GET"
 			})
@@ -106,6 +159,36 @@
 				}
 				$("#listMembers").empty();
 				$("#listMembers").append(html);
+			})
+			.error(function(jqXHR, textStatus, error) {
+				var err = textStatus + ', ' + error;
+				console.log("Transaction Failed: " + err);
+			});
+		}
+	}
+	
+	TaskManagement.prototype.searchTask = function() {
+		$("li.move").css("background-color", "#fff");
+		var keyword = $("#taskKeyword").val();
+		var projectId = $("#projectId").val();
+		if (keyword) {
+			$.ajax({
+				url: "/rest/taskManager/task/searchtask/" + projectId + "/" + keyword,
+				dataType: "json",
+				type: "GET"
+			})
+			.success(function(data) {
+				var html = "";
+				if (data.length > 0) {
+					for (var i=0;i<data.length;i++){
+						var task = data[i];
+						var taskId = task.id;
+						var matchItems = $("li[taskId=" + taskId + "]");
+						matchItems.css("background-color", "#ffffd0");
+					}
+				} else {
+					alert("Result not found");
+				}
 			})
 			.error(function(jqXHR, textStatus, error) {
 				var err = textStatus + ', ' + error;
@@ -175,6 +258,19 @@
 				);
 			
 		}
+	}
+	
+	TaskManagement.prototype.initSearchTask = function(){
+		$("#searchTasks").click(function(){
+			eXo.task.TaskManagement.searchTask();
+		});
+		
+		$("#taskKeyword").keypress(function(event) {
+			var key = window.event ? event.keyCode : event.which;
+			if (key == 13) {
+				eXo.task.TaskManagement.searchTask();
+			} else return true;
+		});
 	}
 	
 	TaskManagement.prototype.initAddTask = function() {

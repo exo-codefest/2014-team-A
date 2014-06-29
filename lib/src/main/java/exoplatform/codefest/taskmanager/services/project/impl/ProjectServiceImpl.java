@@ -70,11 +70,10 @@ public class ProjectServiceImpl implements ProjectService {
         Node p = iter.nextNode();
         ret.add(convertToEntity(p));
       }
-      return ret;
     } catch (Exception e) {
       throw new TaskManagerException();
     }
-    
+    return ret;
   }
 
   @Override
