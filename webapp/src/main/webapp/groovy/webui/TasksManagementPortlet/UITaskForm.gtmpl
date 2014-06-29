@@ -11,6 +11,7 @@
   
   def task = uicomponent.getTask();
   SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+  def duedate = task.getDueDate() != null ? dateFormat.format(task.getDueDate().getTime()) : "none";
 %>
 <div class="uiForm $uicomponent.id">
   <div class="popupHeader clearfix">
@@ -79,16 +80,17 @@
               </div>
               <div class="span6">
                  <div class="mgB10">
-                    <div class="quickEditInline">
+                    <div class="quickEditInline" inputtype="duedate">
                        <div class="media">
-                           <b class="pull-left">Due date:</b> <!--%=dateFormat.format(task.getDueDate().getTime())%-->
+                           <b class="pull-left">Due date:</b>
+                           <span class="text">$duedate</span>
                            <div class="media-body quickEditBox">
                                <div class="inputWrap">
-                                   <!--% uiform.renderField(uiform.DUEDATE);%-->
+                                 <input id="editTaskDuedate" type="date" value="$duedate"/>
                                </div>
                                <div class="text-right">
-                                   <button class="btn btn-mini">Canel</button>
-                                   <button class="btn btn-primary btn-mini">Save</button>
+                                   <button class="cancel btn btn-mini">Cancel</button>
+                                   <button class="quickSave btn btn-primary btn-mini">Save</button>
                                </div>
                            </div>
                        </div>

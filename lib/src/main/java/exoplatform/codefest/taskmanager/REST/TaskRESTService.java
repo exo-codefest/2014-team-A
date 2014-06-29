@@ -16,9 +16,12 @@
  */
 package exoplatform.codefest.taskmanager.REST;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
@@ -106,6 +109,12 @@ public class TaskRESTService implements ResourceContainer{
         task.setName(value);
       else if ("description".equals(inputtype))
         task.setDescription(value);
+      else if ("duedate".equals(inputtype)) {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        cal.setTime(sdf.parse(value));//        
+        task.setDueDate(cal);
+      }
       else if ("type".equals(inputtype)) 
         task.setType(value);
       else if ("labels".equals(inputtype)) 
@@ -118,6 +127,8 @@ public class TaskRESTService implements ResourceContainer{
       taskService.storeTask(task);
       return Response.ok().build();
     } catch (TaskManagerException e) {
+      return Response.serverError().build();
+    } catch (Exception e) {
       return Response.serverError().build();
     }
   }

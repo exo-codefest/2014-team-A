@@ -312,6 +312,7 @@
 		var taskForm = $(".UITaskForm");
 		$("button.quickSave", taskForm).click(function(event){
 			var inputtype = $(this).parents(".toggleQuickEdit:first").attr("inputtype");
+			inputtype = inputtype || $(this).parents(".quickEditInline:first").attr("inputtype");
 			var uri = eXo.task.TaskManagement.getSaveTaskComponentUrl(taskId, inputtype);
 			console.log(uri);
 			$.ajax({url: uri,
@@ -328,12 +329,12 @@
 			);
 			event.stopPropagation();
 		});	
-		$(".toggleQuickEdit", taskForm).click(function(){
+		$(".toggleQuickEdit, .quickEditInline", taskForm).click(function(){
 			$( this ).addClass("edit");			
 		});
-		$(".uiIconRemove", taskForm).each(function(index, elem){
+		$(".uiIconRemove, button.cancel", taskForm).each(function(index, elem){
 			$(elem.parentNode).click(function(event){
-	 			$( this ).parents(".toggleQuickEdit").removeClass("edit");
+	 			$( this ).parents(".toggleQuickEdit, .quickEditInline").removeClass("edit");
   	   		    event.stopPropagation();
 			});	
 		});
@@ -360,6 +361,10 @@
 		if ("description" == inputtype) {
 			var description = $("#editTaskDescription").val();
 			return url + description;
+		}
+		if ("duedate" == inputtype) {
+			var type = $("#editTaskDuedate").val();
+			return url + type;
 		}
 		if ("type" == inputtype) {
 			var type = $("#editTaskType").val();
