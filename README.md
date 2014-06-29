@@ -62,9 +62,20 @@ Search project
 
 - Tasks are displayed in State columns depends on their state. You are able to add new task, change state of task by drag and drop it on expected state, search task by keyword (the result will be highlight in State columns), edit task information (description, dependencies, performer, type, etc.) and remove task by click on Close icon beside each task. Here are some screenshot for illustration
 
+Add new task
+
 <img src="mockup/image/add-task.png" />
+
+Drag and drop task to another state
+
 <img src="mockup/image/drag-task.png" />
+
+Search task by keyword
+
 <img src="mockup/image/searh-task.png" />
+
+Edit task information
+
 <img src="mockup/image/edit-task.png" />
 
 State
