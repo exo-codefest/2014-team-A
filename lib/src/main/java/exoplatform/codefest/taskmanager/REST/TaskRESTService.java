@@ -16,6 +16,8 @@
  */
 package exoplatform.codefest.taskmanager.REST;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
@@ -36,6 +38,8 @@ import org.exoplatform.services.security.ConversationState;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.sun.tools.javac.code.Attribute.Array;
 
 import exoplatform.codefest.taskmanager.entities.Project;
 import exoplatform.codefest.taskmanager.entities.Task;
@@ -91,7 +95,44 @@ public class TaskRESTService implements ResourceContainer{
     }
   }
   
+  @GET
+  @Path("/savedata")
+  @Produces(MediaType.TEXT_HTML)
+  @RolesAllowed("users")
+  public Response saveData(@QueryParam("taskId") int id, @QueryParam("inputtype") String inputtype, @QueryParam("value") String value) {
+    try {
+      Task task = taskService.getTaskById(id);
+      if ("name".equals(inputtype)) 
+        task.setName(value);
+      else if ("description".equals(inputtype))
+        task.setDescription(value);
+      else if ("type".equals(inputtype)) 
+        task.setType(value);
+      else if ("labels".equals(inputtype)) 
+        task.setLabels(Arrays.asList(value.split(";")));
+      else if ("members".equals(inputtype)) 
+        task.setLabels(Arrays.asList(value.split(";")));
+      else if ("dependencies".equals(inputtype)) {
+        task.setRequiredTasks(getInts(value));
+      }
+      taskService.storeTask(task);
+      return Response.ok().build();
+    } catch (TaskManagerException e) {
+      return Response.serverError().build();
+    }
+  }
   
+  private List<Integer> getInts(String values) {
+    List<Integer> ret = new ArrayList<Integer>();
+    for (String s : values.split(";")) {
+      try {
+        ret.add(Integer.parseInt(s));
+      } catch (Exception e) {
+        //LOG
+      }
+    }
+    return ret;
+  }
   
   @POST
   @Path("/order")
@@ -112,7 +153,6 @@ public class TaskRESTService implements ResourceContainer{
       return Response.serverError().build();
     }
   }
-  
   
   @POST
   @Consumes("application/x-www-form-urlencoded")  
@@ -143,12 +183,12 @@ public class TaskRESTService implements ResourceContainer{
 	    		}
 	    	}
 	    }
-	} catch (TaskManagerException e) {
-		//
-	} catch (JSONException e) {
-		//
-	}
-	return Response.ok(searchResults.toString(), MediaType.APPLICATION_JSON).build();
+  	} catch (TaskManagerException e) {
+  		//
+  	} catch (JSONException e) {
+  		//
+  	}
+	  return Response.ok(searchResults.toString(), MediaType.APPLICATION_JSON).build();
   }
   
 }

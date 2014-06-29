@@ -303,12 +303,31 @@
 						   }
  				       }
 			   	);
-			});
+			});s
 	   });
 	}
 	
-	TaskManagement.prototype.initQuickEdit = function(){
+	TaskManagement.prototype.initEditTaskForm = function(taskId){
+		eXo.task.TaskManagement.taskId = taskId;
 		var taskForm = $(".UITaskForm");
+		$("button.quickSave", taskForm).click(function(event){
+			var inputtype = $(this).parents(".toggleQuickEdit:first").attr("inputtype");
+			var uri = eXo.task.TaskManagement.getSaveTaskComponentUrl(taskId, inputtype);
+			console.log(uri);
+			$.ajax({url: uri,
+					async: true,
+					success: function(result, status, xhr) {
+								$( this ).parents(".toggleQuickEdit").removeClass("edit");
+								location.reload();
+							 },
+					error: function(e) {
+						location.reload();
+						alert("Error: "+e);
+					}
+				}
+			);
+			event.stopPropagation();
+		});	
 		$(".toggleQuickEdit", taskForm).click(function(){
 			$( this ).addClass("edit");			
 		});
@@ -317,28 +336,35 @@
 	 			$( this ).parents(".toggleQuickEdit").removeClass("edit");
   	   		    event.stopPropagation();
 			});	
-		})
-		taskForm.delegate("div.quickEdit > button","click",function(){			
-			var name = $("input#name").val();
-			var description = $("input#description").val();
-			var stage = $("b#stage").html();
-			var duedate = $("input#duedate").val();
-			var uri = eXo.task.TaskManagement.restContext + "/taskManager/task?" +
-			  "projectId=" + eXo.task.TaskManagement.projectId +
-			  "&name=" + name +
-			  "&description=" + description +
-			  "&stage=" + stage;
-			$.ajax({url: uri,
-					   success: function(result, status, xhr) {
-						 $( this ).parents(".toggleQuickEdit").removeClass("edit");
-				       },
-				       error: function(e) {
-			    	     		alert("Error: "+e);
-				 	}
-			       }
-		 	);
-		});	
+		});
 		
+	}
+	
+	TaskManagement.prototype.getSaveTaskComponentUrl = function(taskId, inputtype) {
+		var url = eXo.task.TaskManagement.restContext + 
+				  "/taskManager/task/savedata?taskId=" + taskId +
+				  "&inputtype=" + inputtype + 
+				  "&value=";
+//		var description = $("input#description").val();
+//		var stage = $("b#stage").html();
+//		var duedate = $("input#duedate").val();
+//		  "projectId=" + eXo.task.TaskManagement.projectId +
+//		  "&name=" + name +
+//		  "&description=" + description +
+//		  "&stage=" + stage;
+//
+		if ("name" == inputtype) {
+			var name = $("#editTaskName").val();
+			return url + name;
+		}
+		if ("description" == inputtype) {
+			var description = $("#editTaskDescription").val();
+			return url + description;
+		}
+		if ("type" == inputtype) {
+			var type = $("#editTaskType").val();
+			return url + type;
+		}
 	}
 	
 	//---------------All setter methods---------------------//
