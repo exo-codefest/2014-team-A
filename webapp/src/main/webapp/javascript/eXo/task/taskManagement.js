@@ -199,7 +199,7 @@
 	
 	TaskManagement.prototype.initDnD = function() {
 		$(".dragdropContainer").sortable({
-			items: ".uiListBoard li",
+			items: ".uiListBoard li.move",
 			stop: stopDragRow
 		});
 

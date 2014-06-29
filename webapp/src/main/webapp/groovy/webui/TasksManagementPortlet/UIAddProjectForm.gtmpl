@@ -1,17 +1,17 @@
 <div class="uiForm $uicomponent.id">
   <%uiform.begin()%>
-   <div class="control-group">
-     <label class="control-label" for="inputEmail">Name:</label>
-     <div class="controls">
-      <% uiform.renderField(uiform.NAME);%>
-     </div>
-   </div>
-   <div class="control-group">
-   <label class="control-label" for="inputEmail">Description:</label>
-   <div class="controls">
-   <% uiform.renderField(uiform.DESCRIPTION);%>
-   </div>
+  <div class="control-group">
+	<label class="control-label" for="name">Name:</label>
+	<div class="controls">
+		<input id="name" name="name" type="text" class="span5"> *
+	</div>
   </div>
+  <div class="control-group">
+	  <label class="control-label" for="description">Description:</label>
+	  <div class="controls">
+	     <textarea id="description" name="description" class="span5" ></textarea> *
+	  </div>
+	</div>
      
   <div class="uiAction uiActionBorder">
   

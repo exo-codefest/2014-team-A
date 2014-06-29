@@ -20,7 +20,6 @@
            <div class="">
               <span class="uiIconMiniArrowLeft"></span>
               <a style="cursor: pointer" onclick="$backToProjectListAction">Back to Project list</a>
-              <span><a target="ContentViewFrame" onclick="$editMockedTaskAction"  href="javascript:void(0);">Edit Mocked-Task</a></span>
            </div>
         </div>
         <div class="pull-right mgL10">
