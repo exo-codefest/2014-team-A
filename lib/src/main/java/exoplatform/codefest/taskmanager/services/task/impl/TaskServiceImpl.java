@@ -18,7 +18,9 @@ package exoplatform.codefest.taskmanager.services.task.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
@@ -182,7 +184,11 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   public Task removeRequiredTask(Task task, int requiredTaskId) throws TaskManagerException {
-    task.getRequiredTasks().remove(requiredTaskId);
+    List<Integer> ret = new ArrayList<Integer>();
+    for (int t : task.getRequiredTasks())
+      if (!(t == requiredTaskId))
+        ret.add(t);
+    task.setRequiredTasks(ret);
     this.storeTask(task);
     return task;
   }
@@ -306,15 +312,18 @@ public class TaskServiceImpl implements TaskService {
       //private List<String>labels;
       if (taskNode.hasProperty(NodeTypes.TASK_LABELS))
         task.setLabels(Utils.toStringList(taskNode.getProperty(NodeTypes.TASK_LABELS).getValues()));
+      else task.setLabels(new ArrayList<String>());
       //private List<String> members;
       if (taskNode.hasProperty(NodeTypes.TASK_MEMBERS))
         task.setMembers(Utils.toStringList(taskNode.getProperty(NodeTypes.TASK_MEMBERS).getValues()));
+      else task.setMembers(new ArrayList<String>());
       //private Calendar dueDate;
       if (taskNode.hasProperty(NodeTypes.TASK_DUE_DATE))
         task.setDueDate(taskNode.getProperty(NodeTypes.TASK_DUE_DATE).getDate());
       //private List<Integer> requiredTasks;
       if (taskNode.hasProperty(NodeTypes.TASK_REQUIRED_TASKS))
-      task.setRequiredTasks(Utils.toIntList(taskNode.getProperty(NodeTypes.TASK_REQUIRED_TASKS).getValues()));
+        task.setRequiredTasks(Utils.toIntList(taskNode.getProperty(NodeTypes.TASK_REQUIRED_TASKS).getValues()));
+      else task.setRequiredTasks(new ArrayList<Integer>());
       //private String stage;
       if (taskNode.hasProperty(NodeTypes.TASK_STAGE))
         task.setStage(taskNode.getProperty(NodeTypes.TASK_STAGE).getString());
@@ -322,6 +331,46 @@ public class TaskServiceImpl implements TaskService {
       if (taskNode.hasProperty(NodeTypes.TASK_STAGE_ORDER))
         task.setStageOrder((int)taskNode.getProperty(NodeTypes.TASK_STAGE_ORDER).getLong());
       return task;
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
+  }
+
+  @Override
+  public List<Task> getExistingRequiredTasks(Task task) throws TaskManagerException {
+    try {
+      List<Task> ret = new ArrayList<Task>();
+      TaskService tservice = Utils.getService(TaskService.class);
+      for (int id : task.getRequiredTasks()) {
+        try {
+          Task t = tservice.getTaskById(id);
+          if (t != null && t.getId() != task.getId()) ret.add(t);
+        } catch (TaskManagerException e) {
+          //do nothing
+        }
+      }
+      return ret;
+    } catch (Exception e) {
+      throw new TaskManagerException();
+    }
+  }
+
+  @Override
+  public List<Task> getUndependTasks(Task task) throws TaskManagerException {
+    try {
+      List<Task> ret = new ArrayList<Task>();
+      TaskService tservice = Utils.getService(TaskService.class);
+      ProjectService pservice = Utils.getService(ProjectService.class);
+      Set<Integer> s = new HashSet<Integer>();
+      for (int id : task.getRequiredTasks())
+        s.add(id);
+      
+      for (Task t : pservice.getTasks(pservice.getProjectById(task.getProjectId()))) {
+        if (!s.contains(t.getId())) {
+          ret.add(t);
+        }
+      }
+      return ret;
     } catch (Exception e) {
       throw new TaskManagerException();
     }

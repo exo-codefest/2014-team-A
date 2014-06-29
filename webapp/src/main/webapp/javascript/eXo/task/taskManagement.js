@@ -370,6 +370,10 @@
 			var type = $("#editTaskType").val();
 			return url + type;
 		}
+		if ("required" == inputtype) {
+			var type = $("#editTaskRequired").val();
+			return url + type + "&option=add";
+		}
 	}
 	
 	//---------------All setter methods---------------------//

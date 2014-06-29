@@ -99,10 +99,31 @@ public class TaskRESTService implements ResourceContainer{
   }
   
   @GET
+  @Path("/changeRequired")
+  @Produces(MediaType.TEXT_HTML)
+  @RolesAllowed("users")
+  public Response updateTaskRequired(@QueryParam("taskId") Integer id, @QueryParam("option") String option,
+                                     @QueryParam("requiredId") int requiredId) {
+    try {
+      Task task = taskService.getTaskById(id);
+      if ("add".equals(option)) {
+        taskService.addRequiredTask(task, requiredId);
+      } else if ("remove".equals(option)) {
+        taskService.removeRequiredTask(task, requiredId);
+      }
+      taskService.storeTask(task);
+      return Response.ok().build();
+    } catch (TaskManagerException e) {
+      return Response.serverError().build();
+    }
+  }  
+  
+  @GET
   @Path("/savedata")
   @Produces(MediaType.TEXT_HTML)
   @RolesAllowed("users")
-  public Response saveData(@QueryParam("taskId") int id, @QueryParam("inputtype") String inputtype, @QueryParam("value") String value) {
+  public Response saveData(@QueryParam("taskId") int id, @QueryParam("inputtype") String inputtype, 
+                           @QueryParam("value") String value, @QueryParam("option") String opt) {
     try {
       Task task = taskService.getTaskById(id);
       if ("name".equals(inputtype)) 
@@ -121,8 +142,12 @@ public class TaskRESTService implements ResourceContainer{
         task.setLabels(Arrays.asList(value.split(";")));
       else if ("members".equals(inputtype)) 
         task.setLabels(Arrays.asList(value.split(";")));
-      else if ("dependencies".equals(inputtype)) {
-        task.setRequiredTasks(getInts(value));
+      else if ("required".equals(inputtype)) {
+        if ("add".equals(opt)) {
+          taskService.addRequiredTask(task, Integer.parseInt(value));
+        } else if ("remove".equals(opt)) {
+          taskService.removeRequiredTask(task, Integer.parseInt(value));
+        }
       }
       taskService.storeTask(task);
       return Response.ok().build();

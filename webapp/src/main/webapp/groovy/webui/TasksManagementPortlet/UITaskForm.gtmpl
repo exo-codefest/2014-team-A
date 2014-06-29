@@ -13,7 +13,7 @@
   SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
   def duedate = task.getDueDate() != null ? dateFormat.format(task.getDueDate().getTime()) : "none";
 %>
-<div class="uiForm $uicomponent.id">
+<div class="uiForm $uicomponent.id" id = "$uicomponent.id">
   <div class="popupHeader clearfix">
      <div class="toggleQuickEdit" inputtype="name">
         <span class="PopupTitle popupTitle text"> <%=task.getName()%></b> </span>
@@ -103,18 +103,36 @@
            <div class="row-fluid">
                <div class="span6">
                  <div class="mgB10">
-                    <div class="quickEditInline">
+                 <b class="pull-left">Dependencies:</b><br/>
+                   <div style="background-color:lightgrey;border-radius:2px">
+                   <%for (t in uicomponent.getExistingRequiredTasks()) {
+                     def removeRequiredLink = uicomponent.event("RemoveRequired",t.getId() + "");
+                     %>
+                     <span class="text">&nbsp;-&nbsp;<%=t.getName()%>
+                       <a onclick="$removeRequiredLink" href="javascript:void(0)">
+                         <i class="uiIconRemove uiIconLightGray"></i>
+                       </a>
+                     </span><br/>
+                   <% } %>
+                   </div>
+                    <div class="quickEditInline" inputtype="required">
                        <div class="media">
-                           <b class="pull-left">Dependencies:</b> <span class="text"><%=task.getRequiredTasks()%></span>
+                           <span class="text">Add more<i class="uiIconPlus uiIconLightGray"></i></span><br/>
                            <div class="media-body quickEditBox ">
                                <div class="inputWrap">
-                                   <select name="" id="" class="mgB10 full">
-                                       <option value="">UI-3200</option>
-                                       <option value="">UI-3201</option>
+                                   <select name="" id="editTaskRequired" class="mgB10 full">
+                                       <%for (t in uicomponent.getUndependTasks()) {
+                                         def undependname = t.getName();
+                                         if (undependname.length() > 10)
+                                           undependname = undependname.substring(0, 10) + "...";
+                                       %>
+                                         <option value="<%=t.getId()%>">$undependname</option>
+                                       <% } %>
+                                       
                                    </select>
                                    <div class="text-right">
-                                       <button class="btn btn-mini">Canel</button>
-                                       <button class="btn btn-primary btn-mini">Save</button>
+                                       <button class="cancel btn btn-mini">Cancel</button>
+                                       <button class="quickSave btn btn-primary btn-mini">Save</button>
                                    </div>
                                </div>
                            </div>

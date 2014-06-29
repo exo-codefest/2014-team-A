@@ -17,6 +17,7 @@
 package org.exoplatform.codefest.TasksManagementPortlet;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
@@ -46,7 +47,7 @@ import exoplatform.codefest.taskmanager.utils.Utils;
                  lifecycle = Lifecycle.class,
                  template = "app:/groovy/webui/TasksManagementPortlet/UITaskForm.gtmpl",
                  events = {
-                   @EventConfig(listeners = UITaskForm.SaveTaskActionListener.class),
+                   @EventConfig(listeners = UITaskForm.RemoveRequiredActionListener.class),
                    @EventConfig(listeners = UITaskForm.BackActionListener.class, phase = Phase.DECODE)
                  }
              )
@@ -77,6 +78,14 @@ public class UITaskForm extends UIComponent implements UIPopupComponent {
     return Utils.getService(TaskService.class).getTaskById(taskId);
   }
   
+  public List<Task> getExistingRequiredTasks() throws TaskManagerException {
+    return Utils.getService(TaskService.class).getExistingRequiredTasks(getTask());
+  }
+  
+  public List<Task> getUndependTasks() throws TaskManagerException {
+    return Utils.getService(TaskService.class).getUndependTasks(getTask());
+  }
+  
   public int getTaskId(){
     return this.taskId;       
   }
@@ -98,18 +107,13 @@ public class UITaskForm extends UIComponent implements UIPopupComponent {
     // TODO Auto-generated method stub
   }
   
-  public static class SaveTaskActionListener extends EventListener<UITaskForm> {   
+  public static class RemoveRequiredActionListener extends EventListener<UITaskForm> {   
     @Override
     public void execute(Event<UITaskForm> event) throws Exception {      
       UITaskForm taskForm = event.getSource();            
-      UITasksBoard taskBoard = taskForm.getAncestorOfType(UITasksBoard.class);
-////      String name = taskForm.getUIStringInput(NAME).getValue();
-////      String description = taskForm.getUIStringInput(DESCRIPTION).getValue();
-////      Calendar duedate = taskForm.getUIFormDateTimeInput(DUEDATE).getCalendar();
-//      taskForm.updateTask(name,description,duedate);
-      Utils.getService(TaskService.class).addTask(taskBoard.getProject(), taskForm.getTask());
-      taskForm.getAncestorOfType(UIPopupContainer.class).deActivate();
-      event.getRequestContext().addUIComponentToUpdateByAjax(taskBoard);
+      int requiredId = Integer.parseInt(event.getRequestContext().getRequestParameter(OBJECTID));
+      Utils.getService(TaskService.class).removeRequiredTask(taskForm.getTask(), requiredId);
+      event.getRequestContext().addUIComponentToUpdateByAjax(taskForm);
     }
   }  
 

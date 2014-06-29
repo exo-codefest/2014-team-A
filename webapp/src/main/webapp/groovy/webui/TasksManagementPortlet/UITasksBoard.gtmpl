@@ -84,7 +84,7 @@
                      def removeTaskLink = uicomponent.event("RemoveTask", task.getId() + "");
                      def updateTaskLink = uicomponent.event("UpdateTask", task.getId() + "");
                      %>
-                    <li class="move taskId" taskId="<%=task.getId()%>" ondblclick="$updateTaskLink">
+                    <li class="move taskId" taskId="<%=task.getId()%>" onclick="$updateTaskLink">
                        <div class="toggleQuickEdit">
                           <span class="text"><%=task.getName()%></span>
                           <div class="quickEdit">

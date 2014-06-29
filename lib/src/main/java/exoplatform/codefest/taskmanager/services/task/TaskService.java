@@ -76,5 +76,9 @@ public interface TaskService {
   public List<Comment> getCommentsByTask(Task task) throws TaskManagerException;
   
   public Task getTaskByNode(Node taskNode) throws TaskManagerException;
+  
+  public List<Task> getExistingRequiredTasks(Task task) throws TaskManagerException;
+  
+  public List<Task> getUndependTasks(Task task) throws TaskManagerException;
 
 }
