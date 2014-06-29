@@ -27,6 +27,7 @@ import javax.jcr.query.Query;
 
 import org.apache.commons.lang.StringUtils;
 import org.exoplatform.container.xml.InitParams;
+import org.exoplatform.services.jcr.access.PermissionType;
 import org.exoplatform.services.jcr.core.ExtendedNode;
 import org.exoplatform.services.jcr.ext.common.SessionProvider;
 import org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator;
@@ -97,6 +98,7 @@ public class ProjectServiceImpl implements ProjectService {
       stages[0] = pNode.getSession().getValueFactory().createValue(Project.DEFAULT_STAGE);
       pNode.setProperty(NodeTypes.PROJECT_STAGELIST, stages);
       
+      pNode.addMixin("exo:owneable");
       pRoot.save();
       return convertToEntity(pNode);
     } catch (Exception e) {
@@ -167,6 +169,8 @@ public class ProjectServiceImpl implements ProjectService {
       System.arraycopy(members, 0, newMems, 0, members.length);
       newMems[members.length] = pNode.getSession().getValueFactory().createValue(member);
       pNode.setProperty(NodeTypes.PROJECT_MEMBERS, newMems);
+      pNode.addMixin("exo:privilegeable");
+      ((ExtendedNode)pNode).setPermission(member, PermissionType.ALL);
       pNode.save();
       return getProjectById(project.getId());
     } catch (Exception e) {
