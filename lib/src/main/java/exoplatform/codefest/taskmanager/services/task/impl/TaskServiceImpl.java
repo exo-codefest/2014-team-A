@@ -272,6 +272,7 @@ public class TaskServiceImpl implements TaskService {
         taskNode.setProperty(NodeTypes.TASK_MEMBERS, Utils.toValues(task.getMembers(), taskNode.getSession().getValueFactory()));
       //private Date dueDate;
       taskNode.setProperty(NodeTypes.TASK_DUE_DATE, task.getDueDate());
+      taskNode.setProperty(NodeTypes.TASK_START_DATE, task.getStartDate());
       //private List<Integer> requiredTasks;
       if (task.getRequiredTasks() != null)
         taskNode.setProperty(NodeTypes.TASK_REQUIRED_TASKS, Utils.toIntValues(task.getRequiredTasks(), taskNode.getSession().getValueFactory()));
@@ -330,6 +331,8 @@ public class TaskServiceImpl implements TaskService {
       //private Calendar dueDate;
       if (taskNode.hasProperty(NodeTypes.TASK_DUE_DATE))
         task.setDueDate(taskNode.getProperty(NodeTypes.TASK_DUE_DATE).getDate());
+      if (taskNode.hasProperty(NodeTypes.TASK_START_DATE))
+        task.setStartDate(taskNode.getProperty(NodeTypes.TASK_START_DATE).getDate());
       //private List<Integer> requiredTasks;
       if (taskNode.hasProperty(NodeTypes.TASK_REQUIRED_TASKS))
         task.setRequiredTasks(Utils.toIntList(taskNode.getProperty(NodeTypes.TASK_REQUIRED_TASKS).getValues()));

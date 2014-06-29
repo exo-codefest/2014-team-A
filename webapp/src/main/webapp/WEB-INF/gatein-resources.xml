@@ -45,6 +45,25 @@
   </module>
   
   <module>
+    <name>ganttview</name>
+    <as>ganttview</as>
+    <script>
+      <path>/javascript/eXo/task/jquery.ganttView.js</path>
+    </script>
+    <depends>
+      <module>base</module>
+    </depends>      
+    <depends>
+      <module>jquery</module>
+      <as>gj</as>
+    </depends>
+    <depends>
+      <module>jqueryui</module>
+      <as>gjui</as>
+    </depends>
+  </module>
+  
+  <module>
     <name>taskManager</name>
     <as>taskManager</as>
     <script>
@@ -63,6 +82,9 @@
     </depends>
     <depends>
         <module>webui-ext</module>
+    </depends>
+    <depends>
+        <module>ganttview</module>
     </depends>    
   </module>
   

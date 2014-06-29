@@ -42,6 +42,7 @@ public interface NodeTypes {
   String TASK_LABELS = "labels";
   String TASK_MEMBERS = "members";
   String TASK_DUE_DATE = "dueDate";
+  String TASK_START_DATE = "startDate";
   String TASK_REQUIRED_TASKS = "requiredTasks";
   String TASK_STAGE = "stage";
   String TASK_STAGE_ORDER = "stageOrder";

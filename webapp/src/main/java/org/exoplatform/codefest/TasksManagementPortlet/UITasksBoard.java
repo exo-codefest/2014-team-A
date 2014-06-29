@@ -24,6 +24,7 @@ import exoplatform.codefest.taskmanager.utils.Utils;
       @EventConfig(listeners = UITasksBoard.BackToProjectListActionListener.class),
       @EventConfig(listeners = UITasksBoard.AddStageActionListener.class),
       @EventConfig(listeners = UITasksBoard.RefreshActionListener.class),
+      @EventConfig(listeners = UITasksBoard.ChartViewActionListener.class),
       @EventConfig(listeners = UITasksBoard.RemoveTaskActionListener.class,
                    confirm = "Are you sure want to remove this task?"),
       @EventConfig(listeners = UITasksBoard.UpdateTaskActionListener.class)
@@ -101,6 +102,17 @@ public class UITasksBoard extends UIContainer {
     public void execute(Event<UITasksBoard> event) throws Exception {
       UITasksBoard uiTask = event.getSource();
       event.getRequestContext().addUIComponentToUpdateByAjax(uiTask);
+    }
+  }
+  
+  public static class ChartViewActionListener extends EventListener<UITasksBoard> {
+    @Override
+    public void execute(Event<UITasksBoard> event) throws Exception {
+      UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
+      UIPopupContainer uiPopupContainer = uiParent.getChild(UIPopupContainer.class);
+      UIChartForm form = uiPopupContainer.createUIComponent(UIChartForm.class, null, null);
+      uiPopupContainer.activate(form, 700, 500);
+      event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);
     }
   }
 

@@ -12,6 +12,7 @@
   addScripts("taskManager.init(" + projectId + ");");
 
   def editMockedTaskAction = uicomponent.event("UpdateTask","1");
+  def chartViewLink = uicomponent.event("ChartView");
 
 %>
 <div class="exTaskManagement" id="$uicomponent.id">
@@ -35,7 +36,7 @@
               <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="uiIconSetting uiIconLightGray"></i></button>
               <ul class="dropdown-menu pull-right">
                  <li>
-                    <a href="#">Chart View</a>
+                    <a href="javascript:void(0)" onclick="$chartViewLink">Chart View</a>
                  </li>
                  <li>
                     <a href="#">Filter</a>
