@@ -296,10 +296,12 @@
 			  			  "&stage=" + stage;
 				$.ajax({url: uri,
 						   success: function(result, status, xhr) {
-						     location.reload();
+					  		  	var refreshDiv = $("#UITasksBoardRefresh");
+					  		  	eval(decodeURIComponent(refreshDiv.html()));
 	 				       },
 					       error: function() {
-				    	     location.reload();
+					  		  	var refreshDiv = $("#UITasksBoardRefresh");
+					  		  	eval(decodeURIComponent(refreshDiv.html()));
 						   }
  				       }
 			   	);
@@ -319,10 +321,12 @@
 					async: true,
 					success: function(result, status, xhr) {
 								$( this ).parents(".toggleQuickEdit").removeClass("edit");
-								location.reload();
+					  		  	var refreshDiv = $("#UITaskFormRefresh");
+					  		  	eval(decodeURIComponent(refreshDiv.html()));
 							 },
 					error: function(e) {
-						location.reload();
+			  		  	var refreshDiv = $("#UITaskFormRefresh");
+			  		  	eval(decodeURIComponent(refreshDiv.html()));
 						alert("Error: "+e);
 					}
 				}

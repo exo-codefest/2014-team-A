@@ -28,9 +28,6 @@ import org.exoplatform.webui.core.lifecycle.Lifecycle;
 import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.Event.Phase;
 import org.exoplatform.webui.event.EventListener;
-import org.exoplatform.webui.form.UIFormDateTimeInput;
-import org.exoplatform.webui.form.UIFormStringInput;
-import org.exoplatform.webui.form.validator.MandatoryValidator;
 
 import exoplatform.codefest.taskmanager.entities.Task;
 import exoplatform.codefest.taskmanager.exceptions.TaskManagerException;
@@ -48,6 +45,7 @@ import exoplatform.codefest.taskmanager.utils.Utils;
                  template = "app:/groovy/webui/TasksManagementPortlet/UITaskForm.gtmpl",
                  events = {
                    @EventConfig(listeners = UITaskForm.RemoveRequiredActionListener.class),
+                   @EventConfig(listeners = UITaskForm.RefreshActionListener.class),
                    @EventConfig(listeners = UITaskForm.BackActionListener.class, phase = Phase.DECODE)
                  }
              )
@@ -114,6 +112,14 @@ public class UITaskForm extends UIComponent implements UIPopupComponent {
       int requiredId = Integer.parseInt(event.getRequestContext().getRequestParameter(OBJECTID));
       Utils.getService(TaskService.class).removeRequiredTask(taskForm.getTask(), requiredId);
       event.getRequestContext().addUIComponentToUpdateByAjax(taskForm);
+    }
+  }
+  
+  public static class RefreshActionListener extends EventListener<UITaskForm> {   
+    @Override
+    public void execute(Event<UITaskForm> event) throws Exception {
+      UITaskForm uicomponent = event.getSource();
+      event.getRequestContext().addUIComponentToUpdateByAjax(uicomponent);
     }
   }  
 

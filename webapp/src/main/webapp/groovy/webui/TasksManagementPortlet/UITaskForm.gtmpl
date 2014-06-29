@@ -58,17 +58,20 @@
            <div class="row-fluid">
               <div class="span6">
                  <div class="mgB10">
-                    <div class="quickEditInline">
+                    <div class="quickEditInline" inputtype="type">
                        <div class="media">
                            <b class="pull-left">Type:</b> <span class="text"><%=task.getType()%></span>
                            <div class="media-body quickEditBox ">
                                <div class="inputWrap">
-                                   <select name="" id="" class="mgB10 full">
-                                       <option value="">Bug</option>
-                                       <option value="">Task</option>
+                                   <select name="" id="editTaskType" class="mgB10 full">
+                                       <option value="Bug">Bug</option>
+                                       <option value="Task">Task</option>
+                                       <option value="New feature">New feature</option>
+                                       <option value="Documentation">Documentation</option>
+                                       <option value="Support">Support</option>
                                    </select>
                                    <div class="text-right">
-                                       <button class="quickSave btn btn-mini">Canel</button>
+                                       <button class="cancel btn btn-mini">Cancel</button>
                                        <button class="quickSave btn btn-primary btn-mini">Save</button>
                                    </div>
                                </div>
@@ -145,7 +148,7 @@
                  <div class="mgB10">
                     <div class="quickEditInline">
                        <div class="media">
-                           <b class="pull-left">Label:</b> <span class="text">HTML-CSS</span>
+                           <!--b class="pull-left">Label:</b> <span class="text">HTML-CSS</span-->
                            <div class="media-body quickEditBox ">
                                <div class="inputWrap">
                                    <select name="" id="" class="mgB10 full">
@@ -211,4 +214,8 @@
   </div>
    
 
+  
+  <div id="UITaskFormRefresh" style="display:none">
+    <%=URLEncoder.encode(org.apache.commons.lang.StringEscapeUtils.unescapeHtml(uicomponent.event("Refresh")), "utf-8")%>
+  </div>
 </div>

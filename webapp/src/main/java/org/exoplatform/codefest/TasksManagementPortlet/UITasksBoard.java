@@ -23,6 +23,7 @@ import exoplatform.codefest.taskmanager.utils.Utils;
       @EventConfig(listeners = UITasksBoard.UpdateTaskActionListener.class),
       @EventConfig(listeners = UITasksBoard.BackToProjectListActionListener.class),
       @EventConfig(listeners = UITasksBoard.AddStageActionListener.class),
+      @EventConfig(listeners = UITasksBoard.RefreshActionListener.class),
       @EventConfig(listeners = UITasksBoard.RemoveTaskActionListener.class,
                    confirm = "Are you sure want to remove this task?"),
       @EventConfig(listeners = UITasksBoard.UpdateTaskActionListener.class)
@@ -92,6 +93,14 @@ public class UITasksBoard extends UIContainer {
       Task task = uiTask.taskService.getTaskById(taskId);
       uiTask.taskService.removeTask(task);
       event.getRequestContext().addUIComponentToUpdateByAjax(uiPortlet);
+    }
+  }
+  
+  public static class RefreshActionListener extends EventListener<UITasksBoard> {
+    @Override
+    public void execute(Event<UITasksBoard> event) throws Exception {
+      UITasksBoard uiTask = event.getSource();
+      event.getRequestContext().addUIComponentToUpdateByAjax(uiTask);
     }
   }
 

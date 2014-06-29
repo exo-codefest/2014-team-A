@@ -118,4 +118,8 @@
      <input type="hidden" id="projectId" name="projectId" value="$projectId" />
      <%uicomponent.renderChild(UIProjectAdmin);%>
 
+   <div id="UITasksBoardRefresh" style="display:none">
+     <%=URLEncoder.encode(org.apache.commons.lang.StringEscapeUtils.unescapeHtml(uicomponent.event("Refresh")), "utf-8")%>
+   </div>
+
 </div>
