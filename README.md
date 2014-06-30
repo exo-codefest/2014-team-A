@@ -39,6 +39,7 @@ Dang Thi May | PLF/ECMS
 - Change state of task
 - Search task
 - Remove task from project
+- Grantt chart for project
 
 # How to use
 - Access to Tasks Management Add-on by clicking on "Tasks Management" item on left side menu after you logged into Platform
@@ -59,6 +60,10 @@ Search project
 - When you want to add members for projects, click on triangle icon on right top corner, search and add users here to your project.
 
 <img src="mockup/image/add-member.png" />
+
+- To view Grantt chart of project, click on Wheel icon and select Chart View
+
+<img src="mockup/image/Gantt_chart.jpeg" />
 
 - Tasks are displayed in State columns depends on their state. You are able to add new task, change state of task by drag and drop it on expected state, search task by keyword (the result will be highlight in State columns), edit task information (description, dependencies, performer, type, etc.) and remove task by click on Close icon beside each task. Here are some screenshot for illustration
 
