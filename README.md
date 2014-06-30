@@ -78,8 +78,6 @@ Edit task information
 
 <img src="mockup/image/edit-task.png" />
 
-State
-
 # Improvements
 Because development time is quite limited so we decided to implement the add-on as a "proof of concept" with basic functions. The add-on certainly could evolve more with many interesting and potential features. We list some perspectives below:
 * Notification for members by email

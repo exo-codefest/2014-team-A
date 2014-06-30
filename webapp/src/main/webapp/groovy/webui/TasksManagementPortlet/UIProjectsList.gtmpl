@@ -51,10 +51,7 @@
                   <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="uiIconSetting uiIconLightGray"></i></button>
                   <ul class="dropdown-menu pull-right">
                      <li>
-                        <a href="#">Lorem ipsum dolor</a>
-                     </li>
-                     <li>
-                        <a href="#">In non risus quis</a>
+                        <a href="#">Remove Project</a>
                      </li>
                      <li>
                         <a href="#">Import</a>
