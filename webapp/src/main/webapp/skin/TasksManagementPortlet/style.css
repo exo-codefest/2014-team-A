@@ -532,7 +532,7 @@
   border-right: none;
   position: absolute;
   right: 100%;
-  top: 20px;
+  top: 86px;
   background: #ECECEC;
   -webkit-border-top-left-radius: 3px;
   -moz-border-radius-topleft: 3px;
@@ -540,7 +540,7 @@
   -webkit-border-bottom-left-radius: 3px;
   -moz-border-radius-bottomleft: 3px;
   border-bottom-left-radius: 3px;
-  padding: 5px;
+  padding: 5px 0;
   white-space: nowrap;
 }
 .uiSidebarBoard .toggleShowSidebar .close-icon {
