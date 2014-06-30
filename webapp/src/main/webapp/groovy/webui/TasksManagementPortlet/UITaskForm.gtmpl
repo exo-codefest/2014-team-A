@@ -39,22 +39,22 @@
   }
 %>
 <div class="uiForm $uicomponent.id" id = "$uicomponent.id">
-  <div class="popupHeader clearfix">
+  <h4 class="mgB10 clearfix">
      <div class="toggleQuickEdit" inputtype="name">
-        <span class="PopupTitle popupTitle text"> <%=task.getName()%></b> </span>
+        <span class="PopupTitle popupTitle text"> <b><%=task.getName()%></b> </span>
         <div class="quickEdit">
-        <textarea name="" id="editTaskName" rows="1"><%=task.getName()%></textarea>
+          <textarea name="" id="editTaskName" rows="1"><%=task.getName()%></textarea>
            <div class="text-right">
               <div class="actionIcon"><i class="uiIconRemove uiIconLightGray"></i></div>
               <button class="quickSave btn btn-primary">Save</button>
            </div>
         </div>
-     </div>   
-  </div>
+     </div>
+  </h4>
      <div class="row-fluid">
         <div class="span8">
            <div class="mgB10">
-              <h5 class="title-part mg0">Description:</h5>
+              <h5 class="title-part mg0" style="text-shadow: none;">Description:</h5>
               <div class="desc toggleQuickEdit" inputtype="description">
                  <p class="text">
                     $taskDescription
