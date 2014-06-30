@@ -349,7 +349,7 @@ behavior: {
     	
         daysBetween: function (start, end) {
             if (!start || !end) { return 0; }
-            start = Date.parse(start); end = Date.parse(end);
+            start = Date.parse(eval(start)); end = Date.parse(eval(end));
             if (start.getYear() == 1901 || end.getYear() == 8099) { return 0; }
             var count = 0, date = start.clone();
             while (date.compareTo(end) == -1) { count = count + 1; date.addDays(1); }
@@ -364,8 +364,8 @@ behavior: {
 			var minStart = new Date(); maxEnd = new Date();
 			for (var i = 0; i < data.length; i++) {
 				for (var j = 0; j < data[i].series.length; j++) {
-					var start = Date.parse(data[i].series[j].start);
-					var end = Date.parse(data[i].series[j].end)
+					var start = Date.parse(eval(data[i].series[j].start));
+					var end = Date.parse(eval(data[i].series[j].end))
 					if (i == 0 && j == 0) { minStart = start; maxEnd = end; }
 					if (minStart.compareTo(start) == 1) { minStart = start; }
 					if (maxEnd.compareTo(end) == -1) { maxEnd = end; }

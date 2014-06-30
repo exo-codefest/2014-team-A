@@ -111,7 +111,7 @@ public class UITasksBoard extends UIContainer {
       UITasksManagementPortlet uiParent = event.getSource().getAncestorOfType(UITasksManagementPortlet.class);
       UIPopupContainer uiPopupContainer = uiParent.getChild(UIPopupContainer.class);
       UIChartForm form = uiPopupContainer.createUIComponent(UIChartForm.class, null, null);
-      uiPopupContainer.activate(form, 700, 500);
+      uiPopupContainer.activate(form, 1100, 500);
       event.getRequestContext().addUIComponentToUpdateByAjax(uiParent);
     }
   }

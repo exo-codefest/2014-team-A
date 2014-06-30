@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
@@ -265,5 +266,51 @@ public class TaskRESTService implements ResourceContainer{
 	  }
 	  return false;
   }
+  
+  @GET
+  @Path("/tasksInfo")
+  @RolesAllowed("users")
+  public Response tasksInfo(@QueryParam("projectId") int projectId) {
+    JSONArray searchResults = new JSONArray();
+    try {
+      Project project = projectService.getProjectById(projectId);
+      List<Task> tasks = projectService.getTasks(project);
+      if (tasks != null && tasks.size() > 0) {
+        int count = 0;
+        for (Task task : tasks) {
+          JSONObject t = new JSONObject();
+          t.put("id", count++);
+          t.put("name", task.getName());
+          
+          JSONArray item = new JSONArray();
+
+          JSONObject obj = new JSONObject();
+          obj.put("name", task.getName());
+          SimpleDateFormat sdf = new SimpleDateFormat("yyyy,MM,dd");
+          Date start = task.getStartDate() == null? new Date() : task.getStartDate().getTime();
+          Date due = task.getDueDate() == null? new Date() : task.getDueDate().getTime();
+          obj.put("start", "new Date(" + sdf.format(start) +")");
+          obj.put("end", "new Date(" + sdf.format(due) + ")");
+          
+          item.put(obj);
+          t.put("series", item);
+          
+          searchResults.put(t);
+        }
+      }
+    } catch (TaskManagerException e) {
+      //
+    } catch (JSONException e) {
+      //
+    }
+    return Response.ok(searchResults.toString(), MediaType.APPLICATION_JSON).build();
+  }
+//  id: 6, name: "Feature 6", series: [
+//                                     { name: "Planned", start: new Date(2010,00,05), end: new Date(2010,00,20) },
+//                                     { name: "Actual", start: new Date(2010,00,06), end: new Date(2010,00,17), color: "#f0f0f0" },
+//                                     { name: "Projected", start: new Date(2010,00,06), end: new Date(2010,00,20), color: "#e0e0e0" }
+//                                   ]
+
+
   
 }
